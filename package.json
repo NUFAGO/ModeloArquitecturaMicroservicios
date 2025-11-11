@@ -1,0 +1,11 @@
+{
+    "name": "inacons-backend",
+    "version": "1.0.0",
+    "description": "Diagramas de arquitectura para Inacons Backend",
+    "scripts": {
+        "build": "likec4 build",
+        "preview": "likec4 preview",
+        "dev": "likec4 dev"
+    }
+}
+ 

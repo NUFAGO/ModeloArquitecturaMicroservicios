@@ -1,0 +1,514 @@
+// ============================================================================
+// ESPECIFICACIÓN: Definición de tipos de elementos y relaciones
+// ============================================================================
+
+specification {
+  // Tipos de elementos
+  element actor {
+    style {
+      shape person
+    }
+  }
+  element system
+  element container
+  element component
+  element code // nivel 4: archivos, clases, módulos
+
+  // Tipos de relaciones
+  relationship graphql
+  relationship websocket
+  relationship http
+  relationship queries
+
+  // Tags para clasificación
+  tag external
+  tag frontend
+  tag backend
+  tag database
+  tag queue
+  tag storage
+  tag messaging
+}
+
+// ============================================================================
+// MODELO: Arquitectura del sistema (4 niveles: System > Container > Component > Code)
+// ============================================================================
+
+model {
+  // ========================================================================== 
+  // ACTORES
+  // ==========================================================================
+  usuarioWeb = actor 'Usuario Web' {
+    description 'Usuario final que gestiona presupuestos, licitaciones y obras a través del navegador'
+  }
+
+  administrador = actor 'Administrador' {
+    description 'Usuario con permisos administrativos para configuración, auditoría y gestión de seeds/migrations'
+  }
+
+  // ========================================================================== 
+  // SISTEMAS EXTERNOS
+  // ==========================================================================
+  googleCloudStorage = system 'Google Cloud Storage' {
+    #external #storage
+    description 'Almacenamiento de archivos, attachments y documentos generados'
+    technology 'Google Cloud Storage SDK'
+  }
+
+  smtpServer = system 'SMTP Server' {
+    #external #messaging
+    description 'Servidor de correo para envío de notificaciones por email'
+    technology 'SMTP Protocol'
+  }
+
+  telegramAPI = system 'Telegram Bot API' {
+    #external #messaging
+    description 'API de Telegram para envío de notificaciones push'
+    technology 'Telegram Bot API'
+  }
+
+  serviciosExternos = system 'Servicios HTTP Externos' {
+    #external
+    description 'APIs externas consumidas vía Axios para integraciones'
+    technology 'REST APIs'
+  }
+
+  // ========================================================================== 
+  // SISTEMA PRINCIPAL: INACONS - Plataforma
+  // ==========================================================================
+  sistemaPresupuestos = system 'INACONS - Plataforma' {
+    description 'Plataforma INACONS — frontend (repo: inacons-frontend) y backend (repo: inacons-backend). Gestión de presupuestos, informes y trazabilidad; incluye autenticación, auditoría y exportes.'
+
+    // -----------------------------------------
+    // Contenedor: Frontend (inacons-frontend)
+    // -----------------------------------------
+    reactSPA = container 'React SPA' {
+      #frontend
+      description 'Single Page Application (repo: inacons-frontend). Interfaz web que consume GraphQL y WebSockets; adapta la UI y estructura según el modelo C4 por niveles.'
+      technology 'React, TypeScript, Vite, Apollo Client, Redux/RTK, TailwindCSS, PWA'
+    }
+
+    // -----------------------------------------
+    // Contenedor: Backend GraphQL API (inacons-backend)
+    // -----------------------------------------
+    graphqlAPI = container 'GraphQL API Server' {
+      #backend
+      description 'API GraphQL (repo: inacons-backend). Node.js + TypeScript que expone queries/mutations/subscriptions, maneja autenticación JWT, auditoría y colas.'
+      technology 'Node.js, TypeScript, Apollo Server, GraphQL-WS, Express'
+
+      // ---------------------------
+      // COMPONENTES - PRESENTACIÓN
+      // ---------------------------
+      apolloServerComp = component 'Apollo Server' {
+        description 'Servidor GraphQL que maneja queries, mutations y subscriptions. Punto de entrada HTTP/WebSocket'
+        technology 'Apollo Server Express, GraphQL-WS'
+      }
+
+      graphqlSchemaComp = component 'GraphQL Schema' {
+        description 'Definición de tipos, queries, mutations y subscriptions en archivos .graphql'
+        technology 'GraphQL SDL, @graphql-tools/load-files'
+      }
+
+      // RESOLVERS (componentes)
+      licitacionResolver = component 'Licitación Resolver' {
+        description 'Resolvers GraphQL para queries y mutations de licitaciones'
+        technology 'TypeScript GraphQL Resolvers'
+      }
+
+      presupuestoResolver = component 'Presupuesto Resolver' {
+        description 'Resolvers para operaciones sobre presupuestos y estructuras jerárquicas'
+        technology 'TypeScript GraphQL Resolvers'
+      }
+
+      obraResolver = component 'Obra Resolver' {
+        description 'Resolvers para gestión de obras asociadas a presupuestos'
+        technology 'TypeScript GraphQL Resolvers'
+      }
+
+      partidaResolver = component 'Partida Resolver' {
+        description 'Resolvers para partidas, recursos y versiones'
+        technology 'TypeScript GraphQL Resolvers'
+      }
+
+      recursosResolver = component 'Recursos Resolver' {
+        description 'Resolvers para catálogo maestro de recursos'
+        technology 'TypeScript GraphQL Resolvers'
+      }
+
+      // MIDDLEWARE
+      authMiddleware = component 'Auth Middleware' {
+        description 'Middleware de autenticación JWT'
+        technology 'jsonwebtoken 9.0'
+      }
+
+      historicoMiddleware = component 'Histórico Middleware' {
+        description 'Middleware de auditoría que registra cambios en LOG_PRESUPUESTO'
+        technology 'TypeScript Middleware'
+      }
+
+      // ---------------------------
+      // COMPONENTES - APLICACIÓN (SERVICIOS)
+      // ---------------------------
+      presupuestoService = component 'Presupuesto Service' {
+        description 'Lógica de negocio: creación de estructuras jerárquicas, cálculo de totales'
+        technology 'TypeScript Domain Service'
+      }
+
+      partidaService = component 'Partida Service' {
+        description 'Gestión de jerarquía de partidas y asignación de recursos'
+        technology 'TypeScript Domain Service'
+      }
+
+      versioningService = component 'Versioning Service' {
+        description 'Control de versiones de costos con PARTIDA_RECURSO_VERSION'
+        technology 'TypeScript, Event Sourcing'
+      }
+
+      calculoService = component 'Cálculo Service' {
+        description 'Motor de cálculo financiero y agregaciones'
+        technology 'TypeScript, Decimal.js'
+      }
+
+      fileService = component 'File Service' {
+        description 'Servicio para upload/download de archivos a GCS'
+        technology 'TypeScript, @google-cloud/storage 7.3'
+      }
+
+      notificationService = component 'Notification Service' {
+        description 'Envío de notificaciones por email y Telegram'
+        technology 'nodemailer 6.10, node-telegram-bot-api 0.63'
+      }
+
+      queueManager = component 'Queue Manager' {
+        description 'Gestor de colas para tareas asíncronas'
+        technology 'Bull 4.16, Bull-Arena'
+      }
+
+      // ---------------------------
+      // COMPONENTES - DOMINIO (MODELOS)
+      // ---------------------------
+      licitacionModel = component 'Licitación Model' {
+        description 'Modelo Mongoose para colección licitaciones'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      presupuestoModel = component 'Presupuesto Model' {
+        description 'Modelo para PRESUPUESTO con referencias'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      obraModel = component 'Obra Model' {
+        description 'Modelo para OBRA'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      tituloModel = component 'Estructura Presupuesto Models' {
+        description 'Modelos para TITULO, SUBTITULO, SUB_SUBTITULO'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      partidaModel = component 'Partida Models' {
+        description 'Modelos para PARTIDA, PARTIDA_RECURSO con jerarquía'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      recursosModel = component 'Recursos Model' {
+        description 'Modelo para catálogo RECURSOS'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      versionModel = component 'Version Models' {
+        description 'Modelos para PARTIDA_RECURSO_VERSION'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      auditModel = component 'Audit Model' {
+        description 'Modelo para LOG_PRESUPUESTO'
+        technology 'Mongoose 8.6 Schema'
+      }
+
+      // ---------------------------
+      // COMPONENTES - WORKERS
+      // ---------------------------
+      exportWorker = component 'Export Worker' {
+        description 'Worker para exportación pesada'
+        technology 'Bull Worker'
+      }
+
+      notificationWorker = component 'Notification Worker' {
+        description 'Worker para envío masivo de notificaciones'
+        technology 'Bull Worker'
+      }
+
+      // ---------------------------
+      // NIVEL 4: ELEMENTS (CÓDIGO: archivos / clases / módulos)
+      // ---------------------------
+      // Apollo server code files
+      apollo_server_file = code 'server.ts' {
+        description 'Entry point: arranca Apollo Server y WebSocket (subscriptions)'
+      }
+      subscriptions_file = code 'subscriptions.ts' {
+        description 'Configuración de GraphQL-WS y pub/sub'
+      }
+
+      // Presupuesto resolver + service files
+      presupuesto_resolver_file = code 'presupuesto.resolver.ts' {
+        description 'Resolvers para Presupuesto (queries/mutations)'
+      }
+      presupuesto_service_file = code 'presupuesto.service.ts' {
+        description 'Implementación de Presupuesto Service (lógica de negocio)'
+      }
+
+      // Partida files
+      partida_service_file = code 'partida.service.ts' {
+        description 'Implementación de Partida Service'
+      }
+
+      // Models files
+      presupuesto_model_file = code 'presupuesto.model.ts' {
+        description 'Esquema Mongoose para PRESUPUESTO'
+      }
+      partida_model_file = code 'partida.model.ts' {
+        description 'Esquema Mongoose para PARTIDA'
+      }
+    }
+
+    // -----------------------------------------
+    // Contenedor: MongoDB
+    // -----------------------------------------
+    mongoDB = container 'MongoDB Database' {
+      #database
+      description 'Base de datos NoSQL con todas las colecciones del sistema'
+      technology 'MongoDB (Mongoose 8.6 ODM)'
+    }
+
+    // -----------------------------------------
+    // Contenedor: Redis (cola)
+    // -----------------------------------------
+    redisQueue = container 'Redis Queue' {
+      #queue
+      description 'Message broker para colas de trabajos asíncronas'
+      technology 'Redis (Bull 4.16)'
+    }
+  }
+
+  // ========================================================================== 
+  // RELACIONES - CONTEXTO
+  // ==========================================================================
+  usuarioWeb -> sistemaPresupuestos 'Gestiona licitaciones, presupuestos y obras'
+  administrador -> sistemaPresupuestos 'Administra configuración y auditoría'
+
+  sistemaPresupuestos -> googleCloudStorage 'Almacena archivos'
+  sistemaPresupuestos -> smtpServer 'Envía emails'
+  sistemaPresupuestos -> telegramAPI 'Envía notificaciones'
+  sistemaPresupuestos -> serviciosExternos 'Consume APIs externas'
+
+  // ========================================================================== 
+  // RELACIONES - CONTENEDORES
+  // ==========================================================================
+  usuarioWeb -> reactSPA 'Interactúa vía navegador [HTTPS]'
+  administrador -> reactSPA 'Accede a panel admin'
+
+  reactSPA -[graphql]-> graphqlAPI 'GraphQL Queries/Mutations [HTTP/JSON]'
+  reactSPA -[websocket]-> graphqlAPI 'GraphQL Subscriptions [WebSocket]'
+
+  graphqlAPI -[queries]-> mongoDB 'Lee/Escribe documentos [Mongoose ODM]'
+  graphqlAPI -> redisQueue 'Encola trabajos [Bull]'
+  graphqlAPI -[http]-> googleCloudStorage 'Upload/Download [GCS SDK]'
+  graphqlAPI -> smtpServer 'Envía emails [SMTP]'
+  graphqlAPI -[http]-> telegramAPI 'Envía mensajes [Bot API]'
+  graphqlAPI -[http]-> serviciosExternos 'HTTP requests [Axios]'
+
+  // ========================================================================== 
+  // RELACIONES - COMPONENTES
+  // ==========================================================================
+  reactSPA -> apolloServerComp 'GraphQL operations'
+
+  apolloServerComp -> graphqlSchemaComp 'Carga esquema'
+  apolloServerComp -> authMiddleware 'Valida JWT'
+  apolloServerComp -> historicoMiddleware 'Registra auditoría'
+  apolloServerComp -> licitacionResolver 'Resuelve licitaciones'
+  apolloServerComp -> presupuestoResolver 'Resuelve presupuestos'
+  apolloServerComp -> obraResolver 'Resuelve obras'
+  apolloServerComp -> partidaResolver 'Resuelve partidas'
+  apolloServerComp -> recursosResolver 'Resuelve recursos'
+
+  // Resolvers -> Servicios / Models
+  licitacionResolver -> licitacionModel 'Accede colección'
+  presupuestoResolver -> presupuestoService 'Delega lógica'
+  presupuestoResolver -> calculoService 'Calcula totales'
+  obraResolver -> obraModel 'Accede colección'
+  partidaResolver -> partidaService 'Gestiona jerarquía'
+  partidaResolver -> versioningService 'Crea versiones'
+  recursosResolver -> recursosModel 'Consulta catálogo'
+
+  // Servicios -> Models/Queue
+  presupuestoService -> presupuestoModel 'Persiste'
+  presupuestoService -> tituloModel 'Gestiona estructura'
+  presupuestoService -> queueManager 'Encola exportes'
+  partidaService -> partidaModel 'Persiste partidas'
+  partidaService -> calculoService 'Calcula'
+
+  versioningService -> versionModel 'Registra versiones'
+  versioningService -> auditModel 'Escribe logs'
+  calculoService -> partidaModel 'Lee estructura'
+
+  fileService -> googleCloudStorage 'Upload/Download'
+  notificationService -> smtpServer 'Envía emails'
+  notificationService -> telegramAPI 'Envía mensajes'
+  notificationService -> queueManager 'Encola notificaciones'
+
+  queueManager -> redisQueue 'Publica jobs'
+  queueManager -> exportWorker 'Procesa exportes'
+  queueManager -> notificationWorker 'Procesa notificaciones'
+
+  exportWorker -> presupuestoModel 'Lee datos'
+  exportWorker -> partidaModel 'Lee partidas'
+  exportWorker -> fileService 'Genera archivos'
+
+  notificationWorker -> notificationService 'Envía en lote'
+  historicoMiddleware -> auditModel 'Registra operaciones'
+
+  // Models -> MongoDB
+  licitacionModel -> mongoDB 'licitaciones'
+  presupuestoModel -> mongoDB 'presupuestos'
+  obraModel -> mongoDB 'obras'
+  tituloModel -> mongoDB 'titulo_presupuesto'
+  partidaModel -> mongoDB 'partida'
+  recursosModel -> mongoDB 'recursos'
+  versionModel -> mongoDB 'partida_recurso_version'
+  auditModel -> mongoDB 'log_presupuesto'
+
+  // ========================================================================== 
+  // RELACIONES - CÓDIGO (nivel 4)
+  // ==========================================================================
+  apolloServerComp -> apollo_server_file 'Arranca servidor'
+  apolloServerComp -> subscriptions_file 'Config de subscripciones'
+
+  presupuestoResolver -> presupuesto_resolver_file 'Implementación resolvers'
+  presupuestoService -> presupuesto_service_file 'Implementación service'
+  partidaService -> partida_service_file 'Implementación service'
+
+  presupuestoModel -> presupuesto_model_file 'Esquema Mongoose'
+  partidaModel -> partida_model_file 'Esquema Mongoose'
+}
+
+// ============================================================================
+// VISTAS: Proyecciones del modelo (contexto → contenedores → componentes → código)
+// ============================================================================
+
+views {
+  // VISTA INDEX
+  view index {
+    title 'KAPO - Sistema de Gestión de Presupuestos'
+    description 'Arquitectura completa del microservicio basada en C4 Model'
+    include *
+  }
+
+  // NIVEL 1: CONTEXTO
+  view contexto of sistemaPresupuestos {
+    title 'Nivel 1: Diagrama de Contexto'
+    description 'Actores y servicios externos'
+    include
+      usuarioWeb
+      administrador
+      sistemaPresupuestos
+      googleCloudStorage
+      smtpServer
+      telegramAPI
+      serviciosExternos
+  }
+
+  // NIVEL 2: CONTENEDORES
+  view contenedores of sistemaPresupuestos {
+    title 'Nivel 2: Diagrama de Contenedores'
+    description 'Frontend, API GraphQL, MongoDB, Redis'
+    include
+      usuarioWeb
+      administrador
+      reactSPA
+      graphqlAPI
+      mongoDB
+      redisQueue
+      googleCloudStorage
+      smtpServer
+      telegramAPI
+      serviciosExternos
+  }
+
+  // NIVEL 3: COMPONENTES (GraphQL API)
+  view componentes of graphqlAPI {
+    title 'Nivel 3: Componentes del API'
+    description 'Apollo Server, Resolvers, Services, Models, Workers'
+    include
+      apolloServerComp
+      graphqlSchemaComp
+      authMiddleware
+      historicoMiddleware
+      licitacionResolver
+      presupuestoResolver
+      obraResolver
+      partidaResolver
+      recursosResolver
+      presupuestoService
+      partidaService
+      versioningService
+      calculoService
+      fileService
+      notificationService
+      queueManager
+      licitacionModel
+      presupuestoModel
+      obraModel
+      tituloModel
+      partidaModel
+      recursosModel
+      versionModel
+      auditModel
+      exportWorker
+      notificationWorker
+      mongoDB
+      redisQueue
+      googleCloudStorage
+      smtpServer
+      telegramAPI
+  }
+
+  // NIVEL 4: CÓDIGO — Ejemplo (archivos y módulos relevantes)
+  view codigoGraphql of graphqlAPI {
+    title 'Nivel 4: Código — Archivos / módulos (ejemplos)'
+    description 'Archivos principales: entrada del server, resolvers y modelos (puedes añadir más files)'
+    include
+      apollo_server_file
+      subscriptions_file
+      presupuesto_resolver_file
+      presupuesto_service_file
+      partida_service_file
+      presupuesto_model_file
+      partida_model_file
+  }
+
+  // VISTA DINÁMICA: Flujo de creación de presupuesto (muestra pasos a nivel componente + código)
+  view flujoCreacion of graphqlAPI {
+    title 'Nivel 4: Flujo de creación de presupuesto'
+    description 'Secuencia: Usuario -> Frontend -> Apollo -> Resolvers -> Services -> Models -> DB'
+    include
+      reactSPA
+      apolloServerComp
+      authMiddleware
+      presupuestoResolver
+      presupuestoService
+      partidaService
+      versioningService
+      presupuestoModel
+      tituloModel
+      partidaModel
+      versionModel
+      auditModel
+      presupuesto_resolver_file
+      presupuesto_service_file
+      presupuesto_model_file
+      mongoDB
+      historicoMiddleware
+  }
+}
