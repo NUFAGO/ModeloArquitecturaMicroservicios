@@ -6,6 +6,8 @@
         "build": "likec4 build",
         "preview": "likec4 preview",
         "dev": "likec4 dev"
+    },
+    "devDependencies": {
+        "likec4": "^1.44.0"
     }
 }
- 
