@@ -3,6 +3,6 @@
     "name": "ModeloArquitecturaMicroservicios",
     "entry": "likec4.c4",
     "outDir": "dist",
-    "basePath": "/ModeloArquitecturaMicroservicios/"
+    "base": "/ModeloArquitecturaMicroservicios/"
   }
   
