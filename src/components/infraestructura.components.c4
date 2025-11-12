@@ -21,66 +21,107 @@ model {
   }
 
   // ===== APIs EXTERNAS =====
-  infra_email_api = service 'Email Service API' {
+  infra_email_api = component 'Email Service API' {
     technology 'Node.js + SendGrid/Mailgun'
     description 'Servicio de envío de correos electrónicos'
   }
 
-  infra_whatsapp_api = service 'WhatsApp Business API' {
+  infra_whatsapp_api = component 'WhatsApp Business API' {
     technology 'Meta WhatsApp Business API'
     description 'Integración con WhatsApp para notificaciones'
   }
 
-  infra_sunat_api = service 'SUNAT API' {
+  infra_sunat_api = component 'SUNAT API' {
     technology 'REST API'
     description 'Integración con SUNAT para validación RUC y facturación'
   }
 
-  infra_reniec_api = service 'RENIEC API' {
+  infra_reniec_api = component 'RENIEC API' {
     technology 'REST API'
     description 'Integración con RENIEC para validación de DNI'
   }
 
   // ===== WORKERS PARA PROCESAMIENTO ASÍNCRONO =====
-  infra_email_worker = service 'Email Worker' {
+  infra_email_worker = component 'Email Worker' {
     technology 'Node.js + Bull'
     description 'Worker para procesamiento de emails en cola'
   }
 
-  infra_cotizacion_worker = service 'Cotización Worker' {
+  infra_cotizacion_worker = component 'Cotización Worker' {
     technology 'Node.js + Bull'
     description 'Worker para procesamiento de cotizaciones'
   }
 
-  infra_orden_compra_worker = service 'Orden Compra Worker' {
+  infra_orden_compra_worker = component 'Orden Compra Worker' {
     technology 'Node.js + Bull'
     description 'Worker para procesamiento de órdenes de compra'
   }
 
-  infra_orden_pago_worker = service 'Orden Pago Worker' {
+  infra_orden_pago_worker = component 'Orden Pago Worker' {
     technology 'Node.js + Bull'
     description 'Worker para procesamiento de órdenes de pago'
   }
 
-  infra_whatsapp_worker = service 'WhatsApp Worker' {
+  infra_whatsapp_worker = component 'WhatsApp Worker' {
     technology 'Node.js + Bull'
     description 'Worker para envío de mensajes WhatsApp'
   }
 
   // ===== SERVICIOS COMPARTIDOS =====
-  infra_global_search = service 'Global Search Service' {
+  infra_global_search = component 'Global Search Service' {
     technology 'Node.js + Elasticsearch/MongoDB'
     description 'Servicio de búsqueda global en toda la aplicación'
   }
 
-  infra_file_upload = service 'File Upload Service' {
+  infra_file_upload = component 'File Upload Service' {
     technology 'Node.js + Google Cloud Storage'
     description 'Servicio de subida y gestión de archivos'
   }
 
-  infra_encryption = service 'Encryption Service' {
+  infra_encryption = component 'Encryption Service' {
     technology 'Node.js + AES/Crypto'
     description 'Servicio de encriptación para datos sensibles'
+  }
+
+  // ===== REPOSITORIES =====
+  infra_email_repo = component 'Email Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para configuración y logs de emails'
+  }
+
+  infra_whatsapp_repo = component 'WhatsApp Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para mensajes y configuraciones WhatsApp'
+  }
+
+  infra_sunat_repo = component 'SUNAT Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para datos de SUNAT y validaciones'
+  }
+
+  infra_reniec_repo = component 'RENIEC Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para datos de RENIEC y validaciones'
+  }
+
+  infra_workers_repo = component 'Workers Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para logs y estados de workers'
+  }
+
+  infra_global_search_repo = component 'Global Search Repository' {
+    technology 'Elasticsearch'
+    description 'Repositorio de búsqueda global'
+  }
+
+  infra_file_upload_repo = component 'File Upload Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para metadatos de archivos'
+  }
+
+  infra_encryption_repo = component 'Encryption Repository' {
+    technology 'Mongoose ODM'
+    description 'Repositorio para claves y configuraciones de encriptación'
   }
 
   // ===== RELACIONES =====
@@ -92,4 +133,18 @@ model {
 
   infra_email_worker -> infra_email_api 'Envía emails'
   infra_whatsapp_worker -> infra_whatsapp_api 'Envía mensajes'
+
+  // Servicios conectados a repositorios
+  infra_email_api -> infra_email_repo 'Repository'
+  infra_whatsapp_api -> infra_whatsapp_repo 'Repository'
+  infra_sunat_api -> infra_sunat_repo 'Repository'
+  infra_reniec_api -> infra_reniec_repo 'Repository'
+  infra_email_worker -> infra_workers_repo 'Repository'
+  infra_cotizacion_worker -> infra_workers_repo 'Repository'
+  infra_orden_compra_worker -> infra_workers_repo 'Repository'
+  infra_orden_pago_worker -> infra_workers_repo 'Repository'
+  infra_whatsapp_worker -> infra_workers_repo 'Repository'
+  infra_global_search -> infra_global_search_repo 'Repository'
+  infra_file_upload -> infra_file_upload_repo 'Repository'
+  infra_encryption -> infra_encryption_repo 'Repository'
 }

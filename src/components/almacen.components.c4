@@ -192,10 +192,10 @@ model {
   al_almacen_service -> al_almacen_centro_costo_service 'Asignación costos'
 
   // Todos los servicios usan repositories
-  al_almacen_service -> al_almacen_repo 'Persistencia'
-  al_inventario_service -> al_inventario_repo 'Persistencia'
-  al_transferencia_service -> al_transferencia_repo 'Persistencia'
-  al_bodega_service -> al_bodega_repo 'Persistencia'
-  al_recepcion_service -> al_recepcion_repo 'Persistencia'
-  al_producto_service -> al_producto_repo 'Persistencia'
+  al_almacen_service -> al_almacen_repo 'Repository'
+  al_inventario_service -> al_inventario_repo 'Repository'
+  al_transferencia_service -> al_transferencia_repo 'Repository'
+  al_bodega_service -> al_bodega_repo 'Repository'
+  al_recepcion_service -> al_recepcion_repo 'Repository'
+  al_producto_service -> al_producto_repo 'Repository'
 }

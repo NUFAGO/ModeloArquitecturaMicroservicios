@@ -215,10 +215,10 @@ model {
   cb_combustible_service -> cb_combustible_centro_costo_service 'Asignación costos'
 
   // Todos los servicios usan repositories
-  cb_combustible_service -> cb_combustible_repo 'Persistencia'
-  cb_tanque_service -> cb_tanque_repo 'Persistencia'
-  cb_surtidor_service -> cb_surtidor_repo 'Persistencia'
-  cb_venta_combustible_service -> cb_venta_combustible_repo 'Persistencia'
-  cb_informe_diario_service -> cb_informe_diario_repo 'Persistencia'
-  cb_inventario_combustible_service -> cb_inventario_combustible_repo 'Persistencia'
+  cb_combustible_service -> cb_combustible_repo 'Repository'
+  cb_tanque_service -> cb_tanque_repo 'Repository'
+  cb_surtidor_service -> cb_surtidor_repo 'Repository'
+  cb_venta_combustible_service -> cb_venta_combustible_repo 'Repository'
+  cb_informe_diario_service -> cb_informe_diario_repo 'Repository'
+  cb_inventario_combustible_service -> cb_inventario_combustible_repo 'Repository'
 }

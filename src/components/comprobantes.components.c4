@@ -240,10 +240,10 @@ model {
   cm_comprobante_service -> cm_comprobante_centro_costo_service 'Asignación costos'
 
   // Todos los servicios usan repositories
-  cm_comprobante_service -> cm_comprobante_repo 'Persistencia'
-  cm_factura_service -> cm_factura_repo 'Persistencia'
-  cm_boleta_service -> cm_boleta_repo 'Persistencia'
-  cm_nota_credito_service -> cm_nota_credito_repo 'Persistencia'
-  cm_nota_debito_service -> cm_nota_debito_repo 'Persistencia'
-  cm_numeracion_service -> cm_numeracion_repo 'Persistencia'
+  cm_comprobante_service -> cm_comprobante_repo 'Repository'
+  cm_factura_service -> cm_factura_repo 'Repository'
+  cm_boleta_service -> cm_boleta_repo 'Repository'
+  cm_nota_credito_service -> cm_nota_credito_repo 'Repository'
+  cm_nota_debito_service -> cm_nota_debito_repo 'Repository'
+  cm_numeracion_service -> cm_numeracion_repo 'Repository'
 }

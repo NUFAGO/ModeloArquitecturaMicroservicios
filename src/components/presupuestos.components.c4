@@ -242,11 +242,11 @@ model {
   ps_apu_service -> ps_reporte_apu_service 'Reportes APU'
 
   // Todos los servicios usan repositories
-  ps_presupuesto_service -> ps_presupuesto_repo 'Persistencia'
-  ps_proyecto_service -> ps_proyecto_repo 'Persistencia'
-  ps_titulo_service -> ps_titulo_repo 'Persistencia'
-  ps_recurso_service -> ps_recurso_repo 'Persistencia'
-  ps_apu_service -> ps_apu_repo 'Persistencia'
-  ps_centro_costo_service -> ps_centro_costo_repo 'Persistencia'
-  ps_detalle_partida_service -> ps_detalle_partida_repo 'Persistencia'
+  ps_presupuesto_service -> ps_presupuesto_repo 'Repository'
+  ps_proyecto_service -> ps_proyecto_repo 'Repository'
+  ps_titulo_service -> ps_titulo_repo 'Repository'
+  ps_recurso_service -> ps_recurso_repo 'Repository'
+  ps_apu_service -> ps_apu_repo 'Repository'
+  ps_centro_costo_service -> ps_centro_costo_repo 'Repository'
+  ps_detalle_partida_service -> ps_detalle_partida_repo 'Repository'
 }
