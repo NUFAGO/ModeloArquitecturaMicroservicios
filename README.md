@@ -1,92 +1,83 @@
-# LikeC4 Template
+🧱 Arquitectura C4 de Nufago
 
-This template is an example of how to use LikeC4.  
-Contains:
+Este proyecto documenta y visualiza la arquitectura de Nufago utilizando el modelo C4, representando sus microservicios, capas lógicas y relaciones.
+Se basa en LikeC4
+, una herramienta declarativa para construir, validar y publicar diagramas de arquitectura mantenibles.
 
-- LikeC4 sources ([`/src`](./src/))
-- Model validation ([`/test/validate-model.spec.ts`](./test/validate-model.spec.ts))
-- Deploy to github pages ([`pages.yml`](./.github/workflows/pages.yml))
-- Project configuration with custom generator ([`likec4.config.ts`](./likec4.config.ts))  
+🎯 Propósito
 
-Demo - [https://template.likec4.dev](https://template.likec4.dev/view/cloud)
+Describir la arquitectura actual de Nufago de forma clara y versionada.
 
-Try it online:
+Modelar los microservicios, interfaces y dependencias técnicas.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/~/github.com/likec4/template?file=src/model.c4)
+Facilitar la comunicación entre equipos de desarrollo, infraestructura y arquitectura.
 
-Or:
--  [github.dev](https://github.dev/likec4/template/blob/main/src/model.c4)
--  [vscode.dev](https://vscode.dev/github/likec4/template/src/model.c4)
+Generar diagramas automatizados y documentación técnica reproducible.
 
-> You will get popup suggesting to install "LikeC4" extension.  
-> Agree to get syntax highlighting, completions and other features in likec4 files
+🧩 Estructura del repositorio
+nufago-architecture/
+├── src/                # Definiciones C4 (.c4)
+├── test/               # Validaciones del modelo
+├── likec4.config.ts    # Configuración del proyecto LikeC4
+├── package.json        # Dependencias y scripts
+└── .github/workflows/  # CI/CD y despliegue automático
 
-## How-to
+⚙️ Instalación y uso
+1️⃣ Instalar dependencias
+npm install
 
-1. Create a new repository from this template
-2. Pull your repository and open in VSCode
-3. Install suggested [LikeC4 extension](https://marketplace.visualstudio.com/items?itemName=likec4.likec4)
+2️⃣ Generar el modelo
+npx likec4 build
 
-Now you can edit likec4 sources, refactor, navigate and preview diagrams.
 
-### CLI
+Esto compila los archivos .c4 y genera la salida estática dentro de /dist.
 
-You can install globally, locally and use scripts from `package.json`, or just via `npx`  
-Check [documentation](https://likec4.dev/tooling/cli/)  
+3️⃣ Visualizar la arquitectura
+npx likec4 preview
 
-> LikeC4 requires Node.js version 20+  
 
-To start local server with live reload (for development or quick preview)  
-Inside the project folder:
+Abre un servidor local para explorar los diagramas generados en el navegador.
 
-```bash
-npx likec4 start
-```
+🧪 Validación del modelo
 
-Export to PNG:
+Para verificar que el modelo sea consistente:
 
-```bash
-npx likec4 export png -o png
-```
-
-Documentation: https://likec4.dev/docs/tools/cli/
-
-### Custom generator
-
-[`likec4.config.ts`](./likec4.config.ts) includes an example of custom generator that generates CSV file with relationships:
-
-```bash
-npm run generate:relationships-csv
-```
-
-### Model validation
-
-[`test/validate-model.spec.ts`](./test/validate-model.spec.ts) includes an example of model validation tests:
-
-```bash
 npm run test
-```
 
-> Check [documentation](https://likec4.dev/guides/validate-your-model/) for more details
+🚀 Despliegue
 
-### Deployment
+El sitio estático se puede desplegar en:
 
-Deployment is the same as for any project built with [vite](https://vitejs.dev/).
+GitHub Pages (workflow incluido en .github/workflows/pages.yml)
 
-1. Build static site (export to HTML, ready for deployment):
+Cualquier servicio de hosting estático compatible (Vercel, Netlify, etc.)
 
-```bash
+Construcción manual:
+
 npx likec4 build -o ./dist
-```
-> Check `npx likec4 build --help` for options and examples
 
-2. Upload `./dist` folder to your hosting
+📊 Alcance del modelo C4
 
-#### Github Pages
+El modelo cubre las siguientes vistas:
 
-This template contains workflow to deploy to github pages on every push to `main` branch.  
-Check [`.github/workflows/pages.yml`](./.github/workflows/pages.yml)
+Contexto – Ecosistema global de Nufago y actores externos.
 
-## License
+Contenedores – Microservicios, bases de datos y componentes externos.
 
-This project is released under the [MIT License](LICENSE)
+Componentes – Submódulos dentro de cada microservicio.
+
+Código (opcional) – Enlaces entre elementos de código fuente (si aplica).
+
+📈 Próximos pasos
+
+Incorporar diagramas de flujos de eventos (mensajería, colas, etc.)
+
+Añadir métricas y observabilidad a nivel de microservicio.
+
+Integrar validación automática en CI/CD.
+
+📄 Licencia
+
+Distribuido bajo la MIT License
+.
+© Nufago — Arquitectura de Sistemas, 2025.
