@@ -1,0 +1,61 @@
+// components/presupuestos.c4 - Componentes del módulo Presupuestos
+
+model {
+  // ===== COMPONENTES DEL MICROSERVICIO PRESUPUESTOS =====
+
+  // APIs/Controllers
+  presupuesto_api = component 'Presupuesto API (GraphQL)' {
+    description 'Exposición GraphQL para operaciones de presupuesto'
+  }
+
+  // Servicios de negocio
+  presupuesto_service = component 'Presupuesto Service' {
+    description 'Lógica de negocio para presupuestos: creación, versiones, modificaciones'
+  }
+
+  apu_service = component 'APU Service' {
+    description 'Gestión de Análisis de Precios Unitarios: cálculos, composición, costos'
+  }
+
+  costo_service = component 'Costo Service' {
+    description 'Cálculos de costos: indirectos, mano de obra, materiales, equipos'
+  }
+
+  presupuesto_calculation_service = component 'Presupuesto Calculation Service' {
+    description 'Cálculos complejos: totales, márgenes, variaciones presupuestarias'
+  }
+
+  partida_service = component 'Partida Service' {
+    description 'Gestión de jerarquía de partidas presupuestarias'
+  }
+
+  // Repositorios
+  presupuesto_repo = component 'Presupuesto Repository' {
+    description 'Acceso a datos para presupuestos y versiones'
+  }
+
+  apu_repo = component 'APU Repository' {
+    description 'Acceso a datos para análisis de precios unitarios'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // API delega a servicios
+  presupuesto_api -> presupuesto_service 'Orquesta operaciones'
+  presupuesto_api -> apu_service 'Gestiona APU'
+  presupuesto_api -> costo_service 'Calcula costos'
+  presupuesto_api -> partida_service 'Maneja jerarquía'
+
+  // Servicios usan repositorios
+  presupuesto_service -> presupuesto_repo 'Persiste presupuestos'
+  apu_service -> apu_repo 'Persiste APU'
+  partida_service -> presupuesto_repo 'Persiste partidas'
+
+  // Servicios colaboran entre sí
+  presupuesto_service -> presupuesto_calculation_service 'Realiza cálculos'
+  presupuesto_service -> partida_service 'Organiza estructura'
+  apu_service -> costo_service 'Calcula costos unitarios'
+  apu_service -> presupuesto_calculation_service 'Integra cálculos'
+  costo_service -> presupuesto_calculation_service 'Proporciona datos'
+  partida_service -> presupuesto_calculation_service 'Define estructura cálculo'
+}

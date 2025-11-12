@@ -1,0 +1,185 @@
+// views.c4 - Vistas C4 para Inacons ERP
+views {
+
+  // ===== VISTA DE CONTEXTO (NIVEL 1) =====
+  view index {
+    title "Contexto - Inacons ERP (Nivel 1)"
+    description "Vista de contexto: el sistema Inacons ERP completo"
+    include inacons
+  }
+
+  // ===== VISTA DE CONTENEDORES (NIVEL 2) =====
+  view containers_of_inacons of inacons {
+    title "Contenedores - Inacons ERP (Nivel 2)"
+    description "Contenedores principales: Frontend, API GraphQL, Microservicios, BD, Infraestructura"
+    include inacons.web_frontend
+    include inacons.graphql_api
+    include inacons.capital_humano_ms
+    include inacons.administracion_ms
+    include inacons.combustibles_ms
+    include inacons.recursos_ms
+    include inacons.activos_fijos_ms
+    include inacons.compras_ms
+    include inacons.pagos_ms
+    include inacons.almacen_ms
+    include inacons.requerimientos_ms
+    include inacons.presupuestos_ms
+    include inacons.formularios_ms
+    include inacons.comprobantes_ms
+    include inacons.mongodb_db
+    include inacons.redis_cache
+    include inacons.queues_system
+    include inacons.external_apis
+  }
+
+  // ===== VISTAS DE COMPONENTES POR MICROSERVICIO (NIVEL 3) =====
+
+  // Capital Humano
+  view components_capital_humano of inacons.capital_humano_ms {
+    title "Componentes - Capital Humano (Nivel 3)"
+    description "API, Service, Repository del módulo Capital Humano"
+    include inacons.capital_humano_ms.empleado_api
+    include inacons.capital_humano_ms.empleado_service
+    include inacons.capital_humano_ms.empleado_repo
+  }
+
+  // Compras
+  view components_compras of inacons.compras_ms {
+    title "Componentes - Compras (Nivel 3)"
+    description "API, Services, Repository del módulo Compras"
+    include inacons.compras_ms.compra_api
+    include inacons.compras_ms.compra_service
+    include inacons.compras_ms.compra_repo
+    include inacons.compras_ms.cotizacion_service
+    include inacons.compras_ms.proveedor_service
+  }
+
+  // Pagos
+  view components_pagos of inacons.pagos_ms {
+    title "Componentes - Pagos (Nivel 3)"
+    description "API, Services, Repository del módulo Pagos"
+    include inacons.pagos_ms.pago_api
+    include inacons.pagos_ms.pago_service
+    include inacons.pagos_ms.pago_repo
+    include inacons.pagos_ms.orden_pago_service
+    include inacons.pagos_ms.medio_pago_service
+  }
+
+  // Presupuestos
+  view components_presupuestos of inacons.presupuestos_ms {
+    title "Componentes - Presupuestos (Nivel 3)"
+    description "API, Services, Repository del módulo Presupuestos"
+    include inacons.presupuestos_ms.presupuesto_api
+    include inacons.presupuestos_ms.presupuesto_service
+    include inacons.presupuestos_ms.presupuesto_repo
+    include inacons.presupuestos_ms.apu_service
+    include inacons.presupuestos_ms.costo_service
+  }
+
+  // Recursos
+  view components_recursos of inacons.recursos_ms {
+    title "Componentes - Recursos (Nivel 3)"
+    description "API, Services, Repository del módulo Recursos"
+    include inacons.recursos_ms.recurso_api
+    include inacons.recursos_ms.recurso_service
+    include inacons.recursos_ms.recurso_repo
+    include inacons.recursos_ms.trazabilidad_service
+  }
+
+  // Almacén
+  view components_almacen of inacons.almacen_ms {
+    title "Componentes - Almacén (Nivel 3)"
+    description "API, Services, Repository del módulo Almacén"
+    include inacons.almacen_ms.almacen_api
+    include inacons.almacen_ms.almacen_service
+    include inacons.almacen_ms.almacen_repo
+    include inacons.almacen_ms.transferencia_service
+    include inacons.almacen_ms.inventario_service
+  }
+
+  // Combustibles
+  view components_combustibles of inacons.combustibles_ms {
+    title "Componentes - Combustibles (Nivel 3)"
+    description "API, Services, Repository del módulo Combustibles"
+    include inacons.combustibles_ms.combustible_api
+    include inacons.combustibles_ms.combustible_service
+    include inacons.combustibles_ms.combustible_repo
+    include inacons.combustibles_ms.reporte_service
+  }
+
+  // ===== VISTAS DE CÓDIGO (NIVEL 4) =====
+
+  // Código Compras
+  view code_compras {
+    title "Código - Compras (Nivel 4)"
+    description "Archivos de código del módulo Compras: servicios, resolvers, modelos, workers"
+    include compraService
+    include cotizacionService
+    include proveedorService
+    include ordenCompraService
+    include compraResolvers
+    include compraModel
+    include solicitudCompraModel
+    include ordenCompraModel
+    include proveedorModel
+    include cotizacionModel
+    include compraSchema
+    include cotizacionEmailWorker
+    include ordenCompraEmailWorker
+
+    // Conexiones con componentes
+    include inacons.compras_ms.compra_api -> compraResolvers
+    include inacons.compras_ms.compra_service -> compraService
+    include inacons.compras_ms.cotizacion_service -> cotizacionService
+    include inacons.compras_ms.proveedor_service -> proveedorService
+    include inacons.compras_ms.orden_compra_service -> ordenCompraService
+  }
+
+  // Código Pagos
+  view code_pagos {
+    title "Código - Pagos (Nivel 4)"
+    description "Archivos de código del módulo Pagos: servicios, resolvers, modelos, workers, colas"
+    include pagoService
+    include ordenPagoService
+    include pagoResolvers
+    include ordenPagoResolvers
+    include pagoModel
+    include ordenPagoModel
+    include medioPagoModel
+    include pagoSchema
+    include ordenPagoConfirmadoWorker
+    include ordenPagoRechazadoWorker
+    include pagoQueue
+
+    // Conexiones con componentes
+    include inacons.pagos_ms.pago_api -> pagoResolvers
+    include inacons.pagos_ms.pago_api -> ordenPagoResolvers
+    include inacons.pagos_ms.pago_service -> pagoService
+    include inacons.pagos_ms.orden_pago_service -> ordenPagoService
+    include inacons.pagos_ms.medio_pago_service -> pagoService
+  }
+
+  // Código Presupuestos
+  view code_presupuestos {
+    title "Código - Presupuestos (Nivel 4)"
+    description "Archivos de código del módulo Presupuestos: APU, costos, utilidades"
+    include presupuestoService
+    include apuService
+    include presupuestoResolvers
+    include apuResolvers
+    include presupuestoModel
+    include apuModel
+    include partidaModel
+    include presupuestoSchema
+    include presupuestoUtils
+
+    // Conexiones con componentes
+    include inacons.presupuestos_ms.presupuesto_api -> presupuestoResolvers
+    include inacons.presupuestos_ms.presupuesto_api -> apuResolvers
+    include inacons.presupuestos_ms.presupuesto_service -> presupuestoService
+    include inacons.presupuestos_ms.presupuesto_repo -> presupuestoService
+    include inacons.presupuestos_ms.apu_service -> apuService
+    include inacons.presupuestos_ms.costo_service -> presupuestoService
+  }
+
+}

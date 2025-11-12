@@ -1,0 +1,144 @@
+// containers.c4 - Diagrama de Contenedores de Inacons ERP
+
+model {
+  // ===== CONTENEDORES FRONTEND =====
+  web_frontend = application 'Frontend Web React' {
+    description 'Aplicación web principal construida con React y TypeScript'
+  }
+
+  // ===== CONTENEDORES BACKEND =====
+  graphql_api = application 'GraphQL API Gateway' {
+    description 'API Gateway GraphQL que coordina todas las operaciones del sistema'
+  }
+
+  // ===== MICROSERVICIOS POR DOMINIO =====
+
+  // Capital Humano
+  capital_humano_container = application 'Capital Humano' {
+    description 'Contenedor lógico para gestión de personal y empleados'
+  }
+
+  // Administración
+  administracion_container = application 'Administración' {
+    description 'Contenedor lógico para configuración administrativa'
+  }
+
+  // Combustibles
+  combustibles_container = application 'Combustibles' {
+    description 'Contenedor lógico para gestión de combustibles'
+  }
+
+  // Recursos
+  recursos_container = application 'Recursos' {
+    description 'Contenedor lógico para gestión de recursos y trazabilidad'
+  }
+
+  // Activos Fijos
+  activos_fijos_container = application 'Activos Fijos' {
+    description 'Contenedor lógico para gestión de activos fijos'
+  }
+
+  // Compras
+  compras_container = application 'Compras' {
+    description 'Contenedor lógico para proceso completo de compras'
+  }
+
+  // Pagos
+  pagos_container = application 'Pagos' {
+    description 'Contenedor lógico para gestión de pagos y finanzas'
+  }
+
+  // Almacén
+  almacen_container = application 'Almacén' {
+    description 'Contenedor lógico para gestión de inventarios y almacén'
+  }
+
+  // Requerimientos
+  requerimientos_container = application 'Requerimientos' {
+    description 'Contenedor lógico para gestión de requerimientos'
+  }
+
+  // Presupuestos
+  presupuestos_container = application 'Presupuestos' {
+    description 'Contenedor lógico para gestión de presupuestos y APU'
+  }
+
+  // Formularios
+  formularios_container = application 'Formularios' {
+    description 'Contenedor lógico para gestión de formularios'
+  }
+
+  // Comprobantes
+  comprobantes_container = application 'Comprobantes' {
+    description 'Contenedor lógico para contabilidad y comprobantes'
+  }
+
+  // ===== INFRAESTRUCTURA =====
+  mongodb_db = database 'MongoDB' {
+    description 'Base de datos NoSQL principal con Mongoose ODM'
+  }
+
+  redis_cache = database 'Redis Cache' {
+    description 'Sistema de cache distribuido'
+  }
+
+  queues_system = queue 'Sistema de Colas' {
+    description 'Colas para procesamiento asíncrono'
+  }
+
+  external_apis = external-system 'APIs Externas' {
+    description 'Integraciones con sistemas externos (SUNAT, RENIEC, WhatsApp, Email)'
+  }
+
+  // ===== RELACIONES =====
+
+  // Frontend con API
+  web_frontend -> graphql_api 'GraphQL'
+
+  // API Gateway con microservicios
+  graphql_api -> capital_humano_container 'Empleados, CH'
+  graphql_api -> administracion_container 'Admin, Config'
+  graphql_api -> combustibles_container 'Combustibles'
+  graphql_api -> recursos_container 'Recursos'
+  graphql_api -> activos_fijos_container 'Activos Fijos'
+  graphql_api -> compras_container 'Compras'
+  graphql_api -> pagos_container 'Pagos'
+  graphql_api -> almacen_container 'Almacén'
+  graphql_api -> requerimientos_container 'Requerimientos'
+  graphql_api -> presupuestos_container 'Presupuestos'
+  graphql_api -> formularios_container 'Formularios'
+  graphql_api -> comprobantes_container 'Comprobantes'
+
+  // Todos los contenedores acceden a BD
+  capital_humano_container -> mongodb_db 'MongoDB/Mongoose'
+  administracion_container -> mongodb_db 'MongoDB/Mongoose'
+  combustibles_container -> mongodb_db 'MongoDB/Mongoose'
+  recursos_container -> mongodb_db 'MongoDB/Mongoose'
+  activos_fijos_container -> mongodb_db 'MongoDB/Mongoose'
+  compras_container -> mongodb_db 'MongoDB/Mongoose'
+  pagos_container -> mongodb_db 'MongoDB/Mongoose'
+  almacen_container -> mongodb_db 'MongoDB/Mongoose'
+  requerimientos_container -> mongodb_db 'MongoDB/Mongoose'
+  presupuestos_container -> mongodb_db 'MongoDB/Mongoose'
+  formularios_container -> mongodb_db 'MongoDB/Mongoose'
+  comprobantes_container -> mongodb_db 'MongoDB/Mongoose'
+
+  // Cache compartido
+  graphql_api -> redis_cache 'Sesiones'
+  compras_container -> redis_cache 'Cache'
+
+  // Sistema de colas
+  compras_container -> queues_system 'Colas async'
+  pagos_container -> queues_system 'Colas async'
+
+  // APIs externas
+  administracion_container -> external_apis 'RENIEC, SUNAT'
+  compras_container -> external_apis 'WhatsApp, Email'
+  pagos_container -> external_apis 'Email'
+
+  // Actores
+  empleado -> web_frontend 'Usa'
+  admin -> web_frontend 'Administra'
+  proveedor -> web_frontend 'Interactúa'
+  cliente -> web_frontend 'Consulta'
+}

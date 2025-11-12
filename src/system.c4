@@ -1,0 +1,238 @@
+// system.c4 - Arquitectura C4 de Inacons ERP
+
+specification {
+  element actor
+  element system
+  element application
+  element component
+  element database
+  element file
+  element snippet
+  element library
+  element mobile
+  element web
+  element external-system
+  element queue
+  element service
+}
+
+model {
+  // ===== ACTORES PRINCIPALES =====
+  empleado = actor 'Empleado/Usuario del Sistema'
+  admin = actor 'Administrador del Sistema'
+  proveedor = actor 'Proveedor Externo'
+  cliente = actor 'Cliente Externo'
+
+  // ===== SISTEMA RAÍZ =====
+  inacons = system 'Inacons ERP' {
+    description 'Sistema ERP integral para gestión empresarial: presupuestos, compras, pagos, recursos, almacén, capital humano y más'
+
+    // ===== CONTENEDORES PRINCIPALES =====
+
+    // Frontend
+    web_frontend = application 'Frontend Web (React/TypeScript)' {
+      description 'Interfaz web principal del sistema ERP'
+    }
+
+    // Backend GraphQL API
+    graphql_api = application 'GraphQL API (Apollo Server/Node.js/Express)' {
+      description 'API GraphQL con Apollo Server que expone todas las funcionalidades del sistema con resolvers y schemas'
+    }
+
+    // ===== MICROSERVICIOS POR DOMINIO =====
+
+    // Capital Humano
+    capital_humano_ms = application 'Capital Humano' {
+      description 'Gestión completa de personal: empleados, categorías, cargos, especialidades, contractuales'
+      empleado_api = component 'Empleado API (GraphQL Resolvers)'
+      empleado_service = component 'Empleado Service (Business Logic)'
+      empleado_repo = component 'Empleado Repository'
+    }
+
+    // Administración
+    administracion_ms = application 'Administración' {
+      description 'Gestión administrativa: empresas, bancos, obras, roles, usuarios, configuración'
+      admin_api = component 'Admin API (GraphQL Resolvers)'
+      admin_service = component 'Admin Service (Business Logic)'
+      admin_repo = component 'Admin Repository'
+    }
+
+    // Combustibles
+    combustibles_ms = application 'Combustibles' {
+      description 'Gestión de combustibles: recepciones, salidas, reportes, dashboard'
+      combustible_api = component 'Combustible API (GraphQL Resolvers)'
+      combustible_service = component 'Combustible Service (Business Logic)'
+      combustible_repo = component 'Combustible Repository'
+      reporte_service = component 'Reporte Service'
+    }
+
+    // Recursos
+    recursos_ms = application 'Recursos' {
+      description 'Gestión de recursos: trazabilidad, tipos, unidades, clasificación, costos'
+      recurso_api = component 'Recurso API (GraphQL Resolvers)'
+      recurso_service = component 'Recurso Service (Business Logic)'
+      recurso_repo = component 'Recurso Repository'
+      trazabilidad_service = component 'Trazabilidad Service'
+    }
+
+    // Activos Fijos
+    activos_fijos_ms = application 'Activos Fijos' {
+      description 'Gestión de activos fijos: recursos, almacén, marcado'
+      activo_fijo_api = component 'Activo Fijo API (GraphQL Resolvers)'
+      activo_fijo_service = component 'Activo Fijo Service (Business Logic)'
+      activo_fijo_repo = component 'Activo Fijo Repository'
+      marcado_service = component 'Marcado Service'
+    }
+
+    // Compras
+    compras_ms = application 'Compras' {
+      description 'Gestión de compras: solicitudes, cotizaciones, proveedores, órdenes de compra/servicio'
+      compra_api = component 'Compra API (GraphQL Resolvers)'
+      compra_service = component 'Compra Service (Business Logic)'
+      compra_repo = component 'Compra Repository'
+      cotizacion_service = component 'Cotización Service'
+      proveedor_service = component 'Proveedor Service'
+      orden_compra_service = component 'Orden Compra Service'
+    }
+
+    // Pagos
+    pagos_ms = application 'Pagos' {
+      description 'Gestión de pagos: generación, agrupación, órdenes de pago, cuentas'
+      pago_api = component 'Pago API (GraphQL Resolvers)'
+      pago_service = component 'Pago Service (Business Logic)'
+      pago_repo = component 'Pago Repository'
+      orden_pago_service = component 'Orden Pago Service'
+      medio_pago_service = component 'Medio Pago Service'
+    }
+
+    // Almacén
+    almacen_ms = application 'Almacén' {
+      description 'Gestión de almacén: bodegas, transferencias, inventarios, salidas'
+      almacen_api = component 'Almacén API (GraphQL Resolvers)'
+      almacen_service = component 'Almacén Service (Business Logic)'
+      almacen_repo = component 'Almacén Repository'
+      transferencia_service = component 'Transferencia Service'
+      inventario_service = component 'Inventario Service'
+    }
+
+    // Requerimientos
+    requerimientos_ms = application 'Requerimientos' {
+      description 'Gestión de requerimientos: requerimientos, planillas, reportes de modificación'
+      requerimiento_api = component 'Requerimiento API (GraphQL Resolvers)'
+      requerimiento_service = component 'Requerimiento Service (Business Logic)'
+      requerimiento_repo = component 'Requerimiento Repository'
+      planilla_service = component 'Planilla Service'
+    }
+
+    // Presupuestos
+    presupuestos_ms = application 'Presupuestos' {
+      description 'Gestión de presupuestos: datos generales, APU, costos'
+      presupuesto_api = component 'Presupuesto API (GraphQL Resolvers)'
+      presupuesto_service = component 'Presupuesto Service (Business Logic)'
+      presupuesto_repo = component 'Presupuesto Repository'
+      apu_service = component 'APU Service'
+      costo_service = component 'Costo Service'
+    }
+
+    // Formularios
+    formularios_ms = application 'Formularios' {
+      description 'Gestión de formularios: creación, edición, visualización'
+      formulario_api = component 'Formulario API (GraphQL Resolvers)'
+      formulario_service = component 'Formulario Service (Business Logic)'
+      formulario_repo = component 'Formulario Repository'
+    }
+
+    // Comprobantes
+    comprobantes_ms = application 'Comprobantes' {
+      description 'Gestión de comprobantes: contabilidad, documentos, SIRE'
+      comprobante_api = component 'Comprobante API (GraphQL Resolvers)'
+      comprobante_service = component 'Comprobante Service (Business Logic)'
+      comprobante_repo = component 'Comprobante Repository'
+      sire_service = component 'SIRE Service'
+    }
+
+    // ===== INFRAESTRUCTURA COMPARTIDA =====
+
+    // Base de datos principal
+    mongodb_db = database 'MongoDB Database' {
+      description 'Base de datos NoSQL principal del sistema ERP con Mongoose ODM'
+    }
+
+    // Cache/Redis
+    redis_cache = database 'Redis Cache & Queues' {
+      description 'Cache distribuido para sesiones, datos temporales y sistema de colas Bull'
+    }
+
+    // Sistema de colas
+    queues_system = queue 'Sistema de Colas' {
+      description 'Sistema de colas para procesamiento asíncrono (emails, cotizaciones, órdenes)'
+      email_queue = service 'Email Queue Worker'
+      cotizacion_queue = service 'Cotización Queue Worker'
+      orden_compra_queue = service 'Orden Compra Queue Worker'
+      orden_pago_queue = service 'Orden Pago Queue Worker'
+      whatsapp_queue = service 'WhatsApp Queue Worker'
+    }
+
+    // APIs Externas
+    external_apis = external-system 'APIs Externas' {
+      description 'Integraciones con sistemas externos'
+      reniec_api = service 'RENIEC API'
+      sunat_api = service 'SUNAT API'
+      whatsapp_api = service 'WhatsApp API'
+      email_provider = service 'Email Provider'
+    }
+  }
+
+  // ===== RELACIONES PRINCIPALES =====
+
+  // Usuarios acceden al sistema
+  empleado -> inacons 'Usa (Web/GraphQL)'
+  admin -> inacons 'Administra (Web/GraphQL)'
+  proveedor -> inacons 'Interactúa (Web/API)'
+  cliente -> inacons 'Consulta (Web)'
+
+  // Frontend se conecta a la API via GraphQL + WebSocket
+  inacons.web_frontend -> inacons.graphql_api 'GraphQL Queries/Mutations + WebSocket Subscriptions'
+
+  // API GraphQL coordina con todos los microservicios
+  inacons.graphql_api -> inacons.capital_humano_ms 'Empleados, CH (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.administracion_ms 'Admin, Config (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.combustibles_ms 'Combustibles (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.recursos_ms 'Recursos (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.activos_fijos_ms 'Activos Fijos (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.compras_ms 'Compras (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.pagos_ms 'Pagos (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.almacen_ms 'Almacén (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.requerimientos_ms 'Requerimientos (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.presupuestos_ms 'Presupuestos (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.formularios_ms 'Formularios (GraphQL Resolvers)'
+  inacons.graphql_api -> inacons.comprobantes_ms 'Comprobantes (GraphQL Resolvers)'
+
+  // Todos los microservicios acceden a la BD
+  inacons.capital_humano_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.administracion_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.combustibles_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.recursos_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.activos_fijos_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.compras_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.pagos_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.almacen_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.requerimientos_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.presupuestos_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.formularios_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+  inacons.comprobantes_ms -> inacons.mongodb_db 'MongoDB/Mongoose'
+
+  // Uso de cache compartido
+  inacons.graphql_api -> inacons.redis_cache 'Sesiones, Cache'
+  inacons.capital_humano_ms -> inacons.redis_cache 'Cache'
+  inacons.compras_ms -> inacons.redis_cache 'Cache'
+
+  // Sistema de colas
+  inacons.compras_ms -> inacons.queues_system 'Envía a colas'
+  inacons.pagos_ms -> inacons.queues_system 'Envía a colas'
+
+  // APIs Externas
+  inacons.administracion_ms -> inacons.external_apis 'RENIEC, SUNAT'
+  inacons.compras_ms -> inacons.external_apis 'WhatsApp, Email'
+  inacons.pagos_ms -> inacons.external_apis 'Email Provider'
+}

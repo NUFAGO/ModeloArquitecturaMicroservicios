@@ -1,0 +1,68 @@
+// code/compras.code.c4 - Archivos de código del módulo Compras
+
+model {
+  // ===== ARCHIVOS DE SERVICIOS =====
+  compraService = file 'src/Graphql/services/compraService.ts' {
+    description 'Lógica de negocio para gestión de compras: solicitudes, órdenes, cotizaciones'
+  }
+
+  cotizacionService = file 'src/Graphql/services/cotizacionService.ts' {
+    description 'Servicio para manejo de cotizaciones y proceso de aprobación'
+  }
+
+  proveedorService = file 'src/Graphql/services/proveedorService.ts' {
+    description 'Gestión de proveedores y homologación'
+  }
+
+  ordenCompraService = file 'src/Graphql/services/ordenCompraService.ts' {
+    description 'Servicio para órdenes de compra y órdenes de servicio'
+  }
+
+  // ===== ARCHIVOS DE RESOLVERS =====
+  compraResolvers = file 'src/Graphql/resolvers/compraResolvers.ts' {
+    description 'Resolvers GraphQL para queries y mutations de compras'
+  }
+
+  // ===== ARCHIVOS DE MODELOS =====
+  compraModel = file 'src/Graphql/models/Compra.ts' {
+    description 'Modelo Mongoose para compras'
+  }
+
+  solicitudCompraModel = file 'src/Graphql/models/SolicitudCompra.ts' {
+    description 'Modelo Mongoose para solicitudes de compra'
+  }
+
+  ordenCompraModel = file 'src/Graphql/models/OrdenCompra.ts' {
+    description 'Modelo Mongoose para órdenes de compra'
+  }
+
+  proveedorModel = file 'src/Graphql/models/Proveedor.ts' {
+    description 'Modelo Mongoose para proveedores'
+  }
+
+  cotizacionModel = file 'src/Graphql/models/Cotizacion.ts' {
+    description 'Modelo Mongoose para cotizaciones'
+  }
+
+  // ===== ARCHIVOS DE SCHEMAS GRAPHQL =====
+  compraSchema = file 'src/Graphql/schemas/compra.graphql' {
+    description 'Schema GraphQL para tipos de compra'
+  }
+
+  // ===== ARCHIVOS DE WORKERS/COLAS =====
+  cotizacionEmailWorker = file 'src/workers/notificacionCotizacionRechazada.worker.ts' {
+    description 'Worker para envío de emails de notificación de cotizaciones'
+  }
+
+  ordenCompraEmailWorker = file 'src/workers/notificacionOrdenCompraCreada.worker.ts' {
+    description 'Worker para envío de emails de órdenes de compra'
+  }
+
+  // ===== RELACIONES ENTRE COMPONENTES Y ARCHIVOS =====
+  // Conexión del nivel 3 (componentes) con el nivel 4 (código)
+  compra_api -> compraResolvers 'Implementa (GraphQL Resolvers)'
+  compra_service -> compraService 'Implementa (Business Logic)'
+  cotizacion_service -> cotizacionService 'Implementa'
+  proveedor_service -> proveedorService 'Implementa'
+  orden_compra_service -> ordenCompraService 'Implementa'
+}

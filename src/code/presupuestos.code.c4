@@ -1,0 +1,53 @@
+// code/presupuestos.code.c4 - Archivos de código del módulo Presupuestos
+
+model {
+  // ===== ARCHIVOS DE SERVICIOS =====
+  presupuestoService = file 'src/Graphql/services/presupuestoService.ts' {
+    description 'Lógica de negocio para gestión de presupuestos: creación, modificación, versiones'
+  }
+
+  apuService = file 'src/Graphql/services/apuService.ts' {
+    description 'Servicio para Análisis de Precios Unitarios (APU): cálculo, composición, costos'
+  }
+
+  // ===== ARCHIVOS DE RESOLVERS =====
+  presupuestoResolvers = file 'src/Graphql/resolvers/presupuestoResolvers.ts' {
+    description 'Resolvers GraphQL para queries y mutations de presupuestos'
+  }
+
+  apuResolvers = file 'src/Graphql/resolvers/apuResolvers.ts' {
+    description 'Resolvers GraphQL específicos para operaciones de APU'
+  }
+
+  // ===== ARCHIVOS DE MODELOS =====
+  presupuestoModel = file 'src/Graphql/models/Presupuesto.ts' {
+    description 'Modelo Mongoose para presupuestos'
+  }
+
+  apuModel = file 'src/Graphql/models/APU.ts' {
+    description 'Modelo Mongoose para análisis de precios unitarios'
+  }
+
+  partidaModel = file 'src/Graphql/models/Partida.ts' {
+    description 'Modelo Mongoose para partidas presupuestarias'
+  }
+
+  // ===== ARCHIVOS DE SCHEMAS GRAPHQL =====
+  presupuestoSchema = file 'src/Graphql/schemas/presupuesto.graphql' {
+    description 'Schema GraphQL para tipos de presupuesto'
+  }
+
+  // ===== ARCHIVOS DE UTILIDADES =====
+  presupuestoUtils = file 'src/Graphql/utils/presupuestoUtils.ts' {
+    description 'Utilidades para cálculos presupuestarios'
+  }
+
+  // ===== RELACIONES ENTRE COMPONENTES Y ARCHIVOS =====
+  // Conexión del nivel 3 (componentes) con el nivel 4 (código)
+  presupuesto_api -> presupuestoResolvers 'Implementa (GraphQL Resolvers)'
+  presupuesto_api -> apuResolvers 'Implementa (GraphQL Resolvers)'
+  presupuesto_service -> presupuestoService 'Implementa (Business Logic)'
+  presupuesto_repo -> presupuestoService 'Implementa (Data Access)'
+  apu_service -> apuService 'Implementa'
+  costo_service -> presupuestoService 'Implementa (Costos)'
+}

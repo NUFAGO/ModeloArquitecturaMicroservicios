@@ -1,0 +1,51 @@
+// components/pagos.c4 - Componentes del módulo Pagos
+
+model {
+  // ===== COMPONENTES DEL MICROSERVICIO PAGOS =====
+
+  // APIs/Controllers
+  pago_api = component 'Pago API (GraphQL)' {
+    description 'Exposición GraphQL para operaciones de pago'
+  }
+
+  // Servicios de negocio
+  pago_service = component 'Pago Service' {
+    description 'Lógica de negocio para pagos: validaciones, reglas financieras'
+  }
+
+  orden_pago_service = component 'Orden Pago Service' {
+    description 'Procesamiento de órdenes de pago y transacciones'
+  }
+
+  medio_pago_service = component 'Medio Pago Service' {
+    description 'Gestión de cuentas bancarias y medios de pago por empresa'
+  }
+
+  pago_validation_service = component 'Pago Validation Service' {
+    description 'Validaciones de negocio específicas para pagos'
+  }
+
+  // Repositorios
+  pago_repo = component 'Pago Repository' {
+    description 'Acceso a datos para entidades de pago'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // API delega a servicios
+  pago_api -> pago_service 'Orquesta operaciones'
+  pago_api -> orden_pago_service 'Gestiona órdenes'
+  pago_api -> medio_pago_service 'Accede medios pago'
+
+  // Servicios usan repositorios
+  pago_service -> pago_repo 'Persiste datos'
+  orden_pago_service -> pago_repo 'Persiste órdenes'
+  medio_pago_service -> pago_repo 'Persiste medios'
+
+  // Servicios colaboran entre sí
+  pago_service -> pago_validation_service 'Valida reglas negocio'
+  pago_service -> orden_pago_service 'Genera órdenes pago'
+  pago_service -> medio_pago_service 'Valida cuentas disponibles'
+  orden_pago_service -> medio_pago_service 'Asocia cuentas bancarias'
+  orden_pago_service -> pago_validation_service 'Valida montos y límites'
+}
