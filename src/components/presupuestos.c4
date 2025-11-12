@@ -6,36 +6,44 @@ model {
   // APIs/Controllers
   presupuesto_api = component 'Presupuesto API (GraphQL)' {
     description 'Exposición GraphQL para operaciones de presupuesto'
+    technology 'GraphQL + Node.js'
   }
 
   // Servicios de negocio
   presupuesto_service = component 'Presupuesto Service' {
     description 'Lógica de negocio para presupuestos: creación, versiones, modificaciones'
+    technology 'Node.js + TypeScript'
   }
 
   apu_service = component 'APU Service' {
     description 'Gestión de Análisis de Precios Unitarios: cálculos, composición, costos'
+    technology 'Node.js + TypeScript'
   }
 
   costo_service = component 'Costo Service' {
     description 'Cálculos de costos: indirectos, mano de obra, materiales, equipos'
+    technology 'Node.js + TypeScript'
   }
 
   presupuesto_calculation_service = component 'Presupuesto Calculation Service' {
     description 'Cálculos complejos: totales, márgenes, variaciones presupuestarias'
+    technology 'Node.js + TypeScript'
   }
 
   partida_service = component 'Partida Service' {
     description 'Gestión de jerarquía de partidas presupuestarias'
+    technology 'Node.js + TypeScript'
   }
 
   // Repositorios
   presupuesto_repo = component 'Presupuesto Repository' {
     description 'Acceso a datos para presupuestos y versiones'
+    technology 'Mongoose ODM'
   }
 
   apu_repo = component 'APU Repository' {
     description 'Acceso a datos para análisis de precios unitarios'
+    technology 'Mongoose ODM'
   }
 
   // ===== RELACIONES INTERNAS =====

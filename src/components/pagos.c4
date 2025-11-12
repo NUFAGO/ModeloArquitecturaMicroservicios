@@ -6,28 +6,34 @@ model {
   // APIs/Controllers
   pago_api = component 'Pago API (GraphQL)' {
     description 'Exposición GraphQL para operaciones de pago'
+    technology 'GraphQL + Node.js'
   }
 
   // Servicios de negocio
   pago_service = component 'Pago Service' {
     description 'Lógica de negocio para pagos: validaciones, reglas financieras'
+    technology 'Node.js + TypeScript'
   }
 
   orden_pago_service = component 'Orden Pago Service' {
     description 'Procesamiento de órdenes de pago y transacciones'
+    technology 'Node.js + TypeScript'
   }
 
   medio_pago_service = component 'Medio Pago Service' {
     description 'Gestión de cuentas bancarias y medios de pago por empresa'
+    technology 'Node.js + TypeScript'
   }
 
   pago_validation_service = component 'Pago Validation Service' {
     description 'Validaciones de negocio específicas para pagos'
+    technology 'Node.js + TypeScript'
   }
 
   // Repositorios
   pago_repo = component 'Pago Repository' {
     description 'Acceso a datos para entidades de pago'
+    technology 'Mongoose ODM'
   }
 
   // ===== RELACIONES INTERNAS =====

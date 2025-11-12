@@ -6,28 +6,34 @@ model {
   // APIs/Controllers
   compra_api = component 'Compra API (GraphQL)' {
     description 'Exposición GraphQL para operaciones de compra'
+    technology 'GraphQL + Node.js'
   }
 
   // Servicios de negocio
   compra_service = component 'Compra Service' {
     description 'Lógica de negocio para compras: validaciones, reglas de negocio'
+    technology 'Node.js + TypeScript'
   }
 
   cotizacion_service = component 'Cotización Service' {
     description 'Gestión del proceso de cotización y aprobación'
+    technology 'Node.js + TypeScript'
   }
 
   proveedor_service = component 'Proveedor Service' {
     description 'Gestión de proveedores y homologación'
+    technology 'Node.js + TypeScript'
   }
 
   orden_compra_service = component 'Orden Compra Service' {
     description 'Procesamiento de órdenes de compra y órdenes de servicio'
+    technology 'Node.js + TypeScript'
   }
 
   // Repositorios
   compra_repo = component 'Compra Repository' {
     description 'Acceso a datos para entidades de compra'
+    technology 'Mongoose ODM'
   }
 
   // ===== RELACIONES INTERNAS =====

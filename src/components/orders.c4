@@ -7,19 +7,24 @@ model {
 
   orders_api = component 'Orders API (Controllers)' {
     description 'Exposición HTTP'
+    technology 'Express.js + Node.js'
   }
 
   order_service = component 'Order Service (Business Logic)' {
     description 'Reglas de negocio y orquestación'
+    technology 'Node.js + TypeScript'
   }
 
   order_repo = component 'Order Repository' {
     description 'Acceso a la BD'
+    technology 'Mongoose ODM'
   }
 
   payment_client = library 'Payment Client'
   event_pub = library 'Event Publisher'
-  cache = component 'Cache (Redis)'
+  cache = component 'Cache (Redis)' {
+    technology 'Redis'
+  }
 
   // relaciones
   orders_api -> order_service 'Invoca'
