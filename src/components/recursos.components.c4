@@ -1,0 +1,25 @@
+// components/recursos.components.c4 - Componentes del módulo Recursos
+
+model {
+  // prefijo rc_ para Recursos
+
+  rc_recurso_api = component 'Recurso API (GraphQL Resolvers)' {
+    technology 'GraphQL + Node.js'
+    description 'Punto de entrada GraphQL para operaciones de recursos'
+  }
+
+  rc_recurso_service = component 'Recurso Service (Business Logic)' {
+    technology 'Node.js + TypeScript'
+    description 'Lógica de negocio principal para gestión de recursos'
+  }
+
+  rc_recurso_repo = component 'Recurso Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para entidades de recurso'
+  }
+
+  rc_trazabilidad_service = component 'Trazabilidad Service' {
+    technology 'Node.js + TypeScript'
+    description 'Sistema de trazabilidad y seguimiento de recursos'
+  }
+}

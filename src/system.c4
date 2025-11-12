@@ -43,212 +43,62 @@ model {
 
     // Capital Humano
     capital_humano_ms = application 'Capital Humano' {
-      description 'Gestión completa de personal: empleados, categorías, cargos, especialidades, contractuales'
-      empleado_api = component 'Empleado API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      empleado_service = component 'Empleado Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      empleado_repo = component 'Empleado Repository' {
-        technology 'Mongoose ODM'
-      }
+      description 'Gestión completa de capital humano: empleados, nómina, contratos, capacitación, evaluaciones, asistencia'
     }
 
     // Administración
     administracion_ms = application 'Administración' {
       description 'Gestión administrativa: empresas, bancos, obras, roles, usuarios, configuración'
-      admin_api = component 'Admin API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      admin_service = component 'Admin Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      admin_repo = component 'Admin Repository' {
-        technology 'Mongoose ODM'
-      }
     }
 
     // Combustibles
     combustibles_ms = application 'Combustibles' {
       description 'Gestión de combustibles: recepciones, salidas, reportes, dashboard'
-      combustible_api = component 'Combustible API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      combustible_service = component 'Combustible Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      combustible_repo = component 'Combustible Repository' {
-        technology 'Mongoose ODM'
-      }
-      reporte_service = component 'Reporte Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Recursos
     recursos_ms = application 'Recursos' {
       description 'Gestión de recursos: trazabilidad, tipos, unidades, clasificación, costos'
-      recurso_api = component 'Recurso API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      recurso_service = component 'Recurso Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      recurso_repo = component 'Recurso Repository' {
-        technology 'Mongoose ODM'
-      }
-      trazabilidad_service = component 'Trazabilidad Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Activos Fijos
     activos_fijos_ms = application 'Activos Fijos' {
       description 'Gestión de activos fijos: recursos, almacén, marcado'
-      activo_fijo_api = component 'Activo Fijo API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      activo_fijo_service = component 'Activo Fijo Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      activo_fijo_repo = component 'Activo Fijo Repository' {
-        technology 'Mongoose ODM'
-      }
-      marcado_service = component 'Marcado Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Compras
     compras_ms = application 'Compras' {
       description 'Gestión de compras: solicitudes, cotizaciones, proveedores, órdenes de compra/servicio'
-      compra_api = component 'Compra API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      compra_service = component 'Compra Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      compra_repo = component 'Compra Repository' {
-        technology 'Mongoose ODM'
-      }
-      cotizacion_service = component 'Cotización Service' {
-        technology 'Node.js + TypeScript'
-      }
-      proveedor_service = component 'Proveedor Service' {
-        technology 'Node.js + TypeScript'
-      }
-      orden_compra_service = component 'Orden Compra Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Pagos
     pagos_ms = application 'Pagos' {
       description 'Gestión de pagos: generación, agrupación, órdenes de pago, cuentas'
-      pago_api = component 'Pago API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      pago_service = component 'Pago Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      pago_repo = component 'Pago Repository' {
-        technology 'Mongoose ODM'
-      }
-      orden_pago_service = component 'Orden Pago Service' {
-        technology 'Node.js + TypeScript'
-      }
-      medio_pago_service = component 'Medio Pago Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Almacén
     almacen_ms = application 'Almacén' {
       description 'Gestión de almacén: bodegas, transferencias, inventarios, salidas'
-      almacen_api = component 'Almacén API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      almacen_service = component 'Almacén Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      almacen_repo = component 'Almacén Repository' {
-        technology 'Mongoose ODM'
-      }
-      transferencia_service = component 'Transferencia Service' {
-        technology 'Node.js + TypeScript'
-      }
-      inventario_service = component 'Inventario Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Requerimientos
     requerimientos_ms = application 'Requerimientos' {
       description 'Gestión de requerimientos: requerimientos, planillas, reportes de modificación'
-      requerimiento_api = component 'Requerimiento API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      requerimiento_service = component 'Requerimiento Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      requerimiento_repo = component 'Requerimiento Repository' {
-        technology 'Mongoose ODM'
-      }
-      planilla_service = component 'Planilla Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Presupuestos
     presupuestos_ms = application 'Presupuestos' {
       description 'Gestión de presupuestos: datos generales, APU, costos'
-      presupuesto_api = component 'Presupuesto API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      presupuesto_service = component 'Presupuesto Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      presupuesto_repo = component 'Presupuesto Repository' {
-        technology 'Mongoose ODM'
-      }
-      apu_service = component 'APU Service' {
-        technology 'Node.js + TypeScript'
-      }
-      costo_service = component 'Costo Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // Formularios
     formularios_ms = application 'Formularios' {
       description 'Gestión de formularios: creación, edición, visualización'
-      formulario_api = component 'Formulario API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      formulario_service = component 'Formulario Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      formulario_repo = component 'Formulario Repository' {
-        technology 'Mongoose ODM'
-      }
     }
 
     // Comprobantes
     comprobantes_ms = application 'Comprobantes' {
       description 'Gestión de comprobantes: contabilidad, documentos, SIRE'
-      comprobante_api = component 'Comprobante API (GraphQL Resolvers)' {
-        technology 'GraphQL + Node.js'
-      }
-      comprobante_service = component 'Comprobante Service (Business Logic)' {
-        technology 'Node.js + TypeScript'
-      }
-      comprobante_repo = component 'Comprobante Repository' {
-        technology 'Mongoose ODM'
-      }
-      sire_service = component 'SIRE Service' {
-        technology 'Node.js + TypeScript'
-      }
     }
 
     // ===== INFRAESTRUCTURA COMPARTIDA =====

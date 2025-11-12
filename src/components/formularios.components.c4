@@ -1,0 +1,20 @@
+// components/formularios.components.c4 - Componentes del módulo Formularios
+
+model {
+  // prefijo fm_ para Formularios
+
+  fm_formulario_api = component 'Formulario API (GraphQL Resolvers)' {
+    technology 'GraphQL + Node.js'
+    description 'Punto de entrada GraphQL para operaciones de formularios'
+  }
+
+  fm_formulario_service = component 'Formulario Service (Business Logic)' {
+    technology 'Node.js + TypeScript'
+    description 'Lógica de negocio principal para gestión de formularios'
+  }
+
+  fm_formulario_repo = component 'Formulario Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para entidades de formulario'
+  }
+}

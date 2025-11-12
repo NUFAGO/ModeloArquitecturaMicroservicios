@@ -1,0 +1,201 @@
+// components/almacen.components.c4 - Componentes del módulo Almacén
+
+model {
+  // prefijo al_ para Almacén
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  al_almacen_resolver = component 'Almacén Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para almacén - AlmacenResolver.ts'
+  }
+
+  al_inventario_resolver = component 'Inventario Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para inventarios - InventarioResolver.ts'
+  }
+
+  al_transferencia_resolver = component 'Transferencia Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para transferencias - TransferenciaResolver.ts'
+  }
+
+  al_bodega_resolver = component 'Bodega Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para bodegas - BodegaResolver.ts'
+  }
+
+  al_recepcion_resolver = component 'Recepción Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para recepciones - RecepcionResolver.ts'
+  }
+
+  // ===== SERVICIOS CORE =====
+  al_almacen_service = component 'Almacén Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de almacén - AlmacenService.ts'
+  }
+
+  al_almacen_completo_service = component 'Almacén Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión completa de almacén con todas las operaciones - AlmacenCompletoService.ts'
+  }
+
+  al_bodega_service = component 'Bodega Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de bodegas y ubicaciones - BodegaService.ts'
+  }
+
+  al_bodega_completo_service = component 'Bodega Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de bodegas - BodegaCompletoService.ts'
+  }
+
+  // ===== SERVICIOS DE INVENTARIO =====
+  al_inventario_service = component 'Inventario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de inventarios - InventarioService.ts'
+  }
+
+  al_inventario_fisico_service = component 'Inventario Físico Service' {
+    technology 'Node.js + TypeScript'
+    description 'Control de inventarios físicos y conteos - InventarioFisicoService.ts'
+  }
+
+  al_stock_service = component 'Stock Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de niveles de stock y alertas - StockService.ts'
+  }
+
+  al_movimiento_inventario_service = component 'Movimiento Inventario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Registro y seguimiento de movimientos de inventario - MovimientoInventarioService.ts'
+  }
+
+  // ===== SERVICIOS DE TRANSFERENCIAS =====
+  al_transferencia_service = component 'Transferencia Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de transferencias entre bodegas - TransferenciaService.ts'
+  }
+
+  al_transferencia_completo_service = component 'Transferencia Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de transferencias - TransferenciaCompletoService.ts'
+  }
+
+  // ===== SERVICIOS DE RECEPCIONES =====
+  al_recepcion_service = component 'Recepción Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de recepciones de mercancías - RecepcionService.ts'
+  }
+
+  al_recepcion_completo_service = component 'Recepción Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de recepciones - RecepcionCompletoService.ts'
+  }
+
+  // ===== SERVICIOS DE PRODUCTOS =====
+  al_producto_service = component 'Producto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de productos en almacén - ProductoService.ts'
+  }
+
+  al_categoria_producto_service = component 'Categoría Producto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Categorización de productos - CategoriaProductoService.ts'
+  }
+
+  // ===== SERVICIOS DE REPORTES =====
+  al_reporte_almacen_service = component 'Reporte Almacén Service' {
+    technology 'Node.js + TypeScript'
+    description 'Generación de reportes de almacén - ReporteAlmacenService.ts'
+  }
+
+  al_dashboard_almacen_service = component 'Dashboard Almacén Service' {
+    technology 'Node.js + TypeScript'
+    description 'Dashboard y métricas de almacén - DashboardAlmacenService.ts'
+  }
+
+  // ===== SERVICIOS DE CENTROS DE COSTO =====
+  al_almacen_centro_costo_service = component 'Almacén Centro Costo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Relación almacén-centro de costo - AlmacenCentroCostoService.ts'
+  }
+
+  // ===== REPOSITORIES =====
+  al_almacen_repo = component 'Almacén Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para entidades de almacén - AlmacenRepository.ts'
+  }
+
+  al_inventario_repo = component 'Inventario Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para inventarios - InventarioRepository.ts'
+  }
+
+  al_transferencia_repo = component 'Transferencia Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para transferencias - TransferenciaRepository.ts'
+  }
+
+  al_bodega_repo = component 'Bodega Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para bodegas - BodegaRepository.ts'
+  }
+
+  al_recepcion_repo = component 'Recepción Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para recepciones - RecepcionRepository.ts'
+  }
+
+  al_producto_repo = component 'Producto Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para productos - ProductoRepository.ts'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // Resolvers delegan a servicios
+  al_almacen_resolver -> al_almacen_service 'Queries/Mutations'
+  al_inventario_resolver -> al_inventario_service 'Queries/Mutations'
+  al_transferencia_resolver -> al_transferencia_service 'Queries/Mutations'
+  al_bodega_resolver -> al_bodega_service 'Queries/Mutations'
+  al_recepcion_resolver -> al_recepcion_service 'Queries/Mutations'
+
+  // Servicios completos/complejos
+  al_almacen_service -> al_almacen_completo_service 'Gestión completa'
+  al_bodega_service -> al_bodega_completo_service 'Bodega completa'
+  al_transferencia_service -> al_transferencia_completo_service 'Transferencia completa'
+  al_recepcion_service -> al_recepcion_completo_service 'Recepción completa'
+
+  // Inventarios y stock
+  al_inventario_service -> al_inventario_fisico_service 'Inventarios físicos'
+  al_inventario_service -> al_stock_service 'Control de stock'
+  al_inventario_service -> al_movimiento_inventario_service 'Movimientos'
+
+  // Bodegas y productos
+  al_bodega_service -> al_producto_service 'Productos por bodega'
+  al_producto_service -> al_categoria_producto_service 'Categorización'
+
+  // Transferencias entre bodegas
+  al_transferencia_service -> al_bodega_service 'Origen/Destino'
+  al_transferencia_service -> al_movimiento_inventario_service 'Movimientos asociados'
+
+  // Recepciones
+  al_recepcion_service -> al_inventario_service 'Actualiza inventarios'
+  al_recepcion_service -> al_bodega_service 'Ubicación'
+
+  // Reportes y dashboards
+  al_almacen_service -> al_reporte_almacen_service 'Reportes'
+  al_almacen_service -> al_dashboard_almacen_service 'Dashboards'
+
+  // Centros de costo
+  al_almacen_service -> al_almacen_centro_costo_service 'Asignación costos'
+
+  // Todos los servicios usan repositories
+  al_almacen_service -> al_almacen_repo 'Persistencia'
+  al_inventario_service -> al_inventario_repo 'Persistencia'
+  al_transferencia_service -> al_transferencia_repo 'Persistencia'
+  al_bodega_service -> al_bodega_repo 'Persistencia'
+  al_recepcion_service -> al_recepcion_repo 'Persistencia'
+  al_producto_service -> al_producto_repo 'Persistencia'
+}

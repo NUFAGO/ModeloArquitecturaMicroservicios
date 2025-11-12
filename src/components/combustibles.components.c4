@@ -1,0 +1,224 @@
+// components/combustibles.components.c4 - Componentes del módulo Combustibles
+
+model {
+  // prefijo cb_ para Combustibles
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  cb_combustible_resolver = component 'Combustible Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para combustibles - CombustibleResolver.ts'
+  }
+
+  cb_tanque_resolver = component 'Tanque Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para tanques - TanqueResolver.ts'
+  }
+
+  cb_surtidor_resolver = component 'Surtidor Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para surtidores - SurtidorResolver.ts'
+  }
+
+  cb_venta_combustible_resolver = component 'Venta Combustible Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para ventas de combustible - VentaCombustibleResolver.ts'
+  }
+
+  cb_informe_diario_resolver = component 'Informe Diario Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para informes diarios - InformeDiarioResolver.ts'
+  }
+
+  // ===== SERVICIOS CORE =====
+  cb_combustible_service = component 'Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de combustibles - CombustibleService.ts'
+  }
+
+  cb_combustible_completo_service = component 'Combustible Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión completa de combustibles - CombustibleCompletoService.ts'
+  }
+
+  cb_tanque_service = component 'Tanque Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de tanques de almacenamiento - TanqueService.ts'
+  }
+
+  cb_tanque_completo_service = component 'Tanque Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de tanques - TanqueCompletoService.ts'
+  }
+
+  cb_surtidor_service = component 'Surtidor Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de surtidores y dispensadores - SurtidorService.ts'
+  }
+
+  cb_surtidor_completo_service = component 'Surtidor Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de surtidores - SurtidorCompletoService.ts'
+  }
+
+  // ===== SERVICIOS DE VENTAS =====
+  cb_venta_combustible_service = component 'Venta Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de ventas de combustible - VentaCombustibleService.ts'
+  }
+
+  cb_venta_combustible_completo_service = component 'Venta Combustible Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de ventas - VentaCombustibleCompletoService.ts'
+  }
+
+  cb_turno_venta_service = component 'Turno Venta Service' {
+    technology 'Node.js + TypeScript'
+    description 'Control de turnos de venta - TurnoVentaService.ts'
+  }
+
+  // ===== SERVICIOS DE INFORMES DIARIOS =====
+  cb_informe_diario_service = component 'Informe Diario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de informes diarios de combustible - InformeDiarioService.ts'
+  }
+
+  cb_informe_diario_completo_service = component 'Informe Diario Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de informes diarios - InformeDiarioCompletoService.ts'
+  }
+
+  cb_detalle_informe_diario_service = component 'Detalle Informe Diario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Detalles específicos de informes diarios - DetalleInformeDiarioService.ts'
+  }
+
+  // ===== SERVICIOS DE INVENTARIO =====
+  cb_inventario_combustible_service = component 'Inventario Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Control de inventarios de combustibles - InventarioCombustibleService.ts'
+  }
+
+  cb_medicion_tanque_service = component 'Medición Tanque Service' {
+    technology 'Node.js + TypeScript'
+    description 'Mediciones y niveles de tanques - MedicionTanqueService.ts'
+  }
+
+  cb_perdida_combustible_service = component 'Pérdida Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Control de pérdidas y mermas - PerdidaCombustibleService.ts'
+  }
+
+  // ===== SERVICIOS DE PRECIOS =====
+  cb_precio_combustible_service = component 'Precio Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de precios de combustibles - PrecioCombustibleService.ts'
+  }
+
+  cb_descuento_combustible_service = component 'Descuento Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Sistema de descuentos y promociones - DescuentoCombustibleService.ts'
+  }
+
+  // ===== SERVICIOS DE REPORTES =====
+  cb_reporte_combustible_service = component 'Reporte Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Generación de reportes de combustibles - ReporteCombustibleService.ts'
+  }
+
+  cb_dashboard_combustible_service = component 'Dashboard Combustible Service' {
+    technology 'Node.js + TypeScript'
+    description 'Dashboard y métricas de combustibles - DashboardCombustibleService.ts'
+  }
+
+  cb_reporte_venta_service = component 'Reporte Venta Service' {
+    technology 'Node.js + TypeScript'
+    description 'Reportes de ventas y rendimiento - ReporteVentaService.ts'
+  }
+
+  // ===== SERVICIOS DE CENTROS DE COSTO =====
+  cb_combustible_centro_costo_service = component 'Combustible Centro Costo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Relación combustible-centro de costo - CombustibleCentroCostoService.ts'
+  }
+
+  // ===== REPOSITORIES =====
+  cb_combustible_repo = component 'Combustible Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para entidades de combustible - CombustibleRepository.ts'
+  }
+
+  cb_tanque_repo = component 'Tanque Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para tanques - TanqueRepository.ts'
+  }
+
+  cb_surtidor_repo = component 'Surtidor Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para surtidores - SurtidorRepository.ts'
+  }
+
+  cb_venta_combustible_repo = component 'Venta Combustible Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para ventas - VentaCombustibleRepository.ts'
+  }
+
+  cb_informe_diario_repo = component 'Informe Diario Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para informes diarios - InformeDiarioRepository.ts'
+  }
+
+  cb_inventario_combustible_repo = component 'Inventario Combustible Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para inventarios - InventarioCombustibleRepository.ts'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // Resolvers delegan a servicios
+  cb_combustible_resolver -> cb_combustible_service 'Queries/Mutations'
+  cb_tanque_resolver -> cb_tanque_service 'Queries/Mutations'
+  cb_surtidor_resolver -> cb_surtidor_service 'Queries/Mutations'
+  cb_venta_combustible_resolver -> cb_venta_combustible_service 'Queries/Mutations'
+  cb_informe_diario_resolver -> cb_informe_diario_service 'Queries/Mutations'
+
+  // Servicios completos/complejos
+  cb_combustible_service -> cb_combustible_completo_service 'Gestión completa'
+  cb_tanque_service -> cb_tanque_completo_service 'Tanque completo'
+  cb_surtidor_service -> cb_surtidor_completo_service 'Surtidor completo'
+  cb_venta_combustible_service -> cb_venta_combustible_completo_service 'Venta completa'
+  cb_informe_diario_service -> cb_informe_diario_completo_service 'Informe completo'
+
+  // Ventas y surtidores
+  cb_venta_combustible_service -> cb_surtidor_service 'Surtidor utilizado'
+  cb_venta_combustible_service -> cb_turno_venta_service 'Turnos de venta'
+
+  // Informes diarios
+  cb_informe_diario_service -> cb_detalle_informe_diario_service 'Detalles específicos'
+  cb_informe_diario_service -> cb_venta_combustible_service 'Ventas del día'
+  cb_informe_diario_service -> cb_tanque_service 'Mediciones de tanques'
+
+  // Inventarios y control
+  cb_inventario_combustible_service -> cb_medicion_tanque_service 'Mediciones'
+  cb_inventario_combustible_service -> cb_perdida_combustible_service 'Pérdidas'
+  cb_inventario_combustible_service -> cb_tanque_service 'Niveles de tanque'
+
+  // Precios y descuentos
+  cb_precio_combustible_service -> cb_descuento_combustible_service 'Descuentos aplicables'
+  cb_venta_combustible_service -> cb_precio_combustible_service 'Precios de venta'
+
+  // Reportes y dashboards
+  cb_combustible_service -> cb_reporte_combustible_service 'Reportes generales'
+  cb_combustible_service -> cb_dashboard_combustible_service 'Dashboards'
+  cb_venta_combustible_service -> cb_reporte_venta_service 'Reportes de ventas'
+
+  // Centros de costo
+  cb_combustible_service -> cb_combustible_centro_costo_service 'Asignación costos'
+
+  // Todos los servicios usan repositories
+  cb_combustible_service -> cb_combustible_repo 'Persistencia'
+  cb_tanque_service -> cb_tanque_repo 'Persistencia'
+  cb_surtidor_service -> cb_surtidor_repo 'Persistencia'
+  cb_venta_combustible_service -> cb_venta_combustible_repo 'Persistencia'
+  cb_informe_diario_service -> cb_informe_diario_repo 'Persistencia'
+  cb_inventario_combustible_service -> cb_inventario_combustible_repo 'Persistencia'
+}

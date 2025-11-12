@@ -6,27 +6,34 @@ views {
     title "Contexto - Inacons ERP (Nivel 1)"
     description "Vista de contexto: el sistema Inacons ERP completo"
 
+    // ===== USUARIOS INTERNOS (ARRIBA) =====
+    group "Usuarios Internos" {
+      include empleado with {
+        size md
+        color green
+      }
+      include admin with {
+        size md
+        color green
+      }
+    }
+
+    // ===== SISTEMA PRINCIPAL (CENTRO) =====
     include inacons with {
       size lg
       color primary
     }
 
-    // Actores externos - más pequeños
-    include empleado with {
-      size sm
-      color green
-    }
-    include admin with {
-      size sm
-      color green
-    }
-    include proveedor with {
-      size sm
-      color blue
-    }
-    include cliente with {
-      size sm
-      color blue
+    // ===== ACTORES EXTERNOS (ABAJO) =====
+    group "Actores Externos" {
+      include proveedor with {
+        size md
+        color blue
+      }
+      include cliente with {
+        size md
+        color blue
+      }
     }
   }
 
@@ -134,120 +141,373 @@ views {
   // Capital Humano
   view components_capital_humano of inacons.capital_humano_ms {
     title "Componentes - Capital Humano (Nivel 3)"
-    description "API, Service, Repository del módulo Capital Humano"
-    include inacons.capital_humano_ms.empleado_api
-    include inacons.capital_humano_ms.empleado_service
-    include inacons.capital_humano_ms.empleado_repo
+    description "Gestión integral de empleados y recursos humanos - Pendiente de implementación detallada"
+
+    // Nota: Componentes de Capital Humano pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
+  }
+
+  // Administración
+  view components_administracion of inacons.administracion_ms {
+    title "Componentes - Administración (Nivel 3)"
+    description "Gestión de usuarios, roles y permisos del sistema - Pendiente de implementación detallada"
+
+    // Nota: Componentes de Administración pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
+  }
+
+  // Requerimientos
+  view components_requerimientos of inacons.requerimientos_ms {
+    title "Componentes - Requerimientos (Nivel 3)"
+    description "Gestión de requerimientos y planillas - Pendiente de implementación detallada"
+
+    // Nota: Componentes de Requerimientos pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
+  }
+
+  // Formularios
+  view components_formularios of inacons.formularios_ms {
+    title "Componentes - Formularios (Nivel 3)"
+    description "Gestión de formularios dinámicos - Pendiente de implementación detallada"
+
+    // Nota: Componentes de Formularios pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
+  }
+
+  // Comprobantes
+  view components_comprobantes of inacons.comprobantes_ms {
+    title "Componentes - Comprobantes (Nivel 3)"
+    description "Gestión completa de comprobantes e integración SUNAT/SIRE"
+
+    // ===== RESOLVERS =====
+    group "API GraphQL" {
+      color primary
+
+      include cm_comprobante_resolver
+      include cm_factura_resolver
+      include cm_boleta_resolver
+      include cm_nota_credito_resolver
+      include cm_nota_debito_resolver
+    }
+
+    // ===== SERVICIOS =====
+    group "Servicios" {
+      color green
+
+      include cm_comprobante_service
+      include cm_comprobante_completo_service
+      include cm_factura_service
+      include cm_boleta_service
+      include cm_nota_credito_service
+      include cm_nota_debito_service
+      include cm_numeracion_service
+      include cm_impuesto_service
+      include cm_sire_service
+      include cm_sunat_service
+      include cm_facturacion_electronica_service
+    }
+
+    // ===== REPOSITORIES =====
+    group "Repositories" {
+      color muted
+
+      include cm_comprobante_repo
+      include cm_factura_repo
+      include cm_boleta_repo
+      include cm_nota_credito_repo
+      include cm_nota_debito_repo
+      include cm_numeracion_repo
+    }
   }
 
   // Compras
   view components_compras of inacons.compras_ms {
     title "Componentes - Compras (Nivel 3)"
-    description "API, Services, Repository del módulo Compras"
+    description "Gestión completa del proceso de compras - Pendiente de implementación detallada"
 
-    // API principal - más grande
-    include inacons.compras_ms.compra_api with {
-      size md
-      color primary
-    }
-
-    // Servicio principal - destacado
-    include inacons.compras_ms.compra_service with {
-      size md
-      color green
-    }
-
-    // Repository
-    include inacons.compras_ms.compra_repo with {
-      size sm
-      color secondary
-    }
-
-    // Servicios especializados
-    include inacons.compras_ms.cotizacion_service with {
-      size sm
-      color blue
-    }
-    include inacons.compras_ms.proveedor_service with {
-      size sm
-      color amber
-    }
+    // Nota: Componentes de Compras pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
   }
 
   // Pagos
   view components_pagos of inacons.pagos_ms {
     title "Componentes - Pagos (Nivel 3)"
-    description "API, Services, Repository del módulo Pagos"
+    description "Microservicio de Pagos - Estructura Real Basada en inacons-backend"
 
-    // API principal - más grande
-    include inacons.pagos_ms.pago_api with {
-      size md
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
       color primary
+
+      include pg_graphql_api
     }
 
-    // Servicio principal - destacado
-    include inacons.pagos_ms.pago_service with {
-      size md
-      color blue
-    }
-
-    // Repository
-    include inacons.pagos_ms.pago_repo with {
-      size sm
-      color secondary
-    }
-
-    // Servicios especializados
-    include inacons.pagos_ms.orden_pago_service with {
-      size sm
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
       color green
+
+      include pg_orden_pago_service
+      include pg_email_service
     }
-    include inacons.pagos_ms.medio_pago_service with {
-      size sm
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
       color amber
+
+      include pg_orden_pago_resolver
     }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include pg_orden_pago_model
+      include pg_usuario_model
+      include pg_comprobante_model
+      include pg_estado_pago_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include pg_mongodb
+      include pg_redis
+      include pg_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Presupuestos
   view components_presupuestos of inacons.presupuestos_ms {
     title "Componentes - Presupuestos (Nivel 3)"
-    description "API, Services, Repository del módulo Presupuestos"
-    include inacons.presupuestos_ms.presupuesto_api
-    include inacons.presupuestos_ms.presupuesto_service
-    include inacons.presupuestos_ms.presupuesto_repo
-    include inacons.presupuestos_ms.apu_service
-    include inacons.presupuestos_ms.costo_service
+    description "Arquitectura detallada de componentes del módulo Presupuestos"
+
+    // ===== RESOLVERS GRAPHQL =====
+
+    // Resolver principal de presupuestos
+    include ps_presupuesto_resolver with {
+      size lg
+      color primary
+    }
+
+    // Resolver de proyectos
+    include ps_proyecto_resolver with {
+      size md
+      color amber
+    }
+
+    // Resolver de títulos/partidas
+    include ps_titulo_resolver with {
+      size md
+      color green
+    }
+
+    // Resolver de recursos
+    include ps_recurso_resolver with {
+      size md
+      color blue
+    }
+
+    // ===== SERVICIOS CORE =====
+
+    // Servicio principal de presupuestos
+    include ps_presupuesto_service with {
+      size md
+      color amber
+    }
+
+    // Servicio completo de presupuestos
+    include ps_presupuesto_completo_service with {
+      size md
+      color amber
+    }
+
+    // Servicio de proyectos
+    include ps_proyecto_service with {
+      size md
+      color green
+    }
+
+    // Servicio de títulos/partidas
+    include ps_titulo_service with {
+      size md
+      color green
+    }
+
+    // ===== SERVICIOS DE APU (ANÁLISIS DE PRECIOS UNITARIOS) =====
+
+    // Servicio de APU
+    include ps_apu_service with {
+      size md
+      color blue
+    }
+
+    // Servicio de composición APU
+    include ps_composicion_apu_service with {
+      size md
+      color blue
+    }
+
+    // ===== SERVICIOS DE RECURSOS =====
+
+    // Servicio principal de recursos
+    include ps_recurso_service with {
+      size md
+      color secondary
+    }
+
+    // Servicio de recursos en presupuestos
+    include ps_recurso_presupuesto_service with {
+      size sm
+      color secondary
+    }
+
+    // ===== RELACIONES INTERNAS (se muestran automáticamente) =====
+    // Nota: Las relaciones entre componentes se definen en system.c4
+    // Aquí solo se incluyen los componentes para mostrar la estructura
+
+    // ===== NAVEGACIÓN A OTROS MICROSERVICIOS =====
+    // Nota: Las relaciones reales se definen en system.c4
+    // Aquí solo se incluyen navegaciones para drill-down
+
+    // ===== RELACIONES CON INFRAESTRUCTURA Y EXTERNOS =====
+    // Nota: Las conexiones con infraestructura se muestran automáticamente desde system.c4
   }
 
   // Recursos
   view components_recursos of inacons.recursos_ms {
     title "Componentes - Recursos (Nivel 3)"
-    description "API, Services, Repository del módulo Recursos"
-    include inacons.recursos_ms.recurso_api
-    include inacons.recursos_ms.recurso_service
-    include inacons.recursos_ms.recurso_repo
-    include inacons.recursos_ms.trazabilidad_service
+    description "Gestión de recursos y trazabilidad - Pendiente de implementación detallada"
+
+    // Nota: Componentes de Recursos pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
   }
 
   // Almacén
   view components_almacen of inacons.almacen_ms {
     title "Componentes - Almacén (Nivel 3)"
-    description "API, Services, Repository del módulo Almacén"
-    include inacons.almacen_ms.almacen_api
-    include inacons.almacen_ms.almacen_service
-    include inacons.almacen_ms.almacen_repo
-    include inacons.almacen_ms.transferencia_service
-    include inacons.almacen_ms.inventario_service
+    description "Gestión completa de almacén, inventarios y transferencias"
+
+    // ===== RESOLVERS =====
+    group "API GraphQL" {
+      color primary
+
+      include al_almacen_resolver
+      include al_inventario_resolver
+      include al_transferencia_resolver
+      include al_bodega_resolver
+      include al_recepcion_resolver
+    }
+
+    // ===== SERVICIOS =====
+    group "Servicios" {
+      color green
+
+      include al_almacen_service
+      include al_almacen_completo_service
+      include al_inventario_service
+      include al_transferencia_service
+      include al_bodega_service
+      include al_recepcion_service
+      include al_producto_service
+      include al_reporte_almacen_service
+      include al_dashboard_almacen_service
+    }
+
+    // ===== REPOSITORIES =====
+    group "Repositories" {
+      color muted
+
+      include al_almacen_repo
+      include al_inventario_repo
+      include al_transferencia_repo
+      include al_bodega_repo
+      include al_recepcion_repo
+      include al_producto_repo
+    }
+  }
+
+  // Activos Fijos
+  view components_activos_fijos of inacons.activos_fijos_ms {
+    title "Componentes - Activos Fijos (Nivel 3)"
+    description "Gestión completa de creación y marcado de activos fijos"
+
+    // ===== RESOLVERS =====
+    group "API GraphQL" {
+      color primary
+
+      include af_activo_fijo_resolver
+    }
+
+    // ===== SERVICIOS =====
+    group "Servicios" {
+      color green
+
+      include af_activo_fijo_service
+      include af_procesamiento_activos_service
+      include af_marcado_service
+      include af_sincronizacion_service
+    }
+
+    // ===== MODELOS =====
+    group "Modelos/Entidades" {
+      color muted
+
+      include af_creacion_activo_fijo_model
+      include af_recurso_activo_fijo_model
+      include af_data_adicional_model
+      include af_data_adicional_texto_model
+      include af_recurso_creacion_model
+      include af_servicio_creacion_model
+    }
   }
 
   // Combustibles
   view components_combustibles of inacons.combustibles_ms {
     title "Componentes - Combustibles (Nivel 3)"
-    description "API, Services, Repository del módulo Combustibles"
-    include inacons.combustibles_ms.combustible_api
-    include inacons.combustibles_ms.combustible_service
-    include inacons.combustibles_ms.combustible_repo
-    include inacons.combustibles_ms.reporte_service
+    description "Gestión completa de combustibles, tanques, surtidores y ventas"
+
+    // ===== RESOLVERS =====
+    group "API GraphQL" {
+      color primary
+
+      include cb_combustible_resolver
+      include cb_tanque_resolver
+      include cb_surtidor_resolver
+      include cb_venta_combustible_resolver
+      include cb_informe_diario_resolver
+    }
+
+    // ===== SERVICIOS =====
+    group "Servicios" {
+      color green
+
+      include cb_combustible_service
+      include cb_combustible_completo_service
+      include cb_tanque_service
+      include cb_surtidor_service
+      include cb_venta_combustible_service
+      include cb_informe_diario_service
+      include cb_inventario_combustible_service
+      include cb_precio_combustible_service
+      include cb_reporte_combustible_service
+      include cb_dashboard_combustible_service
+      include cb_reporte_venta_service
+    }
+
+    // ===== REPOSITORIES =====
+    group "Repositories" {
+      color muted
+
+      include cb_combustible_repo
+      include cb_tanque_repo
+      include cb_surtidor_repo
+      include cb_venta_combustible_repo
+      include cb_informe_diario_repo
+      include cb_inventario_combustible_repo
+    }
   }
 
   // ===== VISTAS DE CÓDIGO (NIVEL 4) =====
@@ -255,74 +515,108 @@ views {
   // Código Compras
   view code_compras {
     title "Código - Compras (Nivel 4)"
-    description "Archivos de código del módulo Compras: servicios, resolvers, modelos, workers"
-    include compraService
-    include cotizacionService
-    include proveedorService
-    include ordenCompraService
-    include compraResolvers
-    include compraModel
-    include solicitudCompraModel
-    include ordenCompraModel
-    include proveedorModel
-    include cotizacionModel
-    include compraSchema
-    include cotizacionEmailWorker
-    include ordenCompraEmailWorker
+    description "Vista de código detallada del módulo Compras - Pendiente de implementación"
 
-    // Conexiones con componentes
-    include inacons.compras_ms.compra_api -> compraResolvers
-    include inacons.compras_ms.compra_service -> compraService
-    include inacons.compras_ms.cotizacion_service -> cotizacionService
-    include inacons.compras_ms.proveedor_service -> proveedorService
-    include inacons.compras_ms.orden_compra_service -> ordenCompraService
+    // Nota: Componentes de Compras pendientes de definición
+    // Se mostrarán cuando se implementen los archivos correspondientes
   }
 
   // Código Pagos
   view code_pagos {
     title "Código - Pagos (Nivel 4)"
-    description "Archivos de código del módulo Pagos: servicios, resolvers, modelos, workers, colas"
-    include pagoService
-    include ordenPagoService
-    include pagoResolvers
-    include ordenPagoResolvers
-    include pagoModel
-    include ordenPagoModel
-    include medioPagoModel
-    include pagoSchema
-    include ordenPagoConfirmadoWorker
-    include ordenPagoRechazadoWorker
-    include pagoQueue
+    description "Vista de código - Estructura Real Basada en inacons-backend"
 
-    // Conexiones con componentes
-    include inacons.pagos_ms.pago_api -> pagoResolvers
-    include inacons.pagos_ms.pago_api -> ordenPagoResolvers
-    include inacons.pagos_ms.pago_service -> pagoService
-    include inacons.pagos_ms.orden_pago_service -> ordenPagoService
-    include inacons.pagos_ms.medio_pago_service -> pagoService
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include pg_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include pg_orden_pago_service
+      include pg_email_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include pg_orden_pago_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include pg_orden_pago_model
+      include pg_usuario_model
+      include pg_comprobante_model
+      include pg_estado_pago_model
+      include pg_transferencia_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include pg_mongodb
+      include pg_redis
+      include pg_queue_service
+    }
+  }
+
+  // Código Activos Fijos
+  view code_activos_fijos {
+    title "Código - Activos Fijos (Nivel 4)"
+    description "Vista de código detallada del módulo Activos Fijos"
+
+    include af_activo_fijo_resolver
+    include af_activo_fijo_service
+    include af_procesamiento_activos_service
+    include af_marcado_service
+    include af_sincronizacion_service
   }
 
   // Código Presupuestos
   view code_presupuestos {
     title "Código - Presupuestos (Nivel 4)"
-    description "Archivos de código del módulo Presupuestos: APU, costos, utilidades"
-    include presupuestoService
-    include apuService
-    include presupuestoResolvers
-    include apuResolvers
-    include presupuestoModel
-    include apuModel
-    include partidaModel
-    include presupuestoSchema
-    include presupuestoUtils
+    description "Vista de código detallada del módulo Presupuestos"
 
-    // Conexiones con componentes
-    include inacons.presupuestos_ms.presupuesto_api -> presupuestoResolvers
-    include inacons.presupuestos_ms.presupuesto_api -> apuResolvers
-    include inacons.presupuestos_ms.presupuesto_service -> presupuestoService
-    include inacons.presupuestos_ms.presupuesto_repo -> presupuestoService
-    include inacons.presupuestos_ms.apu_service -> apuService
-    include inacons.presupuestos_ms.costo_service -> presupuestoService
+    // Resolvers
+    include ps_presupuesto_resolver
+    include ps_proyecto_resolver
+    include ps_titulo_resolver
+    include ps_recurso_resolver
+    include ps_apu_resolver
+    include ps_centro_costo_resolver
+
+    // Servicios principales
+    include ps_presupuesto_service
+    include ps_presupuesto_completo_service
+    include ps_proyecto_service
+    include ps_titulo_service
+    include ps_recurso_service
+    include ps_apu_service
+    include ps_composicion_apu_service
+
+    // Servicios especializados
+    include ps_recurso_presupuesto_service
+    include ps_precio_recurso_proyecto_service
+    include ps_trazar_recursos_service
+    include ps_reporte_presupuesto_service
+    include ps_dashboard_presupuesto_service
+
+    // Repositories
+    include ps_presupuesto_repo
+    include ps_proyecto_repo
+    include ps_titulo_repo
+    include ps_recurso_repo
+    include ps_apu_repo
+    include ps_centro_costo_repo
   }
 
 }

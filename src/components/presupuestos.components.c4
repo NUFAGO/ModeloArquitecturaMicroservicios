@@ -1,0 +1,252 @@
+// components/presupuestos.components.c4 - Componentes del módulo Presupuestos (REAL)
+
+model {
+  // prefijo ps_ para Presupuestos
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  ps_presupuesto_resolver = component 'Presupuesto Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para presupuestos - PresupuestoResolver.ts'
+  }
+
+  ps_proyecto_resolver = component 'Proyecto Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para proyectos - ProyectoResolver.ts'
+  }
+
+  ps_titulo_resolver = component 'Título Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para títulos/partidas - TituloResolver.ts'
+  }
+
+  ps_recurso_resolver = component 'Recurso Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para recursos - RecursoResolver.ts'
+  }
+
+  ps_apu_resolver = component 'APU Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para APU - ApuResolver.ts'
+  }
+
+  ps_centro_costo_resolver = component 'Centro Costo Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para centros de costo - CentroCostoResolver.ts'
+  }
+
+  // ===== SERVICIOS CORE =====
+  ps_presupuesto_service = component 'Presupuesto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de presupuestos - PresupuestoService.ts'
+  }
+
+  ps_presupuesto_completo_service = component 'Presupuesto Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión completa de presupuestos con jerarquía - PresupuestoCompletoService.ts'
+  }
+
+  ps_proyecto_service = component 'Proyecto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de proyectos y obras - ProyectoService.ts'
+  }
+
+  ps_proyecto_completo_service = component 'Proyecto Completo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio completo de proyectos - ProyectoCompletoService.ts'
+  }
+
+  ps_titulo_service = component 'Título Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de títulos y jerarquía de presupuestos - TituloService.ts'
+  }
+
+  // ===== SERVICIOS DE APU (ANÁLISIS DE PRECIOS UNITARIOS) =====
+  ps_apu_service = component 'APU Service' {
+    technology 'Node.js + TypeScript'
+    description 'Análisis de Precios Unitarios - ComposicionApuService.ts'
+  }
+
+  ps_composicion_apu_service = component 'Composición APU Service' {
+    technology 'Node.js + TypeScript'
+    description 'Composiciones de APU detalladas - ComposicionApuService.ts'
+  }
+
+  // ===== SERVICIOS DE RECURSOS =====
+  ps_recurso_service = component 'Recurso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de recursos - RecursoService.ts'
+  }
+
+  ps_recurso_presupuesto_service = component 'Recurso Presupuesto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Recursos asociados a presupuestos - RecursoPresupuestoService.ts'
+  }
+
+  ps_recurso_composicion_apu_service = component 'Recurso Composición APU Service' {
+    technology 'Node.js + TypeScript'
+    description 'Recursos en composiciones APU - RecursoComposicionApuService.ts'
+  }
+
+  ps_recurso_seguimiento_total_service = component 'Recurso Seguimiento Total Service' {
+    technology 'Node.js + TypeScript'
+    description 'Seguimiento completo de recursos - RecursoSeguimientoTotalService.ts'
+  }
+
+  // ===== SERVICIOS DE COSTOS =====
+  ps_centro_costo_service = component 'Centro Costo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de centros de costo - CentroCostoService.ts'
+  }
+
+  ps_almacen_centro_costo_service = component 'Almacén Centro Costo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Relación almacén-centro de costo - AlmacenCentroCostoService.ts'
+  }
+
+  // ===== SERVICIOS DE PRECIOS =====
+  ps_precio_recurso_proyecto_service = component 'Precio Recurso Proyecto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Precios de recursos por proyecto - PrecioRecursoProyectoService.ts'
+  }
+
+  // ===== SERVICIOS DE TRAZABILIDAD =====
+  ps_trazar_recursos_service = component 'Trazar Recursos Service' {
+    technology 'Node.js + TypeScript'
+    description 'Sistema de trazabilidad de recursos - TrazarRecursosService.ts'
+  }
+
+  ps_sincronizar_recursos_service = component 'Sincronizar Recursos Service' {
+    technology 'Node.js + TypeScript'
+    description 'Sincronización de recursos - SincronizarRecursosService.ts'
+  }
+
+  // ===== SERVICIOS DE DETALLES =====
+  ps_detalle_partida_service = component 'Detalle Partida Service' {
+    technology 'Node.js + TypeScript'
+    description 'Detalles específicos de partidas - DetallePartidaService.ts'
+  }
+
+  // ===== SERVICIOS DE EVIDENCIAS =====
+  ps_evidencia_partida_service = component 'Evidencia Partida Service' {
+    technology 'Node.js + TypeScript'
+    description 'Evidencias asociadas a partidas - EvidenciaPartidaService.ts'
+  }
+
+  // ===== SERVICIOS DE REPORTES =====
+  ps_reporte_presupuesto_service = component 'Reporte Presupuesto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Generación de reportes de presupuestos - ReportePresupuestoService.ts'
+  }
+
+  ps_dashboard_presupuesto_service = component 'Dashboard Presupuesto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Dashboard y métricas de presupuestos - DashboardPresupuestoService.ts'
+  }
+
+  ps_reporte_apu_service = component 'Reporte APU Service' {
+    technology 'Node.js + TypeScript'
+    description 'Reportes de análisis de precios unitarios - ReporteApuService.ts'
+  }
+
+  // ===== SERVICIOS DE VALIDACIÓN =====
+  ps_validacion_presupuesto_service = component 'Validación Presupuesto Service' {
+    technology 'Node.js + TypeScript'
+    description 'Validación de estructuras de presupuestos - ValidacionPresupuestoService.ts'
+  }
+
+  ps_calculo_totales_service = component 'Cálculo Totales Service' {
+    technology 'Node.js + TypeScript'
+    description 'Cálculos de totales y subtotales - CalculoTotalesService.ts'
+  }
+
+  // ===== REPOSITORIES =====
+  ps_presupuesto_repo = component 'Presupuesto Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para presupuestos - PresupuestoRepository.ts'
+  }
+
+  ps_proyecto_repo = component 'Proyecto Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para proyectos - ProyectoRepository.ts'
+  }
+
+  ps_titulo_repo = component 'Título Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para títulos/partidas - TituloRepository.ts'
+  }
+
+  ps_recurso_repo = component 'Recurso Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para recursos - RecursoRepository.ts'
+  }
+
+  ps_apu_repo = component 'APU Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para APU - ApuRepository.ts'
+  }
+
+  ps_centro_costo_repo = component 'Centro Costo Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para centros de costo - CentroCostoRepository.ts'
+  }
+
+  ps_detalle_partida_repo = component 'Detalle Partida Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para detalles de partida - DetallePartidaRepository.ts'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // Resolvers delegan a servicios
+  ps_presupuesto_resolver -> ps_presupuesto_service 'Queries/Mutations'
+  ps_proyecto_resolver -> ps_proyecto_service 'Queries/Mutations'
+  ps_titulo_resolver -> ps_titulo_service 'Queries/Mutations'
+  ps_recurso_resolver -> ps_recurso_service 'Queries/Mutations'
+  ps_apu_resolver -> ps_apu_service 'Queries/Mutations'
+  ps_centro_costo_resolver -> ps_centro_costo_service 'Queries/Mutations'
+
+  // Servicios completos/complejos
+  ps_presupuesto_service -> ps_presupuesto_completo_service 'Gestión completa'
+  ps_proyecto_service -> ps_proyecto_completo_service 'Proyecto completo'
+
+  // Jerarquía de presupuestos
+  ps_presupuesto_service -> ps_titulo_service 'Jerarquía de títulos'
+  ps_titulo_service -> ps_detalle_partida_service 'Detalles de partida'
+  ps_detalle_partida_service -> ps_evidencia_partida_service 'Evidencias'
+
+  // APU y composiciones
+  ps_presupuesto_service -> ps_apu_service 'Análisis precios unitarios'
+  ps_apu_service -> ps_composicion_apu_service 'Composiciones detalladas'
+  ps_composicion_apu_service -> ps_recurso_composicion_apu_service 'Recursos APU'
+
+  // Recursos en presupuestos
+  ps_recurso_service -> ps_recurso_presupuesto_service 'Asociación presupuestos'
+  ps_recurso_service -> ps_precio_recurso_proyecto_service 'Precios por proyecto'
+  ps_recurso_service -> ps_recurso_seguimiento_total_service 'Seguimiento completo'
+
+  // Centros de costo
+  ps_presupuesto_service -> ps_centro_costo_service 'Asignación costos'
+  ps_centro_costo_service -> ps_almacen_centro_costo_service 'Relación almacén'
+
+  // Trazabilidad
+  ps_recurso_service -> ps_trazar_recursos_service 'Trazabilidad'
+  ps_recurso_service -> ps_sincronizar_recursos_service 'Sincronización'
+
+  // Validación y cálculos
+  ps_presupuesto_service -> ps_validacion_presupuesto_service 'Validación estructura'
+  ps_presupuesto_service -> ps_calculo_totales_service 'Cálculos totales'
+
+  // Reportes y dashboards
+  ps_presupuesto_service -> ps_reporte_presupuesto_service 'Reportes generales'
+  ps_presupuesto_service -> ps_dashboard_presupuesto_service 'Dashboards'
+  ps_apu_service -> ps_reporte_apu_service 'Reportes APU'
+
+  // Todos los servicios usan repositories
+  ps_presupuesto_service -> ps_presupuesto_repo 'Persistencia'
+  ps_proyecto_service -> ps_proyecto_repo 'Persistencia'
+  ps_titulo_service -> ps_titulo_repo 'Persistencia'
+  ps_recurso_service -> ps_recurso_repo 'Persistencia'
+  ps_apu_service -> ps_apu_repo 'Persistencia'
+  ps_centro_costo_service -> ps_centro_costo_repo 'Persistencia'
+  ps_detalle_partida_service -> ps_detalle_partida_repo 'Persistencia'
+}

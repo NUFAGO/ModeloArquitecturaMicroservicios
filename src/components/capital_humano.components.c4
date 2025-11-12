@@ -1,0 +1,91 @@
+// components/capital_humano.components.c4 - Componentes del módulo Capital Humano (REAL)
+
+model {
+  // prefijo ch_ para Capital Humano
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  ch_empleado_resolver = component 'Empleado Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para operaciones de empleados'
+  }
+
+  ch_cargo_resolver = component 'Cargo Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para gestión de cargos'
+  }
+
+  ch_contrato_resolver = component 'Contrato Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para contratos laborales'
+  }
+
+  ch_departamento_resolver = component 'Departamento Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para departamentos y áreas'
+  }
+
+  // ===== SERVICIOS DE NEGOCIO =====
+  ch_empleado_service = component 'Empleado Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal para gestión de empleados'
+  }
+
+  ch_cargo_service = component 'Cargo Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de cargos y posiciones'
+  }
+
+  ch_contrato_service = component 'Contrato Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de contratos laborales'
+  }
+
+  ch_departamento_service = component 'Departamento Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de departamentos y áreas'
+  }
+
+  ch_capacitacion_service = component 'Capacitación Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de capacitaciones'
+  }
+
+  ch_empleado_ch_service = component 'Empleado CH Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio especializado para empleados'
+  }
+
+  // ===== MODELOS/ENTIDADES =====
+  ch_empleado_model = component 'Empleado Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para empleados'
+  }
+
+  ch_cargo_model = component 'Cargo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para cargos y posiciones'
+  }
+
+  ch_contrato_model = component 'Contrato Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para contratos laborales'
+  }
+
+  ch_departamento_model = component 'Departamento Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para departamentos'
+  }
+
+  // ===== RELACIONES =====
+  // Resolvers → Servicios
+  ch_empleado_resolver -> ch_empleado_service 'Delega operaciones'
+  ch_cargo_resolver -> ch_cargo_service 'Delega operaciones'
+  ch_contrato_resolver -> ch_contrato_service 'Delega operaciones'
+  ch_departamento_resolver -> ch_departamento_service 'Delega operaciones'
+
+  // Servicios → Modelos
+  ch_empleado_service -> ch_empleado_model 'Persiste datos'
+  ch_cargo_service -> ch_cargo_model 'Gestiona cargos'
+  ch_contrato_service -> ch_contrato_model 'Gestiona contratos'
+  ch_departamento_service -> ch_departamento_model 'Gestiona departamentos'
+}

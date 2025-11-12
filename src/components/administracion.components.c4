@@ -1,0 +1,75 @@
+// components/administracion.components.c4 - Componentes del módulo Administración (REAL)
+
+model {
+  // prefijo ad_ para Administración
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  ad_usuario_resolver = component 'Usuario Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para operaciones de usuarios'
+  }
+
+  ad_acceso_resolver = component 'Acceso Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para gestión de accesos y permisos'
+  }
+
+  ad_role_resolver = component 'Role Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para roles y permisos'
+  }
+
+  // ===== SERVICIOS DE NEGOCIO =====
+  ad_usuario_service = component 'Usuario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal para gestión de usuarios del sistema'
+  }
+
+  ad_acceso_service = component 'Acceso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de accesos y permisos de usuarios'
+  }
+
+  ad_role_service = component 'Role Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de roles y asignación de permisos'
+  }
+
+  ad_grupo_acceso_service = component 'Grupo Acceso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para gestión de grupos de acceso'
+  }
+
+  ad_rol_usuario_service = component 'Rol Usuario Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio para asignación de roles a usuarios'
+  }
+
+  // ===== MODELOS/ENTIDADES =====
+  ad_usuario_model = component 'Usuario Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para usuarios del sistema'
+  }
+
+  ad_role_model = component 'Role Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para roles y permisos'
+  }
+
+  ad_grupo_acceso_model = component 'Grupo Acceso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para grupos de acceso'
+  }
+
+  // ===== RELACIONES =====
+  // Resolvers → Servicios
+  ad_usuario_resolver -> ad_usuario_service 'Delega operaciones'
+  ad_acceso_resolver -> ad_acceso_service 'Delega operaciones'
+  ad_role_resolver -> ad_role_service 'Delega operaciones'
+
+  // Servicios → Modelos
+  ad_usuario_service -> ad_usuario_model 'Persiste datos'
+  ad_acceso_service -> ad_role_model 'Consulta permisos'
+  ad_role_service -> ad_role_model 'Gestiona roles'
+  ad_grupo_acceso_service -> ad_grupo_acceso_model 'Gestiona grupos'
+}

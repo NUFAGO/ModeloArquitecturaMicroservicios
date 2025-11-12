@@ -1,0 +1,89 @@
+// components/pagos.components.c4 - Microservicio de Pagos (ESTRUCTURA REAL)
+
+model {
+  // ===== 🟦 API GRAPHQL =====
+  pg_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend monolitico'
+    technology 'Apollo Server + Express.js'
+  }
+
+  // ===== 🟩 SERVICIOS =====
+  pg_orden_pago_service = application 'OrdenPagoService' {
+    description 'Servicio principal para gestión de órdenes de pago'
+    technology 'TypeScript + Node.js'
+  }
+
+  pg_email_service = application 'EmailService' {
+    description 'Servicio de envío de correos electrónicos'
+    technology 'NodeMailer + Gmail API'
+  }
+
+  // ===== 🟨 RESOLVERS =====
+  pg_orden_pago_resolver = component 'OrdenPagoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de órdenes de pago'
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  pg_orden_pago_model = component 'OrdenPago Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para órdenes de pago'
+  }
+
+  pg_usuario_model = component 'Usuario Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para usuarios'
+  }
+
+  pg_comprobante_model = component 'Comprobante Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para comprobantes'
+  }
+
+  pg_estado_pago_model = component 'EstadoPago Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para estados de pago'
+  }
+
+  pg_transferencia_model = component 'TransferenciaDetalle Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para detalles de transferencia'
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  pg_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+  }
+
+  pg_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+  }
+
+  pg_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  pg_graphql_api -> pg_orden_pago_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios
+  pg_orden_pago_resolver -> pg_orden_pago_service 'Delega operaciones'
+  pg_orden_pago_resolver -> pg_email_service 'Envía notificaciones'
+
+  // Servicios → Modelos
+  pg_orden_pago_service -> pg_orden_pago_model 'Persiste datos'
+  pg_orden_pago_service -> pg_usuario_model 'Consulta usuarios'
+  pg_orden_pago_service -> pg_comprobante_model 'Gestiona comprobantes'
+  pg_orden_pago_service -> pg_estado_pago_model 'Actualiza estados'
+  pg_orden_pago_service -> pg_transferencia_model 'Registra transferencias'
+
+  // Servicios → Infraestructura
+  pg_orden_pago_service -> pg_mongodb 'Accede a base de datos'
+  pg_orden_pago_service -> pg_redis 'Usa cache'
+  pg_orden_pago_service -> pg_queue_service 'Procesa tareas async'
+
+  // Email Service → Infraestructura
+  pg_email_service -> pg_queue_service 'Envía emails async'
+}

@@ -1,0 +1,25 @@
+// components/requerimientos.components.c4 - Componentes del módulo Requerimientos
+
+model {
+  // prefijo rq_ para Requerimientos
+
+  rq_requerimiento_api = component 'Requerimiento API (GraphQL Resolvers)' {
+    technology 'GraphQL + Node.js'
+    description 'Punto de entrada GraphQL para operaciones de requerimientos'
+  }
+
+  rq_requerimiento_service = component 'Requerimiento Service (Business Logic)' {
+    technology 'Node.js + TypeScript'
+    description 'Lógica de negocio principal para gestión de requerimientos'
+  }
+
+  rq_requerimiento_repo = component 'Requerimiento Repository' {
+    technology 'Mongoose ODM'
+    description 'Acceso a datos para entidades de requerimiento'
+  }
+
+  rq_planilla_service = component 'Planilla Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de planillas de requerimientos'
+  }
+}

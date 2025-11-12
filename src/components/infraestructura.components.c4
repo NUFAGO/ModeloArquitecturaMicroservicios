@@ -1,0 +1,95 @@
+// components/infraestructura.components.c4 - Componentes de Infraestructura Compartida (REAL)
+
+model {
+  // prefijo infra_ para Infraestructura
+
+  // ===== BASE DE DATOS =====
+  infra_mongodb = database 'MongoDB Database' {
+    technology 'MongoDB + Mongoose ODM'
+    description 'Base de datos NoSQL principal con modelos Mongoose'
+  }
+
+  infra_redis_cache = database 'Redis Cache' {
+    technology 'Redis'
+    description 'Cache distribuido para sesiones y datos temporales'
+  }
+
+  // ===== SISTEMA DE COLAS =====
+  infra_queues_system = queue 'Sistema de Colas' {
+    technology 'Bull + Redis'
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== APIs EXTERNAS =====
+  infra_email_api = service 'Email Service API' {
+    technology 'Node.js + SendGrid/Mailgun'
+    description 'Servicio de envío de correos electrónicos'
+  }
+
+  infra_whatsapp_api = service 'WhatsApp Business API' {
+    technology 'Meta WhatsApp Business API'
+    description 'Integración con WhatsApp para notificaciones'
+  }
+
+  infra_sunat_api = service 'SUNAT API' {
+    technology 'REST API'
+    description 'Integración con SUNAT para validación RUC y facturación'
+  }
+
+  infra_reniec_api = service 'RENIEC API' {
+    technology 'REST API'
+    description 'Integración con RENIEC para validación de DNI'
+  }
+
+  // ===== WORKERS PARA PROCESAMIENTO ASÍNCRONO =====
+  infra_email_worker = service 'Email Worker' {
+    technology 'Node.js + Bull'
+    description 'Worker para procesamiento de emails en cola'
+  }
+
+  infra_cotizacion_worker = service 'Cotización Worker' {
+    technology 'Node.js + Bull'
+    description 'Worker para procesamiento de cotizaciones'
+  }
+
+  infra_orden_compra_worker = service 'Orden Compra Worker' {
+    technology 'Node.js + Bull'
+    description 'Worker para procesamiento de órdenes de compra'
+  }
+
+  infra_orden_pago_worker = service 'Orden Pago Worker' {
+    technology 'Node.js + Bull'
+    description 'Worker para procesamiento de órdenes de pago'
+  }
+
+  infra_whatsapp_worker = service 'WhatsApp Worker' {
+    technology 'Node.js + Bull'
+    description 'Worker para envío de mensajes WhatsApp'
+  }
+
+  // ===== SERVICIOS COMPARTIDOS =====
+  infra_global_search = service 'Global Search Service' {
+    technology 'Node.js + Elasticsearch/MongoDB'
+    description 'Servicio de búsqueda global en toda la aplicación'
+  }
+
+  infra_file_upload = service 'File Upload Service' {
+    technology 'Node.js + Google Cloud Storage'
+    description 'Servicio de subida y gestión de archivos'
+  }
+
+  infra_encryption = service 'Encryption Service' {
+    technology 'Node.js + AES/Crypto'
+    description 'Servicio de encriptación para datos sensibles'
+  }
+
+  // ===== RELACIONES =====
+  infra_queues_system -> infra_email_worker 'Despacha emails'
+  infra_queues_system -> infra_cotizacion_worker 'Despacha cotizaciones'
+  infra_queues_system -> infra_orden_compra_worker 'Despacha órdenes compra'
+  infra_queues_system -> infra_orden_pago_worker 'Despacha órdenes pago'
+  infra_queues_system -> infra_whatsapp_worker 'Despacha WhatsApp'
+
+  infra_email_worker -> infra_email_api 'Envía emails'
+  infra_whatsapp_worker -> infra_whatsapp_api 'Envía mensajes'
+}

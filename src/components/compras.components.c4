@@ -1,0 +1,119 @@
+// components/compras.components.c4 - Componentes del módulo Compras (REAL)
+
+model {
+  // prefijo cp_ para Compras
+
+  // ===== API GRAPHQL - RESOLVERS =====
+  cp_compra_resolver = component 'Compra Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para operaciones de compra'
+  }
+
+  cp_cotizacion_resolver = component 'Cotización Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para cotizaciones'
+  }
+
+  cp_proveedor_resolver = component 'Proveedor Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para proveedores'
+  }
+
+  cp_orden_compra_resolver = component 'Orden Compra Resolver' {
+    technology 'GraphQL + Node.js'
+    description 'Resolver GraphQL para órdenes de compra'
+  }
+
+  // ===== SERVICIOS DE NEGOCIO =====
+  cp_compra_service = component 'Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Servicio principal de compras y procesamiento completo'
+  }
+
+  cp_cotizacion_service = component 'Cotización Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de cotizaciones y proveedores'
+  }
+
+  cp_proveedor_service = component 'Proveedor Service' {
+    technology 'Node.js + TypeScript'
+    description 'Homologación y gestión de proveedores'
+  }
+
+  cp_orden_compra_service = component 'Orden Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Procesamiento de órdenes de compra y servicio'
+  }
+
+  cp_solicitud_compra_service = component 'Solicitud Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de solicitudes de compra'
+  }
+
+  cp_comprobante_orden_compra_service = component 'Comprobante Orden Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de comprobantes de órdenes de compra'
+  }
+
+  // ===== SERVICIOS ESPECIALIZADOS =====
+  cp_aprobacion_cierre_orden_compra_service = component 'Aprobación Cierre Orden Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Aprobaciones de cierre de órdenes'
+  }
+
+  cp_incumplimiento_orden_compra_service = component 'Incumplimiento Orden Compra Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de incumplimientos en órdenes'
+  }
+
+  cp_guia_remision_service = component 'Guía Remisión Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de guías de remisión'
+  }
+
+  // ===== SERVICIOS DE RECURSOS =====
+  cp_compra_recurso_service = component 'Compra Recurso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión de recursos en compras'
+  }
+
+  cp_orden_compra_recurso_service = component 'Orden Compra Recurso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Recursos asociados a órdenes de compra'
+  }
+
+  cp_cotizacion_recurso_service = component 'Cotización Recurso Service' {
+    technology 'Node.js + TypeScript'
+    description 'Recursos en cotizaciones'
+  }
+
+  // ===== SERVICIOS DE DOCUMENTOS =====
+  cp_documento_cotizacion_service = component 'Documento Cotización Service' {
+    technology 'Node.js + TypeScript'
+    description 'Gestión documental de cotizaciones'
+  }
+
+  // ===== RELACIONES INTERNAS =====
+
+  // Resolvers delegan a servicios
+  cp_compra_resolver -> cp_compra_service 'Queries/Mutations'
+  cp_cotizacion_resolver -> cp_cotizacion_service 'Queries/Mutations'
+  cp_proveedor_resolver -> cp_proveedor_service 'Queries/Mutations'
+  cp_orden_compra_resolver -> cp_orden_compra_service 'Queries/Mutations'
+
+  // Servicios colaboran entre sí
+  cp_compra_service -> cp_cotizacion_service 'Inicia cotización'
+  cp_compra_service -> cp_orden_compra_service 'Genera órdenes'
+  cp_compra_service -> cp_solicitud_compra_service 'Crea solicitudes'
+
+  cp_cotizacion_service -> cp_proveedor_service 'Valida proveedores'
+  cp_cotizacion_service -> cp_cotizacion_recurso_service 'Gestiona recursos'
+  cp_cotizacion_service -> cp_documento_cotizacion_service 'Documentos'
+
+  cp_orden_compra_service -> cp_orden_compra_recurso_service 'Recursos'
+  cp_orden_compra_service -> cp_comprobante_orden_compra_service 'Comprobantes'
+  cp_orden_compra_service -> cp_guia_remision_service 'Guías'
+
+  cp_orden_compra_service -> cp_aprobacion_cierre_orden_compra_service 'Aprobaciones'
+  cp_orden_compra_service -> cp_incumplimiento_orden_compra_service 'Incumplimientos'
+}
