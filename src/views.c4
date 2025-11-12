@@ -5,31 +5,128 @@ views {
   view index {
     title "Contexto - Inacons ERP (Nivel 1)"
     description "Vista de contexto: el sistema Inacons ERP completo"
-    include inacons
+
+    include inacons with {
+      size lg
+      color primary
+    }
+
+    // Actores externos - más pequeños
+    include empleado with {
+      size sm
+      color green
+    }
+    include admin with {
+      size sm
+      color green
+    }
+    include proveedor with {
+      size sm
+      color blue
+    }
+    include cliente with {
+      size sm
+      color blue
+    }
   }
 
   // ===== VISTA DE CONTENEDORES (NIVEL 2) =====
   view containers_of_inacons of inacons {
     title "Contenedores - Inacons ERP (Nivel 2)"
-    description "Contenedores principales: Frontend, API GraphQL, Microservicios, BD, Infraestructura"
-    include inacons.web_frontend
-    include inacons.graphql_api
-    include inacons.capital_humano_ms
-    include inacons.administracion_ms
-    include inacons.combustibles_ms
-    include inacons.recursos_ms
-    include inacons.activos_fijos_ms
-    include inacons.compras_ms
-    include inacons.pagos_ms
-    include inacons.almacen_ms
-    include inacons.requerimientos_ms
-    include inacons.presupuestos_ms
-    include inacons.formularios_ms
-    include inacons.comprobantes_ms
-    include inacons.mongodb_db
-    include inacons.redis_cache
-    include inacons.queues_system
-    include inacons.external_apis
+    description "Contenedores principales agrupados por funcionalidad"
+
+    // ===== AGRUPACIÓN: INTERFAZ Y API PRINCIPAL =====
+    group "Frontend & API Principal" {
+      include inacons.web_frontend with {
+        size lg
+        color primary
+      }
+      include inacons.graphql_api with {
+        size lg
+        color primary
+      }
+    }
+
+    // ===== AGRUPACIÓN: MICROSERVICIOS DE NEGOCIO =====
+    group "Microservicios de Negocio" {
+      include inacons.compras_ms with {
+        size md
+        color green
+      }
+      include inacons.pagos_ms with {
+        size md
+        color blue
+      }
+      include inacons.presupuestos_ms with {
+        size md
+        color amber
+      }
+      include inacons.capital_humano_ms with {
+        size md
+        color red
+      }
+    }
+
+    // ===== AGRUPACIÓN: MICROSERVICIOS DE SOPORTE =====
+    group "Microservicios de Soporte" {
+      include inacons.almacen_ms with {
+        size md
+        color secondary
+      }
+      include inacons.recursos_ms with {
+        size md
+        color secondary
+      }
+      include inacons.requerimientos_ms with {
+        size sm
+        color secondary
+      }
+      include inacons.administracion_ms with {
+        size sm
+        color secondary
+      }
+      include inacons.combustibles_ms with {
+        size sm
+        color secondary
+      }
+      include inacons.activos_fijos_ms with {
+        size sm
+        color secondary
+      }
+      include inacons.formularios_ms with {
+        size sm
+        color secondary
+      }
+      include inacons.comprobantes_ms with {
+        size sm
+        color secondary
+      }
+    }
+
+    // ===== AGRUPACIÓN: INFRAESTRUCTURA =====
+    group "Infraestructura Compartida" {
+      include inacons.mongodb_db with {
+        size sm
+        color muted
+      }
+      include inacons.redis_cache with {
+        size sm
+        color muted
+      }
+      include inacons.queues_system with {
+        size sm
+        color muted
+      }
+    }
+
+    // ===== AGRUPACIÓN: SISTEMAS EXTERNOS =====
+    group "APIs Externas" {
+      include inacons.external_apis with {
+        size xs
+        color muted
+        opacity 60%
+      }
+    }
   }
 
   // ===== VISTAS DE COMPONENTES POR MICROSERVICIO (NIVEL 3) =====
@@ -47,22 +144,68 @@ views {
   view components_compras of inacons.compras_ms {
     title "Componentes - Compras (Nivel 3)"
     description "API, Services, Repository del módulo Compras"
-    include inacons.compras_ms.compra_api
-    include inacons.compras_ms.compra_service
-    include inacons.compras_ms.compra_repo
-    include inacons.compras_ms.cotizacion_service
-    include inacons.compras_ms.proveedor_service
+
+    // API principal - más grande
+    include inacons.compras_ms.compra_api with {
+      size md
+      color primary
+    }
+
+    // Servicio principal - destacado
+    include inacons.compras_ms.compra_service with {
+      size md
+      color green
+    }
+
+    // Repository
+    include inacons.compras_ms.compra_repo with {
+      size sm
+      color secondary
+    }
+
+    // Servicios especializados
+    include inacons.compras_ms.cotizacion_service with {
+      size sm
+      color blue
+    }
+    include inacons.compras_ms.proveedor_service with {
+      size sm
+      color amber
+    }
   }
 
   // Pagos
   view components_pagos of inacons.pagos_ms {
     title "Componentes - Pagos (Nivel 3)"
     description "API, Services, Repository del módulo Pagos"
-    include inacons.pagos_ms.pago_api
-    include inacons.pagos_ms.pago_service
-    include inacons.pagos_ms.pago_repo
-    include inacons.pagos_ms.orden_pago_service
-    include inacons.pagos_ms.medio_pago_service
+
+    // API principal - más grande
+    include inacons.pagos_ms.pago_api with {
+      size md
+      color primary
+    }
+
+    // Servicio principal - destacado
+    include inacons.pagos_ms.pago_service with {
+      size md
+      color blue
+    }
+
+    // Repository
+    include inacons.pagos_ms.pago_repo with {
+      size sm
+      color secondary
+    }
+
+    // Servicios especializados
+    include inacons.pagos_ms.orden_pago_service with {
+      size sm
+      color green
+    }
+    include inacons.pagos_ms.medio_pago_service with {
+      size sm
+      color amber
+    }
   }
 
   // Presupuestos
