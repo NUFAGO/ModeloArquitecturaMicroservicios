@@ -1,8 +1,8 @@
 {
-  "name": "likec4-template",
+  "name": "inacons-erp-architecture",
   "version": "0.0.1",
   "private": true,
-  "description": "LikeC4 template",
+  "description": "Arquitectura C4 de Inacons ERP",
   "type": "module",
   "packageManager": "pnpm@10.7.1",
   "engines": {
@@ -15,9 +15,10 @@
     "test": "vitest run",
     "postinstall": "npm run generate:model",
     "generate:model": "likec4 gen model -o ./test/likec4-model.ts",
-    "generate:relationships-csv": "likec4 gen relationships-csv && open ./relationships.csv",
+    "generate:relationships-csv": "likec4 gen relationships-csv",
     "generate:react": "likec4 generate react -o ./react/likec4-views.mjs",
-    "export:png": "likec4 export png -o ./png"
+    "export:png": "likec4 export png -o ./png",
+    "preview": "likec4 preview"
   },
   "devDependencies": {
     "@types/node": "^22.18.6",

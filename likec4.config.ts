@@ -1,8 +1,8 @@
 import { defineConfig } from 'likec4/config'
 
 export default defineConfig({
-  name: 'likec4-template',
-  title: 'LikeC4 Template',
+  name: 'inacons-erp-architecture',
+  title: 'Inacons ERP - Arquitectura C4',
   exclude: [
     'node_modules/**'
   ],

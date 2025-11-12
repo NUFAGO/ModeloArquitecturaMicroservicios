@@ -267,23 +267,18 @@ model {
     queues_system = queue 'Sistema de Colas' {
       description 'Sistema de colas para procesamiento asíncrono (emails, cotizaciones, órdenes)'
       email_queue = service 'Email Queue Worker' {
-        link https://github.com/OptimalBits/bull 'Bull Queue Library'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       cotizacion_queue = service 'Cotización Queue Worker' {
-        link https://github.com/OptimalBits/bull 'Bull Queue Library'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       orden_compra_queue = service 'Orden Compra Queue Worker' {
-        link https://github.com/OptimalBits/bull 'Bull Queue Library'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       orden_pago_queue = service 'Orden Pago Queue Worker' {
-        link https://github.com/OptimalBits/bull 'Bull Queue Library'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       whatsapp_queue = service 'WhatsApp Queue Worker' {
-        link https://github.com/OptimalBits/bull 'Bull Queue Library'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
     }
@@ -292,19 +287,15 @@ model {
     external_apis = external-system 'APIs Externas' {
       description 'Integraciones con sistemas externos'
       reniec_api = service 'RENIEC API' {
-        link https://api.reniec.gob.pe 'RENIEC API'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       sunat_api = service 'SUNAT API' {
-        link https://api.sunat.gob.pe 'SUNAT API'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       whatsapp_api = service 'WhatsApp API' {
-        link https://developers.facebook.com/docs/whatsapp 'WhatsApp Business API'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
       email_provider = service 'Email Provider' {
-        link https://sendgrid.com 'SendGrid API'
         link https://github.com/inacons-solutions/inacons-erp 'Repository'
       }
     }
