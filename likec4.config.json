@@ -1,8 +1,0 @@
-{
-    "$schema": "https://likec4.dev/schema/config.json",
-    "name": "ModeloArquitecturaMicroservicios",
-    "entry": "likec4.c4",
-    "outDir": "dist",
-    "base": "/ModeloArquitecturaMicroservicios/"
-  }
-  

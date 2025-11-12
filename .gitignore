@@ -1,61 +1,6 @@
-# ==========================================
-# LikeC4 / Node.js project .gitignore
-# ==========================================
-
-# Node dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-
-# Compiled LikeC4 output
-dist/
-out/
-.tmp/
-.cache/
-
-# Local environment
-.env
-.env.local
-.env.*.local
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Editor folders and configs
-.vscode/
-.idea/
-*.swp
-
-# Logs
-logs/
-*.log
-*.gz
-*.pid
-*.seed
-
-# OS / misc
-*.bak
-*.tmp
-*.old
-*.orig
-
-# Build artifacts
-coverage/
-build/
-tmp/
-
-# ==========================================
-# Optional: GitHub Actions and Configs
-# ==========================================
-# Keep these, so don't ignore them
-# !.github/
-# !likec4.config.json
-# !model.likec4
-# !views.likec4
-
-# ==========================================
-# End of file
-# ==========================================
+node_modules
+dist
+build
+test/likec4-model.ts
+relationships.csv
+react/
