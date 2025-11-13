@@ -7,7 +7,7 @@ views {
     description "Vista de contexto: el sistema Inacons ERP completo"
 
     // ===== USUARIOS INTERNOS (ARRIBA) =====
-    group "Usuarios Internos" {
+    group "👥 Usuarios Internos" {
       include empleado with {
         size md
         color green
@@ -25,7 +25,7 @@ views {
     }
 
     // ===== ACTORES EXTERNOS (ABAJO) =====
-    group "Actores Externos" {
+    group "🌐 Actores Externos" {
       include proveedor with {
         size md
         color blue
@@ -34,6 +34,27 @@ views {
         size md
         color blue
       }
+    }
+
+    // ===== ESTILOS DIFERENCIADORES =====
+    style * {
+      color secondary
+    }
+
+    style empleado, admin {
+      color green
+      textSize lg
+    }
+
+    style proveedor, cliente {
+      color blue
+      textSize lg
+    }
+
+    style inacons {
+      color primary
+      textSize xl
+      size lg
     }
   }
 
@@ -55,58 +76,58 @@ views {
     }
 
     // ===== AGRUPACIÓN: MICROSERVICIOS DE NEGOCIO =====
-    group "Microservicios de Negocio" {
+    group "💰 Microservicios de Negocio" {
       include inacons.compras_ms with {
         size md
-        color green
+        color red  // Compras
       }
       include inacons.pagos_ms with {
         size md
-        color blue
+        color blue  // Pagos
       }
       include inacons.presupuestos_ms with {
         size md
-        color amber
+        color sky  // Presupuestos
       }
       include inacons.capital_humano_ms with {
         size md
-        color red
+        color amber  // Capital Humano
       }
     }
 
     // ===== AGRUPACIÓN: MICROSERVICIOS DE SOPORTE =====
-    group "Microservicios de Soporte" {
+    group "📦 Microservicios de Soporte" {
       include inacons.almacen_ms with {
         size md
-        color secondary
+        color indigo  // Almacén
       }
       include inacons.recursos_ms with {
         size md
-        color secondary
+        color amber  // Recursos
       }
       include inacons.requerimientos_ms with {
         size sm
-        color secondary
+        color slate  // Requerimientos
       }
       include inacons.administracion_ms with {
         size sm
-        color secondary
+        color green  // Administración
       }
       include inacons.combustibles_ms with {
         size sm
-        color secondary
+        color red  // Combustibles
       }
       include inacons.activos_fijos_ms with {
         size sm
-        color secondary
+        color muted  // Activos Fijos
       }
       include inacons.formularios_ms with {
         size sm
-        color secondary
+        color gray  // Formularios
       }
       include inacons.comprobantes_ms with {
         size sm
-        color secondary
+        color sky  // Comprobantes
       }
     }
 
@@ -141,92 +162,536 @@ views {
   // Capital Humano
   view components_capital_humano of inacons.capital_humano_ms {
     title "Componentes - Capital Humano (Nivel 3)"
-    description "Gestión integral de empleados y recursos humanos - Pendiente de implementación detallada"
+    description "Microservicio de Capital Humano - Estructura Real Basada en inacons-backend"
 
-    // Nota: Componentes de Capital Humano pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include ch_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include ch_empleado_service
+      include ch_cargo_service
+      include ch_contrato_service
+      include ch_departamento_service
+      include ch_capacitacion_service
+      include ch_asistencia_service
+      include ch_permiso_service
+      include ch_examen_medico_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include ch_empleado_resolver
+      include ch_cargo_resolver
+      include ch_contrato_resolver
+      include ch_departamento_resolver
+      include ch_empleado_ch_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include ch_empleado_model
+      include ch_cargo_model
+      include ch_contrato_model
+      include ch_departamento_model
+      include ch_usuario_model
+      include ch_grupo_acceso_model
+      include ch_rol_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include ch_mongodb
+      include ch_redis
+      include ch_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Administración
   view components_administracion of inacons.administracion_ms {
     title "Componentes - Administración (Nivel 3)"
-    description "Gestión de usuarios, roles y permisos del sistema - Pendiente de implementación detallada"
+    description "Microservicio de Administración - Estructura Real Basada en inacons-backend"
 
-    // Nota: Componentes de Administración pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
-  }
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
 
-  // Requerimientos
-  view components_requerimientos of inacons.requerimientos_ms {
-    title "Componentes - Requerimientos (Nivel 3)"
-    description "Gestión de requerimientos y planillas - Pendiente de implementación detallada"
+      include ad_graphql_api
+    }
 
-    // Nota: Componentes de Requerimientos pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
-  }
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
 
-  // Formularios
-  view components_formularios of inacons.formularios_ms {
-    title "Componentes - Formularios (Nivel 3)"
-    description "Gestión de formularios dinámicos - Pendiente de implementación detallada"
+      include ad_empresa_service
+      include ad_usuario_service
+      include ad_rol_service
+      include ad_menu_service
+      include ad_banco_service
+      include ad_grupo_acceso_service
+      include ad_sistema_service
+      include ad_configuracion_service
+      include ad_auditoria_service
+    }
 
-    // Nota: Componentes de Formularios pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include ad_empresa_resolver
+      include ad_usuario_resolver
+      include ad_rol_resolver
+      include ad_menu_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include ad_empresa_model
+      include ad_usuario_model
+      include ad_rol_model
+      include ad_menu_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include ad_mongodb
+      include ad_redis
+      include ad_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Comprobantes
   view components_comprobantes of inacons.comprobantes_ms {
     title "Componentes - Comprobantes (Nivel 3)"
-    description "Gestión completa de comprobantes e integración SUNAT/SIRE"
+    description "Microservicio de Comprobantes - Estructura Real Basada en inacons-backend"
 
-    // ===== RESOLVERS =====
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
     group "API GraphQL" {
       color primary
 
-      include cm_comprobante_resolver
-      include cm_factura_resolver
-      include cm_boleta_resolver
-      include cm_nota_credito_resolver
-      include cm_nota_debito_resolver
+      include cb_graphql_api
     }
 
-    // ===== SERVICIOS =====
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
     group "Servicios" {
       color green
 
-      include cm_comprobante_service
-      include cm_comprobante_completo_service
-      include cm_factura_service
-      include cm_boleta_service
-      include cm_nota_credito_service
-      include cm_nota_debito_service
-      include cm_numeracion_service
-      include cm_impuesto_service
-      include cm_sire_service
-      include cm_sunat_service
-      include cm_facturacion_electronica_service
+      include cb_comprobante_service
+      include cb_tipo_comprobante_service
+      include cb_sunat_service
+      include cb_comprobante_archivos_service
+      include cb_registro_comprobante_service
+      include cb_aprobacion_comprobante_service
+      include cb_reporte_comprobante_pago_service
+      include cb_documento_validacion_service
     }
 
-    // ===== REPOSITORIES =====
-    group "Repositories" {
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include cb_comprobante_resolver
+      include cb_tipo_comprobante_resolver
+      include cb_sunat_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
       color muted
 
-      include cm_comprobante_repo
-      include cm_factura_repo
-      include cm_boleta_repo
-      include cm_nota_credito_repo
-      include cm_nota_debito_repo
-      include cm_numeracion_repo
+      include cb_comprobante_model
+      include cb_tipo_comprobante_model
+      include cb_constancia_comprobante_model
     }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include cb_mongodb
+      include cb_redis
+      include cb_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
+  }
+
+  // Almacén
+  view components_almacen of inacons.almacen_ms {
+    title "Componentes - Almacén (Nivel 3)"
+    description "Microservicio de Almacén - Estructura Real Basada en inacons-backend"
+
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include al_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include al_almacen_service
+      include al_bodega_service
+      include al_transferencia_service
+      include al_almacen_recurso_service
+      include al_registro_almacen_service
+      include al_solicitud_almacen_service
+      include al_almacen_centro_costo_service
+      include al_transferencia_recurso_service
+      include al_inventario_service
+      include al_reporte_almacen_service
+      include al_almacen_completo_service
+      include al_recepcion_service
+      include al_producto_service
+      include al_dashboard_almacen_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include al_almacen_resolver
+      include al_bodega_resolver
+      include al_transferencia_resolver
+      include al_inventario_resolver
+      include al_recepcion_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include al_almacen_model
+      include al_bodega_model
+      include al_transferencia_model
+      include al_tipo_almacen_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include al_mongodb
+      include al_redis
+      include al_queue_service
+    }
+
+    // 🗄️ REPOSITORIES
+    group "Repositories" {
+      color slate
+
+      include al_almacen_repo
+      include al_inventario_repo
+      include al_transferencia_repo
+      include al_bodega_repo
+      include al_recepcion_repo
+      include al_producto_repo
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
+  }
+
+  // Recursos
+  view components_recursos of inacons.recursos_ms {
+    title "Componentes - Recursos (Nivel 3)"
+    description "Microservicio de Recursos - Estructura Real Basada en inacons-backend"
+
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include rc_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include rc_recurso_service
+      include rc_tipo_recurso_service
+      include rc_unidad_service
+      include rc_recurso_presupuesto_service
+      include rc_recurso_obra_service
+      include rc_clasificacion_recurso_service
+      include rc_trazar_recursos_service
+      include rc_recurso_composicion_apu_service
+      include rc_precio_recurso_proyecto_service
+      include rc_consumo_recurso_service
+      include rc_prestamo_recurso_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include rc_recurso_resolver
+      include rc_tipo_recurso_resolver
+      include rc_unidad_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include rc_recurso_model
+      include rc_tipo_recurso_model
+      include rc_unidad_model
+      include rc_clasificacion_recurso_model
+      include rc_tipo_costo_recurso_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include rc_mongodb
+      include rc_redis
+      include rc_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
+  }
+
+  // Requerimientos
+  view components_requerimientos of inacons.requerimientos_ms {
+    title "Componentes - Requerimientos (Nivel 3)"
+    description "Microservicio de Requerimientos - Estructura Real Basada en inacons-backend"
+
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include rq_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include rq_requerimiento_service
+      include rq_planilla_service
+      include rq_aprobacion_service
+      include rq_requerimiento_recurso_service
+      include rq_reporte_requerimiento_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include rq_requerimiento_resolver
+      include rq_planilla_resolver
+      include rq_aprobacion_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include rq_requerimiento_model
+      include rq_planilla_model
+      include rq_aprobacion_model
+      include rq_estado_requerimiento_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include rq_mongodb
+      include rq_redis
+      include rq_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
+  }
+
+  // Formularios
+  view components_formularios of inacons.formularios_ms {
+    title "Componentes - Formularios (Nivel 3)"
+    description "Microservicio de Formularios - Estructura Real Basada en inacons-backend"
+
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
+    group "API GraphQL" {
+      color primary
+
+      include fm_graphql_api
+    }
+
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
+    group "Servicios" {
+      color green
+
+      include fm_formulario_service
+      include fm_formulario_template_service
+      include fm_formulario_respuesta_service
+      include fm_plantilla_formulario_service
+      include fm_respuesta_formulario_service
+      include fm_reporte_formulario_service
+      include fm_exportacion_formulario_service
+    }
+
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include fm_formulario_resolver
+      include fm_formulario_template_resolver
+      include fm_formulario_respuesta_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
+      color muted
+
+      include fm_formulario_model
+      include fm_formulario_template_model
+      include fm_formulario_respuesta_model
+      include fm_formulario_validacion_model
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include fm_mongodb
+      include fm_redis
+      include fm_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Compras
   view components_compras of inacons.compras_ms {
     title "Componentes - Compras (Nivel 3)"
-    description "Gestión completa del proceso de compras - Pendiente de implementación detallada"
+    description "Microservicio de Compras - Estructura Real Basada en inacons-backend"
 
-    // Nota: Componentes de Compras pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
+    // ===== 🏗️ GROUP GENERAL - MICROservicio de Compras =====
+    group "🛒 Microservicio de Compras" {
+
+      // ===== 🔗 API GraphQL =====
+      group "🔗 API GraphQL" {
+        color sky  // APIs
+
+        include cp_graphql_api
+      }
+
+      // ===== 🎯 RESOLVERS =====
+      group "🎯 Resolvers GraphQL" {
+        color amber  // Resolvers
+
+        include cp_compra_resolver
+        include cp_cotizacion_resolver
+        include cp_orden_compra_resolver
+        include cp_proveedor_resolver
+        include cp_solicitud_compra_resolver
+      }
+
+      // ===== ⚙️ SERVICIOS CORE =====
+      group "⚙️ Servicios Principales" {
+        color red  // Servicios principales
+
+        include cp_compra_service
+        include cp_cotizacion_service
+        include cp_orden_compra_service
+        include cp_proveedor_service
+        include cp_procesador_compra_completa_service
+      }
+
+      // ===== 🔧 SERVICIOS ESPECIALIZADOS =====
+      group "🔧 Servicios Especializados" {
+        color indigo  // Servicios especializados
+
+        include cp_solicitud_compra_service
+        include cp_comprobante_orden_compra_service
+        include cp_guia_remision_service
+        include cp_aprobacion_cierre_orden_compra_service
+        include cp_incumplimiento_orden_compra_service
+        include cp_pago_compra_comprobante_service
+      }
+
+      // ===== 📦 GESTIÓN DE RECURSOS =====
+      group "📦 Gestión de Recursos" {
+        color amber  // Gestión de recursos
+
+        include cp_compra_recurso_service
+        include cp_orden_compra_recurso_service
+        include cp_cotizacion_recurso_service
+        include cp_solicitud_compra_recurso_service
+        include cp_seguimiento_cotizacion_recurso_service
+      }
+
+      // ===== 📧 COMUNICACIONES =====
+      group "📧 Comunicaciones & Notificaciones" {
+        color slate  // Comunicaciones
+
+        include cp_email_service
+        include cp_notificacion_cotizacion_service
+        include cp_notificacion_orden_compra_service
+      }
+
+      // ===== 📄 GESTIÓN DOCUMENTAL =====
+      group "📄 Gestión Documental" {
+        color green  // Documentos
+
+        include cp_documento_cotizacion_service
+      }
+
+      // ===== 📊 MODELOS DE DATOS =====
+      group "📊 Modelos de Datos" {
+        color muted  // Modelos de datos
+
+        include cp_compra_model
+        include cp_cotizacion_model
+        include cp_orden_compra_model
+        include cp_proveedor_model
+        include cp_solicitud_compra_model
+        include cp_comprobante_orden_compra_model
+        include cp_guia_remision_model
+      }
+
+      // ===== 🗄️ INFRAESTRUCTURA =====
+      group "🗄️ Infraestructura" {
+        color red  // Infraestructura
+
+        include cp_mongodb
+        include cp_redis
+        include cp_queue_service
+      }
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Pagos
@@ -246,7 +711,10 @@ views {
       color green
 
       include pg_orden_pago_service
+      include pg_aprobacion_orden_pago_service
+      include pg_pago_orden_pago_service
       include pg_email_service
+      include pg_notificacion_orden_pago_service
     }
 
     // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
@@ -254,6 +722,10 @@ views {
       color amber
 
       include pg_orden_pago_resolver
+      include pg_aprobacion_orden_pago_resolver
+      include pg_pago_orden_pago_resolver
+      include pg_estado_pago_resolver
+      include pg_transferencia_detalle_resolver
     }
 
     // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
@@ -261,9 +733,10 @@ views {
       color muted
 
       include pg_orden_pago_model
+      include pg_estado_pago_model
+      include pg_transferencia_detalle_model
       include pg_usuario_model
       include pg_comprobante_model
-      include pg_estado_pago_model
     }
 
     // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
@@ -282,163 +755,77 @@ views {
   // Presupuestos
   view components_presupuestos of inacons.presupuestos_ms {
     title "Componentes - Presupuestos (Nivel 3)"
-    description "Arquitectura detallada de componentes del módulo Presupuestos"
+    description "Microservicio de Presupuestos - Estructura Real Basada en inacons-backend"
 
-    // ===== RESOLVERS GRAPHQL =====
-
-    // Resolver principal de presupuestos
-    include ps_presupuesto_resolver with {
-      size lg
-      color primary
-    }
-
-    // Resolver de proyectos
-    include ps_proyecto_resolver with {
-      size md
-      color amber
-    }
-
-    // Resolver de títulos/partidas
-    include ps_titulo_resolver with {
-      size md
-      color green
-    }
-
-    // Resolver de recursos
-    include ps_recurso_resolver with {
-      size md
-      color blue
-    }
-
-    // ===== SERVICIOS CORE =====
-
-    // Servicio principal de presupuestos
-    include ps_presupuesto_service with {
-      size md
-      color amber
-    }
-
-    // Servicio completo de presupuestos
-    include ps_presupuesto_completo_service with {
-      size md
-      color amber
-    }
-
-    // Servicio de proyectos
-    include ps_proyecto_service with {
-      size md
-      color green
-    }
-
-    // Servicio de títulos/partidas
-    include ps_titulo_service with {
-      size md
-      color green
-    }
-
-    // ===== SERVICIOS DE APU (ANÁLISIS DE PRECIOS UNITARIOS) =====
-
-    // Servicio de APU
-    include ps_apu_service with {
-      size md
-      color blue
-    }
-
-    // Servicio de composición APU
-    include ps_composicion_apu_service with {
-      size md
-      color blue
-    }
-
-    // ===== SERVICIOS DE RECURSOS =====
-
-    // Servicio principal de recursos
-    include ps_recurso_service with {
-      size md
-      color secondary
-    }
-
-    // Servicio de recursos en presupuestos
-    include ps_recurso_presupuesto_service with {
-      size sm
-      color secondary
-    }
-
-    // ===== RELACIONES INTERNAS (se muestran automáticamente) =====
-    // Nota: Las relaciones entre componentes se definen en system.c4
-    // Aquí solo se incluyen los componentes para mostrar la estructura
-
-    // ===== NAVEGACIÓN A OTROS MICROSERVICIOS =====
-    // Nota: Las relaciones reales se definen en system.c4
-    // Aquí solo se incluyen navegaciones para drill-down
-
-    // ===== RELACIONES CON INFRAESTRUCTURA Y EXTERNOS =====
-    // Nota: Las conexiones con infraestructura se muestran automáticamente desde system.c4
-  }
-
-  // Recursos
-  view components_recursos of inacons.recursos_ms {
-    title "Componentes - Recursos (Nivel 3)"
-    description "Gestión de recursos y trazabilidad - Pendiente de implementación detallada"
-
-    // Nota: Componentes de Recursos pendientes de definición
-    // Se mostrarán cuando se implementen los archivos correspondientes
-  }
-
-  // Almacén
-  view components_almacen of inacons.almacen_ms {
-    title "Componentes - Almacén (Nivel 3)"
-    description "Gestión completa de almacén, inventarios y transferencias"
-
-    // ===== RESOLVERS =====
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
     group "API GraphQL" {
       color primary
 
-      include al_almacen_resolver
-      include al_inventario_resolver
-      include al_transferencia_resolver
-      include al_bodega_resolver
-      include al_recepcion_resolver
+      include ps_graphql_api
     }
 
-    // ===== SERVICIOS =====
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS
     group "Servicios" {
       color green
 
-      include al_almacen_service
-      include al_almacen_completo_service
-      include al_inventario_service
-      include al_transferencia_service
-      include al_bodega_service
-      include al_recepcion_service
-      include al_producto_service
-      include al_reporte_almacen_service
-      include al_dashboard_almacen_service
+      include ps_presupuesto_service
+      include ps_proyecto_service
+      include ps_titulo_service
+      include ps_recurso_service
+      include ps_apu_service
+      include ps_centro_costo_service
+      include ps_reporte_presupuesto_service
+      include ps_dashboard_presupuesto_service
     }
 
-    // ===== REPOSITORIES =====
-    group "Repositories" {
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include ps_presupuesto_resolver
+      include ps_proyecto_resolver
+      include ps_titulo_resolver
+      include ps_recurso_resolver
+      include ps_apu_resolver
+      include ps_centro_costo_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
       color muted
 
-      include al_almacen_repo
-      include al_inventario_repo
-      include al_transferencia_repo
-      include al_bodega_repo
-      include al_recepcion_repo
-      include al_producto_repo
+      include ps_presupuesto_model
+      include ps_proyecto_model
+      include ps_titulo_model
+      include ps_recurso_model
+      include ps_apu_model
+      include ps_centro_costo_model
+      include ps_detalle_partida_model
     }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include ps_mongodb
+      include ps_redis
+      include ps_queue_service
+    }
+
+    // ===== RELACIONES REALES =====
+    // Nota: Las relaciones se definen en el archivo components.c4
   }
 
   // Activos Fijos
   view components_activos_fijos of inacons.activos_fijos_ms {
     title "Componentes - Activos Fijos (Nivel 3)"
-    description "Gestión completa de creación y marcado de activos fijos"
+    description "Gestión completa de creación, marcado y sincronización de activos fijos"
 
     // ===== RESOLVERS =====
     group "API GraphQL" {
       color primary
 
-      include af_activo_fijo_resolver
+      include af_graphql_api
     }
 
     // ===== SERVICIOS =====
@@ -446,9 +833,9 @@ views {
       color green
 
       include af_activo_fijo_service
-      include af_procesamiento_activos_service
-      include af_marcado_service
-      include af_sincronizacion_service
+      include af_creacion_activo_fijo_service
+      include af_recurso_activo_fijo_service
+      include af_activo_fijo_completo_service
     }
 
     // ===== MODELOS =====
@@ -457,10 +844,10 @@ views {
 
       include af_creacion_activo_fijo_model
       include af_recurso_activo_fijo_model
-      include af_data_adicional_model
-      include af_data_adicional_texto_model
       include af_recurso_creacion_model
       include af_servicio_creacion_model
+      include af_data_adicional_model
+      include af_data_adicional_texto_model
     }
   }
 
@@ -473,40 +860,27 @@ views {
     group "API GraphQL" {
       color primary
 
-      include cb_combustible_resolver
-      include cb_tanque_resolver
-      include cb_surtidor_resolver
-      include cb_venta_combustible_resolver
-      include cb_informe_diario_resolver
+      include cm_graphql_api
     }
 
     // ===== SERVICIOS =====
     group "Servicios" {
       color green
 
-      include cb_combustible_service
-      include cb_combustible_completo_service
-      include cb_tanque_service
-      include cb_surtidor_service
-      include cb_venta_combustible_service
-      include cb_informe_diario_service
-      include cb_inventario_combustible_service
-      include cb_precio_combustible_service
-      include cb_reporte_combustible_service
-      include cb_dashboard_combustible_service
-      include cb_reporte_venta_service
+      include cm_combustible_service
+      include cm_almacen_combustible_service
+      include cm_combustible_completo_service
     }
 
     // ===== REPOSITORIES =====
     group "Repositories" {
       color muted
 
-      include cb_combustible_repo
-      include cb_tanque_repo
-      include cb_surtidor_repo
-      include cb_venta_combustible_repo
-      include cb_informe_diario_repo
-      include cb_inventario_combustible_repo
+      include cm_combustible_model
+      include cm_almacen_combustible_model
+      include cm_ingreso_combustible_model
+      include cm_salida_combustible_model
+      include cm_reporte_combustible_model
     }
   }
 
@@ -556,7 +930,7 @@ views {
       include pg_usuario_model
       include pg_comprobante_model
       include pg_estado_pago_model
-      include pg_transferencia_model
+      include pg_transferencia_detalle_model
     }
 
     // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA

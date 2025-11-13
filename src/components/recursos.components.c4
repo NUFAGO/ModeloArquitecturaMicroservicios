@@ -1,25 +1,330 @@
-// components/recursos.components.c4 - Componentes del módulo Recursos
+// components/recursos.components.c4 - Microservicio de Recursos (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo rc_ para Recursos
+  // ===== 🟦 API GRAPHQL =====
+  rc_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de recursos'
+    technology 'Apollo Server + Express.js'
 
-  rc_recurso_api = component 'Recurso API (GraphQL Resolvers)' {
-    technology 'GraphQL + Node.js'
-    description 'Punto de entrada GraphQL para operaciones de recursos'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  rc_recurso_service = component 'Recurso Service (Business Logic)' {
-    technology 'Node.js + TypeScript'
-    description 'Lógica de negocio principal para gestión de recursos'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  rc_recurso_service = application 'RecursoService' {
+    description 'Servicio principal para gestión completa de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  rc_recurso_repo = component 'Recurso Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para entidades de recurso'
+  rc_tipo_recurso_service = application 'TipoRecursoService' {
+    description 'Servicio para gestión de tipos de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  rc_trazabilidad_service = component 'Trazabilidad Service' {
-    technology 'Node.js + TypeScript'
-    description 'Sistema de trazabilidad y seguimiento de recursos'
+  rc_unidad_service = application 'UnidadService' {
+    description 'Servicio para gestión de unidades de medida'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
+
+  // ===== 🟨 RESOLVERS =====
+  rc_recurso_resolver = component 'RecursoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de recursos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rc_tipo_recurso_resolver = component 'TipoRecursoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de tipos de recursos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rc_unidad_resolver = component 'UnidadResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de unidades'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  rc_recurso_model = component 'Recurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rc_tipo_recurso_model = component 'TipoRecurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para tipos de recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rc_unidad_model = component 'Unidad Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para unidades de medida'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rc_clasificacion_recurso_model = component 'ClasificacionRecurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para clasificaciones de recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rc_tipo_costo_recurso_model = component 'TipoCostoRecurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para tipos de costo de recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  rc_recurso_presupuesto_service = application 'RecursoPresupuestoService' {
+    description 'Servicio para recursos asociados a presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_recurso_obra_service = application 'RecursoObraService' {
+    description 'Servicio para recursos asociados a obras'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_recurso_seguimiento_total_service = application 'RecursoSeguimientoTotalService' {
+    description 'Servicio para seguimiento completo de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE CLASIFICACIÓN =====
+  rc_clasificacion_recurso_service = application 'ClasificacionRecursoService' {
+    description 'Servicio para clasificación de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_tipo_costo_recurso_service = application 'TipoCostoRecursoService' {
+    description 'Servicio para tipos de costo de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE TRAZABILIDAD =====
+  rc_trazar_recursos_service = application 'TrazarRecursosService' {
+    description 'Sistema de trazabilidad de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_sincronizar_recursos_service = application 'SincronizarRecursosService' {
+    description 'Servicio para sincronización de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE APU =====
+  rc_recurso_composicion_apu_service = application 'RecursoComposicionApuService' {
+    description 'Servicio para recursos en composiciones APU'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PRECIOS =====
+  rc_precio_recurso_proyecto_service = application 'PrecioRecursoProyectoService' {
+    description 'Servicio para precios de recursos por proyecto'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE CONSUMO =====
+  rc_consumo_recurso_service = application 'ConsumoRecursoService' {
+    description 'Servicio para consumo de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_consumo_service = application 'ConsumoService' {
+    description 'Servicio principal para gestión de consumos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE MOVIMIENTOS =====
+  rc_prestamo_recurso_service = application 'PrestamoRecursoService' {
+    description 'Servicio para préstamos de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rc_prestamo_service = application 'PrestamoService' {
+    description 'Servicio principal para gestión de préstamos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  rc_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  rc_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  rc_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  rc_graphql_api -> rc_recurso_resolver 'Procesa queries/mutations'
+  rc_graphql_api -> rc_tipo_recurso_resolver 'Procesa queries/mutations'
+  rc_graphql_api -> rc_unidad_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  rc_recurso_resolver -> rc_recurso_service 'Delega operaciones'
+  rc_tipo_recurso_resolver -> rc_tipo_recurso_service 'Delega operaciones'
+  rc_unidad_resolver -> rc_unidad_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  rc_recurso_service -> rc_recurso_model 'Persiste datos'
+  rc_tipo_recurso_service -> rc_tipo_recurso_model 'Persiste datos'
+  rc_unidad_service -> rc_unidad_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  rc_recurso_presupuesto_service -> rc_recurso_model 'Asociación presupuestos'
+  rc_recurso_obra_service -> rc_recurso_model 'Asociación obras'
+  rc_recurso_seguimiento_total_service -> rc_recurso_model 'Seguimiento completo'
+
+  // Servicios de Clasificación → Modelos
+  rc_clasificacion_recurso_service -> rc_clasificacion_recurso_model 'Clasifica recursos'
+  rc_tipo_costo_recurso_service -> rc_tipo_costo_recurso_model 'Define costos'
+
+  // Servicios de Trazabilidad → Modelos
+  rc_trazar_recursos_service -> rc_recurso_model 'Trazabilidad'
+  rc_sincronizar_recursos_service -> rc_recurso_model 'Sincronización'
+
+  // Servicios de APU → Modelos
+  rc_recurso_composicion_apu_service -> rc_recurso_model 'Composiciones APU'
+
+  // Servicios de Precios → Modelos
+  rc_precio_recurso_proyecto_service -> rc_recurso_model 'Precios por proyecto'
+
+  // Servicios de Consumo → Modelos
+  rc_consumo_recurso_service -> rc_recurso_model 'Registra consumos'
+  rc_consumo_service -> rc_recurso_model 'Gestiona consumos'
+
+  // Servicios de Movimientos → Modelos
+  rc_prestamo_recurso_service -> rc_recurso_model 'Préstamos recursos'
+  rc_prestamo_service -> rc_recurso_model 'Gestiona préstamos'
+
+  // Servicios colaboran entre sí (Flujo de Recursos)
+  rc_recurso_service -> rc_tipo_recurso_service 'Clasifica tipos'
+  rc_recurso_service -> rc_unidad_service 'Define unidades'
+  rc_recurso_service -> rc_clasificacion_recurso_service 'Clasifica recursos'
+  rc_recurso_service -> rc_tipo_costo_recurso_service 'Define costos'
+
+  rc_recurso_service -> rc_recurso_presupuesto_service 'Integra presupuestos'
+  rc_recurso_service -> rc_recurso_obra_service 'Integra obras'
+  rc_recurso_service -> rc_recurso_seguimiento_total_service 'Seguimiento total'
+  rc_recurso_service -> rc_recurso_composicion_apu_service 'Integra APU'
+
+  rc_recurso_service -> rc_precio_recurso_proyecto_service 'Gestiona precios'
+  rc_recurso_service -> rc_consumo_recurso_service 'Controla consumos'
+  rc_recurso_service -> rc_prestamo_recurso_service 'Gestiona préstamos'
+
+  rc_recurso_service -> rc_trazar_recursos_service 'Trazabilidad'
+  rc_recurso_service -> rc_sincronizar_recursos_service 'Sincronización'
+
+  rc_consumo_service -> rc_consumo_recurso_service 'Detalla consumos'
+  rc_prestamo_service -> rc_prestamo_recurso_service 'Detalla préstamos'
+
+  // Servicios → Infraestructura
+  rc_recurso_service -> rc_mongodb 'Accede a base de datos'
+  rc_tipo_recurso_service -> rc_mongodb 'Accede a base de datos'
+  rc_unidad_service -> rc_mongodb 'Accede a base de datos'
+
+  rc_recurso_service -> rc_redis 'Usa cache'
+  rc_tipo_recurso_service -> rc_redis 'Usa cache'
+
+  // Servicios de Trazabilidad → Queue
+  rc_sincronizar_recursos_service -> rc_queue_service 'Sincroniza async'
 }

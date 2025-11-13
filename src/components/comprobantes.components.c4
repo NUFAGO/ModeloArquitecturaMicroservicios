@@ -1,249 +1,235 @@
-// components/comprobantes.components.c4 - Componentes del módulo Comprobantes
+// components/comprobantes.components.c4 - Microservicio de Comprobantes (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo cm_ para Comprobantes
+  // ===== 🟦 API GRAPHQL =====
+  cb_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de comprobantes'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  cm_comprobante_resolver = component 'Comprobante Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para comprobantes - ComprobanteResolver.ts'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  cm_factura_resolver = component 'Factura Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para facturas - FacturaResolver.ts'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  cb_comprobante_service = application 'ComprobanteService' {
+    description 'Servicio principal para gestión de comprobantes contables'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_boleta_resolver = component 'Boleta Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para boletas - BoletaResolver.ts'
+  cb_tipo_comprobante_service = application 'TipoComprobanteService' {
+    description 'Servicio para gestión de tipos de comprobantes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_nota_credito_resolver = component 'Nota Crédito Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para notas de crédito - NotaCreditoResolver.ts'
+  cb_sunat_service = application 'SunatService' {
+    description 'Servicio para integración con SUNAT'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_nota_debito_resolver = component 'Nota Débito Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para notas de débito - NotaDebitoResolver.ts'
+  // ===== 🟨 RESOLVERS =====
+  cb_comprobante_resolver = component 'ComprobanteResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de comprobantes'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== SERVICIOS CORE =====
-  cm_comprobante_service = component 'Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal de comprobantes - ComprobanteService.ts'
+  cb_tipo_comprobante_resolver = component 'TipoComprobanteResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de tipos de comprobantes'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  cm_comprobante_completo_service = component 'Comprobante Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión completa de comprobantes - ComprobanteCompletoService.ts'
+  cb_sunat_resolver = component 'SunatResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de integración SUNAT'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  cm_factura_service = component 'Factura Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión específica de facturas - FacturaService.ts'
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  cb_comprobante_model = component 'Comprobante Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para comprobantes contables'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  cm_factura_completo_service = component 'Factura Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio completo de facturas - FacturaCompletoService.ts'
+  cb_tipo_comprobante_model = component 'TipoComprobante Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para tipos de comprobantes'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  cm_boleta_service = component 'Boleta Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión específica de boletas - BoletaService.ts'
+  cb_constancia_comprobante_model = component 'ConstanciaComprobante Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para constancias de comprobantes'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  cm_boleta_completo_service = component 'Boleta Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio completo de boletas - BoletaCompletoService.ts'
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  cb_comprobante_archivos_service = application 'ComprobanteArchivosService' {
+    description 'Servicio para gestión de archivos de comprobantes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE NOTAS =====
-  cm_nota_credito_service = component 'Nota Crédito Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de notas de crédito - NotaCreditoService.ts'
+  cb_registro_comprobante_service = application 'RegistroComprobanteService' {
+    description 'Servicio para registro de comprobantes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_nota_credito_completo_service = component 'Nota Crédito Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio completo de notas de crédito - NotaCreditoCompletoService.ts'
+  cb_registro_constancia_pago_service = application 'RegistroConstanciaPagoService' {
+    description 'Servicio para registro de constancias de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_nota_debito_service = component 'Nota Débito Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de notas de débito - NotaDebitoService.ts'
+  // ===== 🔄 SERVICIOS DE APROBACIONES =====
+  cb_aprobacion_comprobante_service = application 'AprobacionComprobanteService' {
+    description 'Servicio para aprobaciones de comprobantes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_nota_debito_completo_service = component 'Nota Débito Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio completo de notas de débito - NotaDebitoCompletoService.ts'
+  cb_aprobacion_constancias_comprobante_service = application 'AprobacionConstanciasComprobanteService' {
+    description 'Servicio para aprobaciones de constancias'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE NUMERACIÓN =====
-  cm_numeracion_service = component 'Numeración Service' {
-    technology 'Node.js + TypeScript'
-    description 'Control de numeración de comprobantes - NumeracionService.ts'
+  // ===== 🔄 SERVICIOS DE REPORTES =====
+  cb_reporte_comprobante_pago_service = application 'ReporteComprobantePagoService' {
+    description 'Servicio para reportes de comprobantes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cm_serie_service = component 'Serie Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de series de comprobantes - SerieService.ts'
+  // ===== 🔄 SERVICIOS DE VALIDACIÓN =====
+  cb_documento_validacion_service = application 'DocumentoValidacionService' {
+    description 'Servicio para validación de documentos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE IMPUESTOS =====
-  cm_impuesto_service = component 'Impuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Cálculos y gestión de impuestos - ImpuestoService.ts'
+  // ===== ⚫ INFRAESTRUCTURA =====
+  cb_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
   }
 
-  cm_igv_service = component 'IGV Service' {
-    technology 'Node.js + TypeScript'
-    description 'Cálculos específicos de IGV - IgvService.ts'
+  cb_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
   }
 
-  // ===== SERVICIOS DE DETALLES =====
-  cm_detalle_comprobante_service = component 'Detalle Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de detalles de comprobantes - DetalleComprobanteService.ts'
+  cb_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
   }
 
-  cm_item_comprobante_service = component 'Item Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Items y productos en comprobantes - ItemComprobanteService.ts'
-  }
+  // ===== 🔄 RELACIONES REALES =====
 
-  // ===== SERVICIOS DE VALIDACIÓN =====
-  cm_validacion_comprobante_service = component 'Validación Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Validación de comprobantes - ValidacionComprobanteService.ts'
-  }
+  // API → Resolvers
+  cb_graphql_api -> cb_comprobante_resolver 'Procesa queries/mutations'
+  cb_graphql_api -> cb_tipo_comprobante_resolver 'Procesa queries/mutations'
+  cb_graphql_api -> cb_sunat_resolver 'Procesa queries/mutations'
 
-  cm_firma_digital_service = component 'Firma Digital Service' {
-    technology 'Node.js + TypeScript'
-    description 'Firma digital de comprobantes - FirmaDigitalService.ts'
-  }
+  // Resolvers → Servicios Principales
+  cb_comprobante_resolver -> cb_comprobante_service 'Delega operaciones'
+  cb_tipo_comprobante_resolver -> cb_tipo_comprobante_service 'Delega operaciones'
+  cb_sunat_resolver -> cb_sunat_service 'Delega operaciones'
 
-  // ===== SERVICIOS DE INTEGRACIÓN =====
-  cm_sire_service = component 'SIRE Service' {
-    technology 'Node.js + TypeScript'
-    description 'Integración con SUNAT SIRE - SireService.ts'
-  }
+  // Servicios Principales → Modelos
+  cb_comprobante_service -> cb_comprobante_model 'Persiste datos'
+  cb_tipo_comprobante_service -> cb_tipo_comprobante_model 'Persiste datos'
+  cb_sunat_service -> cb_comprobante_model 'Integra SUNAT'
 
-  cm_sunat_service = component 'SUNAT Service' {
-    technology 'Node.js + TypeScript'
-    description 'Integración con SUNAT - SunatService.ts'
-  }
+  // Servicios Especializados → Modelos
+  cb_comprobante_archivos_service -> cb_comprobante_model 'Gestiona archivos'
+  cb_registro_comprobante_service -> cb_comprobante_model 'Registra comprobantes'
+  cb_registro_constancia_pago_service -> cb_constancia_comprobante_model 'Registra constancias'
 
-  cm_facturacion_electronica_service = component 'Facturación Electrónica Service' {
-    technology 'Node.js + TypeScript'
-    description 'Sistema de facturación electrónica - FacturacionElectronicaService.ts'
-  }
+  // Servicios de Aprobaciones → Modelos
+  cb_aprobacion_comprobante_service -> cb_comprobante_model 'Aprueba comprobantes'
+  cb_aprobacion_constancias_comprobante_service -> cb_constancia_comprobante_model 'Aprueba constancias'
 
-  // ===== SERVICIOS DE REPORTES =====
-  cm_reporte_comprobante_service = component 'Reporte Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Generación de reportes de comprobantes - ReporteComprobanteService.ts'
-  }
+  // Servicios de Reportes → Modelos
+  cb_reporte_comprobante_pago_service -> cb_comprobante_model 'Genera reportes'
 
-  cm_dashboard_comprobante_service = component 'Dashboard Comprobante Service' {
-    technology 'Node.js + TypeScript'
-    description 'Dashboard y métricas de comprobantes - DashboardComprobanteService.ts'
-  }
+  // Servicios de Validación → Modelos
+  cb_documento_validacion_service -> cb_comprobante_model 'Valida documentos'
 
-  // ===== SERVICIOS DE CENTROS DE COSTO =====
-  cm_comprobante_centro_costo_service = component 'Comprobante Centro Costo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Relación comprobante-centro de costo - ComprobanteCentroCostoService.ts'
-  }
+  // Servicios colaboran entre sí (Flujo de Comprobantes)
+  cb_comprobante_service -> cb_tipo_comprobante_service 'Clasifica comprobantes'
+  cb_comprobante_service -> cb_comprobante_archivos_service 'Gestiona archivos adjuntos'
+  cb_comprobante_service -> cb_registro_comprobante_service 'Registra operaciones'
+  cb_comprobante_service -> cb_aprobacion_comprobante_service 'Inicia aprobaciones'
 
-  // ===== REPOSITORIES =====
-  cm_comprobante_repo = component 'Comprobante Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para entidades de comprobante - ComprobanteRepository.ts'
-  }
+  cb_aprobacion_comprobante_service -> cb_registro_constancia_pago_service 'Genera constancias'
+  cb_aprobacion_comprobante_service -> cb_aprobacion_constancias_comprobante_service 'Aprueba constancias'
+  cb_aprobacion_comprobante_service -> cb_reporte_comprobante_pago_service 'Genera reportes'
 
-  cm_factura_repo = component 'Factura Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para facturas - FacturaRepository.ts'
-  }
+  cb_sunat_service -> cb_documento_validacion_service 'Valida con SUNAT'
+  cb_comprobante_service -> cb_sunat_service 'Integra validaciones'
 
-  cm_boleta_repo = component 'Boleta Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para boletas - BoletaRepository.ts'
-  }
+  // Servicios → Infraestructura
+  cb_comprobante_service -> cb_mongodb 'Accede a base de datos'
+  cb_tipo_comprobante_service -> cb_mongodb 'Accede a base de datos'
+  cb_sunat_service -> cb_mongodb 'Accede a base de datos'
 
-  cm_nota_credito_repo = component 'Nota Crédito Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para notas de crédito - NotaCreditoRepository.ts'
-  }
+  cb_comprobante_service -> cb_redis 'Usa cache'
+  cb_tipo_comprobante_service -> cb_redis 'Usa cache'
 
-  cm_nota_debito_repo = component 'Nota Débito Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para notas de débito - NotaDebitoRepository.ts'
-  }
-
-  cm_numeracion_repo = component 'Numeración Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para numeración - NumeracionRepository.ts'
-  }
-
-  // ===== RELACIONES INTERNAS =====
-
-  // Resolvers delegan a servicios
-  cm_comprobante_resolver -> cm_comprobante_service 'Queries/Mutations'
-  cm_factura_resolver -> cm_factura_service 'Queries/Mutations'
-  cm_boleta_resolver -> cm_boleta_service 'Queries/Mutations'
-  cm_nota_credito_resolver -> cm_nota_credito_service 'Queries/Mutations'
-  cm_nota_debito_resolver -> cm_nota_debito_service 'Queries/Mutations'
-
-  // Servicios completos/complejos
-  cm_comprobante_service -> cm_comprobante_completo_service 'Gestión completa'
-  cm_factura_service -> cm_factura_completo_service 'Factura completa'
-  cm_boleta_service -> cm_boleta_completo_service 'Boleta completa'
-  cm_nota_credito_service -> cm_nota_credito_completo_service 'Nota crédito completa'
-  cm_nota_debito_service -> cm_nota_debito_completo_service 'Nota débito completa'
-
-  // Tipos de comprobantes
-  cm_comprobante_service -> cm_factura_service 'Facturas'
-  cm_comprobante_service -> cm_boleta_service 'Boletas'
-  cm_comprobante_service -> cm_nota_credito_service 'Notas de crédito'
-  cm_comprobante_service -> cm_nota_debito_service 'Notas de débito'
-
-  // Numeración y series
-  cm_comprobante_service -> cm_numeracion_service 'Numeración'
-  cm_numeracion_service -> cm_serie_service 'Series'
-
-  // Impuestos y cálculos
-  cm_comprobante_service -> cm_impuesto_service 'Cálculos fiscales'
-  cm_impuesto_service -> cm_igv_service 'IGV específico'
-
-  // Detalles de comprobantes
-  cm_comprobante_service -> cm_detalle_comprobante_service 'Detalles'
-  cm_detalle_comprobante_service -> cm_item_comprobante_service 'Items'
-
-  // Validación y firma
-  cm_comprobante_service -> cm_validacion_comprobante_service 'Validación'
-  cm_comprobante_service -> cm_firma_digital_service 'Firma digital'
-
-  // Integraciones externas
-  cm_comprobante_service -> cm_sire_service 'Reportes SIRE'
-  cm_comprobante_service -> cm_sunat_service 'Integración SUNAT'
-  cm_comprobante_service -> cm_facturacion_electronica_service 'Facturación electrónica'
-
-  // Reportes y dashboards
-  cm_comprobante_service -> cm_reporte_comprobante_service 'Reportes'
-  cm_comprobante_service -> cm_dashboard_comprobante_service 'Dashboards'
-
-  // Centros de costo
-  cm_comprobante_service -> cm_comprobante_centro_costo_service 'Asignación costos'
-
-  // Todos los servicios usan repositories
-  cm_comprobante_service -> cm_comprobante_repo 'Repository'
-  cm_factura_service -> cm_factura_repo 'Repository'
-  cm_boleta_service -> cm_boleta_repo 'Repository'
-  cm_nota_credito_service -> cm_nota_credito_repo 'Repository'
-  cm_nota_debito_service -> cm_nota_debito_repo 'Repository'
-  cm_numeracion_service -> cm_numeracion_repo 'Repository'
+  // Servicios de Reportes → Queue
+  cb_reporte_comprobante_pago_service -> cb_queue_service 'Genera reportes async'
 }

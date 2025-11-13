@@ -1,20 +1,304 @@
-// components/formularios.components.c4 - Componentes del módulo Formularios
+// components/formularios.components.c4 - Microservicio de Formularios (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo fm_ para Formularios
+  // ===== 🟦 API GRAPHQL =====
+  fm_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de formularios'
+    technology 'Apollo Server + Express.js'
 
-  fm_formulario_api = component 'Formulario API (GraphQL Resolvers)' {
-    technology 'GraphQL + Node.js'
-    description 'Punto de entrada GraphQL para operaciones de formularios'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  fm_formulario_service = component 'Formulario Service (Business Logic)' {
-    technology 'Node.js + TypeScript'
-    description 'Lógica de negocio principal para gestión de formularios'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  fm_formulario_service = application 'FormularioService' {
+    description 'Servicio principal para gestión completa de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  fm_formulario_repo = component 'Formulario Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para entidades de formulario'
+  fm_formulario_template_service = application 'FormularioTemplateService' {
+    description 'Servicio para gestión de plantillas de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
+
+  fm_formulario_respuesta_service = application 'FormularioRespuestaService' {
+    description 'Servicio para gestión de respuestas de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🟨 RESOLVERS =====
+  fm_formulario_resolver = component 'FormularioResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de formularios'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  fm_formulario_template_resolver = component 'FormularioTemplateResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de plantillas de formularios'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  fm_formulario_respuesta_resolver = component 'FormularioRespuestaResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de respuestas de formularios'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  fm_formulario_model = component 'Formulario Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para formularios'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  fm_formulario_template_model = component 'FormularioTemplate Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para plantillas de formularios'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  fm_formulario_respuesta_model = component 'FormularioRespuesta Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para respuestas de formularios'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  fm_formulario_validacion_model = component 'FormularioValidacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para validaciones de formularios'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  fm_formulario_completo_service = application 'FormularioCompletoService' {
+    description 'Servicio para gestión completa e integral de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_formulario_template_completo_service = application 'FormularioTemplateCompletoService' {
+    description 'Servicio completo para gestión de plantillas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PLANTILLAS =====
+  fm_plantilla_formulario_service = application 'PlantillaFormularioService' {
+    description 'Servicio para creación y gestión de plantillas de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_plantilla_personalizada_service = application 'PlantillaPersonalizadaService' {
+    description 'Servicio para plantillas personalizadas por usuario'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE RESPUESTAS =====
+  fm_respuesta_formulario_service = application 'RespuestaFormularioService' {
+    description 'Servicio especializado para gestión de respuestas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_respuesta_automatica_service = application 'RespuestaAutomaticaService' {
+    description 'Servicio para respuestas automáticas y validaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE VALIDACIÓN =====
+  fm_validacion_formulario_service = application 'ValidacionFormularioService' {
+    description 'Servicio para validación de formularios y respuestas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_validacion_campo_service = application 'ValidacionCampoService' {
+    description 'Servicio para validación de campos individuales'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE REPORTES =====
+  fm_reporte_formulario_service = application 'ReporteFormularioService' {
+    description 'Servicio para reportes de formularios y respuestas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_dashboard_formulario_service = application 'DashboardFormularioService' {
+    description 'Servicio para dashboard y métricas de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE EXPORTACIÓN =====
+  fm_exportacion_formulario_service = application 'ExportacionFormularioService' {
+    description 'Servicio para exportación de datos de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  fm_exportacion_respuestas_service = application 'ExportacionRespuestasService' {
+    description 'Servicio para exportación de respuestas de formularios'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  fm_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  fm_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  fm_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  fm_graphql_api -> fm_formulario_resolver 'Procesa queries/mutations'
+  fm_graphql_api -> fm_formulario_template_resolver 'Procesa queries/mutations'
+  fm_graphql_api -> fm_formulario_respuesta_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  fm_formulario_resolver -> fm_formulario_service 'Delega operaciones'
+  fm_formulario_template_resolver -> fm_formulario_template_service 'Delega operaciones'
+  fm_formulario_respuesta_resolver -> fm_formulario_respuesta_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  fm_formulario_service -> fm_formulario_model 'Persiste datos'
+  fm_formulario_template_service -> fm_formulario_template_model 'Persiste datos'
+  fm_formulario_respuesta_service -> fm_formulario_respuesta_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  fm_formulario_completo_service -> fm_formulario_model 'Gestión integral'
+  fm_formulario_template_completo_service -> fm_formulario_template_model 'Plantillas completas'
+
+  // Servicios de Plantillas → Modelos
+  fm_plantilla_formulario_service -> fm_formulario_template_model 'Crea plantillas'
+  fm_plantilla_personalizada_service -> fm_formulario_template_model 'Personaliza plantillas'
+
+  // Servicios de Respuestas → Modelos
+  fm_respuesta_formulario_service -> fm_formulario_respuesta_model 'Gestiona respuestas'
+  fm_respuesta_automatica_service -> fm_formulario_respuesta_model 'Respuestas automáticas'
+
+  // Servicios de Validación → Modelos
+  fm_validacion_formulario_service -> fm_formulario_validacion_model 'Validaciones'
+  fm_validacion_campo_service -> fm_formulario_validacion_model 'Campos específicos'
+
+  // Servicios de Exportación → Modelos
+  fm_exportacion_formulario_service -> fm_formulario_model 'Exporta formularios'
+  fm_exportacion_respuestas_service -> fm_formulario_respuesta_model 'Exporta respuestas'
+
+  // Servicios colaboran entre sí (Flujo de Formularios)
+  fm_formulario_service -> fm_formulario_completo_service 'Gestión completa'
+  fm_formulario_template_service -> fm_formulario_template_completo_service 'Plantillas completas'
+
+  fm_formulario_service -> fm_formulario_template_service 'Usa plantillas'
+  fm_formulario_template_service -> fm_plantilla_formulario_service 'Crea plantillas base'
+  fm_plantilla_formulario_service -> fm_plantilla_personalizada_service 'Personaliza'
+
+  fm_formulario_service -> fm_formulario_respuesta_service 'Recibe respuestas'
+  fm_formulario_respuesta_service -> fm_respuesta_formulario_service 'Procesa respuestas'
+  fm_respuesta_formulario_service -> fm_respuesta_automatica_service 'Validaciones automáticas'
+
+  fm_formulario_service -> fm_validacion_formulario_service 'Validaciones'
+  fm_validacion_formulario_service -> fm_validacion_campo_service 'Campos específicos'
+
+  fm_formulario_service -> fm_reporte_formulario_service 'Genera reportes'
+  fm_formulario_service -> fm_dashboard_formulario_service 'Muestra métricas'
+  fm_formulario_service -> fm_exportacion_formulario_service 'Exporta datos'
+  fm_formulario_respuesta_service -> fm_exportacion_respuestas_service 'Exporta respuestas'
+
+  // Servicios → Infraestructura
+  fm_formulario_service -> fm_mongodb 'Accede a base de datos'
+  fm_formulario_template_service -> fm_mongodb 'Accede a base de datos'
+  fm_formulario_respuesta_service -> fm_mongodb 'Accede a base de datos'
+
+  fm_formulario_service -> fm_redis 'Usa cache'
+  fm_formulario_template_service -> fm_redis 'Usa cache'
+
+  // Servicios de Exportación → Queue
+  fm_exportacion_formulario_service -> fm_queue_service 'Exporta async'
+  fm_exportacion_respuestas_service -> fm_queue_service 'Exporta respuestas async'
 }

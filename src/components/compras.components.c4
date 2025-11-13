@@ -1,119 +1,390 @@
-// components/compras.components.c4 - Componentes del módulo Compras (REAL)
+// components/compras.components.c4 - Microservicio de Compras (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo cp_ para Compras
+  // ===== 🟦 API GRAPHQL =====
+  cp_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de compras'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  cp_compra_resolver = component 'Compra Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para operaciones de compra'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  cp_cotizacion_resolver = component 'Cotización Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para cotizaciones'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  cp_compra_service = application 'CompraService' {
+    description 'Servicio principal para gestión de compras completas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_proveedor_resolver = component 'Proveedor Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para proveedores'
+  cp_cotizacion_service = application 'CotizacionService' {
+    description 'Servicio para gestión de cotizaciones con proveedores'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_orden_compra_resolver = component 'Orden Compra Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para órdenes de compra'
+  cp_orden_compra_service = application 'OrdenCompraService' {
+    description 'Servicio principal para gestión de órdenes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE NEGOCIO =====
-  cp_compra_service = component 'Compra Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal de compras y procesamiento completo'
+  cp_proveedor_service = application 'ProveedorService' {
+    description 'Servicio para homologación y gestión de proveedores'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_cotizacion_service = component 'Cotización Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de cotizaciones y proveedores'
+  cp_procesador_compra_completa_service = application 'ProcesadorCompraCompletaService' {
+    description 'Servicio para procesamiento completo del flujo de compras'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_proveedor_service = component 'Proveedor Service' {
-    technology 'Node.js + TypeScript'
-    description 'Homologación y gestión de proveedores'
+  // ===== 🟨 RESOLVERS =====
+  cp_compra_resolver = component 'CompraResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de compras'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  cp_orden_compra_service = component 'Orden Compra Service' {
-    technology 'Node.js + TypeScript'
-    description 'Procesamiento de órdenes de compra y servicio'
+  cp_cotizacion_resolver = component 'CotizacionResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de cotizaciones'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  cp_solicitud_compra_service = component 'Solicitud Compra Service' {
-    technology 'Node.js + TypeScript'
+  cp_orden_compra_resolver = component 'OrdenCompraResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de órdenes de compra'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cp_proveedor_resolver = component 'ProveedorResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de proveedores'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cp_solicitud_compra_resolver = component 'SolicitudCompraResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de solicitudes de compra'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  cp_compra_model = component 'Compra Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para compras'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_cotizacion_model = component 'Cotizacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para cotizaciones'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_orden_compra_model = component 'OrdenCompra Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para órdenes de compra'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_proveedor_model = component 'Proveedor Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para proveedores'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_solicitud_compra_model = component 'SolicitudCompra Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para solicitudes de compra'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_comprobante_orden_compra_model = component 'ComprobanteOrdenCompra Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para comprobantes de órdenes de compra'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cp_guia_remision_model = component 'GuiaRemision Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para guías de remisión'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  cp_solicitud_compra_service = application 'SolicitudCompraService' {
     description 'Gestión de solicitudes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_comprobante_orden_compra_service = component 'Comprobante Orden Compra Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de comprobantes de órdenes de compra'
+  cp_comprobante_orden_compra_service = application 'ComprobanteOrdenCompraService' {
+    description 'Servicio para gestión de comprobantes de órdenes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS ESPECIALIZADOS =====
-  cp_aprobacion_cierre_orden_compra_service = component 'Aprobación Cierre Orden Compra Service' {
-    technology 'Node.js + TypeScript'
-    description 'Aprobaciones de cierre de órdenes'
+  cp_guia_remision_service = application 'GuiaRemisionService' {
+    description 'Servicio para gestión de guías de remisión'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_incumplimiento_orden_compra_service = component 'Incumplimiento Orden Compra Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de incumplimientos en órdenes'
+  cp_aprobacion_cierre_orden_compra_service = application 'AprobacionCierreOrdencompraService' {
+    description 'Servicio para aprobaciones de cierre de órdenes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_guia_remision_service = component 'Guía Remisión Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de guías de remisión'
+  cp_incumplimiento_orden_compra_service = application 'IncumplimientoOrdenCompraRecursoService' {
+    description 'Servicio para gestión de incumplimientos en órdenes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE RECURSOS =====
-  cp_compra_recurso_service = component 'Compra Recurso Service' {
-    technology 'Node.js + TypeScript'
+  cp_pago_compra_comprobante_service = application 'PagoCompraComprobanteService' {
+    description 'Servicio para gestión de pagos de compras'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE RECURSOS =====
+  cp_compra_recurso_service = application 'CompraRecursoService' {
     description 'Gestión de recursos en compras'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_orden_compra_recurso_service = component 'Orden Compra Recurso Service' {
-    technology 'Node.js + TypeScript'
+  cp_orden_compra_recurso_service = application 'OrdenCompraRecursoService' {
     description 'Recursos asociados a órdenes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  cp_cotizacion_recurso_service = component 'Cotización Recurso Service' {
-    technology 'Node.js + TypeScript'
+  cp_cotizacion_recurso_service = application 'CotizacionRecursoService' {
     description 'Recursos en cotizaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cp_solicitud_compra_recurso_service = application 'SolicitudCompraRecursoService' {
+    description 'Recursos en solicitudes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cp_seguimiento_cotizacion_recurso_service = application 'SeguimientoCotizacionRecursoService' {
+    description 'Seguimiento de recursos en cotizaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PROCESAMIENTO =====
+  cp_email_service = application 'EmailService' {
+    description 'Servicio de envío de correos electrónicos para compras'
+    technology 'NodeMailer + Gmail API'
+  }
+
+  cp_notificacion_cotizacion_service = application 'NotificacionCotizacionService' {
+    description 'Servicio de notificaciones para cotizaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cp_notificacion_orden_compra_service = application 'NotificacionOrdenCompraService' {
+    description 'Servicio de notificaciones para órdenes de compra'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
   // ===== SERVICIOS DE DOCUMENTOS =====
-  cp_documento_cotizacion_service = component 'Documento Cotización Service' {
-    technology 'Node.js + TypeScript'
+  cp_documento_cotizacion_service = application 'DocumentoCotizacionService' {
     description 'Gestión documental de cotizaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== RELACIONES INTERNAS =====
+  // ===== ⚫ INFRAESTRUCTURA =====
+  cp_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
 
-  // Resolvers delegan a servicios
-  cp_compra_resolver -> cp_compra_service 'Queries/Mutations'
-  cp_cotizacion_resolver -> cp_cotizacion_service 'Queries/Mutations'
-  cp_proveedor_resolver -> cp_proveedor_service 'Queries/Mutations'
-  cp_orden_compra_resolver -> cp_orden_compra_service 'Queries/Mutations'
+  cp_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
 
-  // Servicios colaboran entre sí
+  cp_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  cp_graphql_api -> cp_compra_resolver 'Procesa queries/mutations'
+  cp_graphql_api -> cp_cotizacion_resolver 'Procesa queries/mutations'
+  cp_graphql_api -> cp_orden_compra_resolver 'Procesa queries/mutations'
+  cp_graphql_api -> cp_proveedor_resolver 'Procesa queries/mutations'
+  cp_graphql_api -> cp_solicitud_compra_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  cp_compra_resolver -> cp_compra_service 'Delega operaciones'
+  cp_cotizacion_resolver -> cp_cotizacion_service 'Delega operaciones'
+  cp_orden_compra_resolver -> cp_orden_compra_service 'Delega operaciones'
+  cp_proveedor_resolver -> cp_proveedor_service 'Delega operaciones'
+  cp_solicitud_compra_resolver -> cp_solicitud_compra_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  cp_compra_service -> cp_compra_model 'Persiste datos'
+  cp_cotizacion_service -> cp_cotizacion_model 'Persiste datos'
+  cp_orden_compra_service -> cp_orden_compra_model 'Persiste datos'
+  cp_proveedor_service -> cp_proveedor_model 'Persiste datos'
+  cp_solicitud_compra_service -> cp_solicitud_compra_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  cp_comprobante_orden_compra_service -> cp_comprobante_orden_compra_model 'Persiste datos'
+  cp_guia_remision_service -> cp_guia_remision_model 'Persiste datos'
+
+  // Servicios colaboran entre sí (Flujo de Compras)
   cp_compra_service -> cp_cotizacion_service 'Inicia cotización'
-  cp_compra_service -> cp_orden_compra_service 'Genera órdenes'
+  cp_compra_service -> cp_orden_compra_service 'Genera órdenes de compra'
   cp_compra_service -> cp_solicitud_compra_service 'Crea solicitudes'
 
   cp_cotizacion_service -> cp_proveedor_service 'Valida proveedores'
   cp_cotizacion_service -> cp_cotizacion_recurso_service 'Gestiona recursos'
+  cp_cotizacion_service -> cp_seguimiento_cotizacion_recurso_service 'Seguimiento recursos'
   cp_cotizacion_service -> cp_documento_cotizacion_service 'Documentos'
+  cp_cotizacion_service -> cp_notificacion_cotizacion_service 'Envía notificaciones'
 
-  cp_orden_compra_service -> cp_orden_compra_recurso_service 'Recursos'
-  cp_orden_compra_service -> cp_comprobante_orden_compra_service 'Comprobantes'
-  cp_orden_compra_service -> cp_guia_remision_service 'Guías'
-
+  cp_orden_compra_service -> cp_orden_compra_recurso_service 'Gestiona recursos'
+  cp_orden_compra_service -> cp_comprobante_orden_compra_service 'Genera comprobantes'
+  cp_orden_compra_service -> cp_guia_remision_service 'Gestiona guías'
   cp_orden_compra_service -> cp_aprobacion_cierre_orden_compra_service 'Aprobaciones'
   cp_orden_compra_service -> cp_incumplimiento_orden_compra_service 'Incumplimientos'
+  cp_orden_compra_service -> cp_pago_compra_comprobante_service 'Procesamiento pagos'
+  cp_orden_compra_service -> cp_notificacion_orden_compra_service 'Envía notificaciones'
+
+  cp_procesador_compra_completa_service -> cp_compra_service 'Orquesta flujo completo'
+  cp_procesador_compra_completa_service -> cp_cotizacion_service 'Orquesta cotizaciones'
+  cp_procesador_compra_completa_service -> cp_orden_compra_service 'Orquesta órdenes'
+
+  // Servicios de Recursos
+  cp_compra_recurso_service -> cp_compra_model 'Relaciona recursos'
+  cp_cotizacion_recurso_service -> cp_cotizacion_model 'Relaciona recursos'
+  cp_orden_compra_recurso_service -> cp_orden_compra_model 'Relaciona recursos'
+  cp_solicitud_compra_recurso_service -> cp_solicitud_compra_model 'Relaciona recursos'
+
+  // Servicios → Infraestructura
+  cp_compra_service -> cp_mongodb 'Accede a base de datos'
+  cp_cotizacion_service -> cp_mongodb 'Accede a base de datos'
+  cp_orden_compra_service -> cp_mongodb 'Accede a base de datos'
+  cp_proveedor_service -> cp_mongodb 'Accede a base de datos'
+
+  cp_compra_service -> cp_redis 'Usa cache'
+  cp_cotizacion_service -> cp_redis 'Usa cache'
+  cp_orden_compra_service -> cp_redis 'Usa cache'
+
+  // Servicios de Notificaciones → Queue
+  cp_notificacion_cotizacion_service -> cp_queue_service 'Envía emails async'
+  cp_notificacion_orden_compra_service -> cp_queue_service 'Envía emails async'
+  cp_email_service -> cp_queue_service 'Procesa emails async'
 }

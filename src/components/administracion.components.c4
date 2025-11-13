@@ -1,75 +1,239 @@
-// components/administracion.components.c4 - Componentes del módulo Administración (REAL)
+// components/administracion.components.c4 - Microservicio de Administración (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo ad_ para Administración
+  // ===== 🟦 API GRAPHQL =====
+  ad_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de administración'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  ad_usuario_resolver = component 'Usuario Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para operaciones de usuarios'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  ad_acceso_resolver = component 'Acceso Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para gestión de accesos y permisos'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  ad_empresa_service = application 'EmpresaService' {
+    description 'Servicio principal para gestión de empresas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ad_role_resolver = component 'Role Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para roles y permisos'
-  }
-
-  // ===== SERVICIOS DE NEGOCIO =====
-  ad_usuario_service = component 'Usuario Service' {
-    technology 'Node.js + TypeScript'
+  ad_usuario_service = application 'UsuarioService' {
     description 'Servicio principal para gestión de usuarios del sistema'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ad_acceso_service = component 'Acceso Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio para gestión de accesos y permisos de usuarios'
+  ad_rol_service = application 'RoleService' {
+    description 'Servicio para gestión de roles y permisos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ad_role_service = component 'Role Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio para gestión de roles y asignación de permisos'
+  ad_menu_service = application 'MenuService' {
+    description 'Servicio para gestión de menús del sistema'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ad_grupo_acceso_service = component 'Grupo Acceso Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio para gestión de grupos de acceso'
+  // ===== 🟨 RESOLVERS =====
+  ad_empresa_resolver = component 'EmpresaResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de empresas'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ad_rol_usuario_service = component 'Rol Usuario Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio para asignación de roles a usuarios'
+  ad_usuario_resolver = component 'UsuarioResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de usuarios'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== MODELOS/ENTIDADES =====
+  ad_rol_resolver = component 'RoleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de roles'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  ad_menu_resolver = component 'MenuResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de menús'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  ad_empresa_model = component 'Empresa Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para empresas'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
   ad_usuario_model = component 'Usuario Model' {
     technology 'Mongoose Schema'
-    description 'Modelo de datos para usuarios del sistema'
+    description 'Modelo de datos para usuarios'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ad_role_model = component 'Role Model' {
+  ad_rol_model = component 'Rol Model' {
     technology 'Mongoose Schema'
-    description 'Modelo de datos para roles y permisos'
+    description 'Modelo de datos para roles del sistema'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ad_grupo_acceso_model = component 'Grupo Acceso Model' {
+  ad_menu_model = component 'Menu Model' {
     technology 'Mongoose Schema'
-    description 'Modelo de datos para grupos de acceso'
+    description 'Modelo de datos para menús del sistema'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== RELACIONES =====
-  // Resolvers → Servicios
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  ad_banco_service = application 'BancoService' {
+    description 'Servicio para gestión de bancos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ad_grupo_acceso_service = application 'GrupoAccesoService' {
+    description 'Servicio para gestión de grupos de acceso'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ad_sistema_service = application 'SistemaService' {
+    description 'Servicio para configuración del sistema'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE CONFIGURACIÓN =====
+  ad_configuracion_service = application 'ConfiguracionService' {
+    description 'Servicio para configuraciones generales del sistema'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ad_auditoria_service = application 'AuditoriaService' {
+    description 'Servicio para auditoría y logs del sistema'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  ad_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  ad_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  ad_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  ad_graphql_api -> ad_empresa_resolver 'Procesa queries/mutations'
+  ad_graphql_api -> ad_usuario_resolver 'Procesa queries/mutations'
+  ad_graphql_api -> ad_rol_resolver 'Procesa queries/mutations'
+  ad_graphql_api -> ad_menu_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  ad_empresa_resolver -> ad_empresa_service 'Delega operaciones'
   ad_usuario_resolver -> ad_usuario_service 'Delega operaciones'
-  ad_acceso_resolver -> ad_acceso_service 'Delega operaciones'
-  ad_role_resolver -> ad_role_service 'Delega operaciones'
+  ad_rol_resolver -> ad_rol_service 'Delega operaciones'
+  ad_menu_resolver -> ad_menu_service 'Delega operaciones'
 
-  // Servicios → Modelos
+  // Servicios Principales → Modelos
+  ad_empresa_service -> ad_empresa_model 'Persiste datos'
   ad_usuario_service -> ad_usuario_model 'Persiste datos'
-  ad_acceso_service -> ad_role_model 'Consulta permisos'
-  ad_role_service -> ad_role_model 'Gestiona roles'
-  ad_grupo_acceso_service -> ad_grupo_acceso_model 'Gestiona grupos'
+  ad_rol_service -> ad_rol_model 'Persiste datos'
+  ad_menu_service -> ad_menu_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  ad_banco_service -> ad_empresa_model 'Relaciona bancos'
+  ad_grupo_acceso_service -> ad_usuario_model 'Gestiona accesos'
+  ad_sistema_service -> ad_empresa_model 'Configura sistema'
+
+  // Servicios de Configuración → Modelos
+  ad_configuracion_service -> ad_empresa_model 'Configuraciones'
+  ad_auditoria_service -> ad_usuario_model 'Audita acciones'
+
+  // Servicios colaboran entre sí (Flujo de Administración)
+  ad_empresa_service -> ad_usuario_service 'Crea usuarios'
+  ad_empresa_service -> ad_banco_service 'Asocia bancos'
+  ad_empresa_service -> ad_configuracion_service 'Configura empresa'
+
+  ad_usuario_service -> ad_rol_service 'Asigna roles'
+  ad_usuario_service -> ad_grupo_acceso_service 'Define accesos'
+  ad_usuario_service -> ad_auditoria_service 'Registra acciones'
+
+  ad_rol_service -> ad_menu_service 'Define permisos de menú'
+  ad_menu_service -> ad_grupo_acceso_service 'Agrupa accesos'
+
+  // Servicios → Infraestructura
+  ad_empresa_service -> ad_mongodb 'Accede a base de datos'
+  ad_usuario_service -> ad_mongodb 'Accede a base de datos'
+  ad_rol_service -> ad_mongodb 'Accede a base de datos'
+  ad_menu_service -> ad_mongodb 'Accede a base de datos'
+
+  ad_empresa_service -> ad_redis 'Usa cache'
+  ad_usuario_service -> ad_redis 'Usa cache'
+
+  // Servicios de Auditoría → Queue
+  ad_auditoria_service -> ad_queue_service 'Procesa logs async'
 }

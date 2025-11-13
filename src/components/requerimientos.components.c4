@@ -1,25 +1,257 @@
-// components/requerimientos.components.c4 - Componentes del módulo Requerimientos
+// components/requerimientos.components.c4 - Microservicio de Requerimientos (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo rq_ para Requerimientos
+  // ===== 🟦 API GRAPHQL =====
+  rq_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de requerimientos'
+    technology 'Apollo Server + Express.js'
 
-  rq_requerimiento_api = component 'Requerimiento API (GraphQL Resolvers)' {
-    technology 'GraphQL + Node.js'
-    description 'Punto de entrada GraphQL para operaciones de requerimientos'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  rq_requerimiento_service = component 'Requerimiento Service (Business Logic)' {
-    technology 'Node.js + TypeScript'
-    description 'Lógica de negocio principal para gestión de requerimientos'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  rq_requerimiento_service = application 'RequerimientoService' {
+    description 'Servicio principal para gestión completa de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  rq_requerimiento_repo = component 'Requerimiento Repository' {
-    technology 'Mongoose ODM'
-    description 'Acceso a datos para entidades de requerimiento'
+  rq_planilla_service = application 'PlanillaService' {
+    description 'Servicio para gestión de planillas de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  rq_planilla_service = component 'Planilla Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de planillas de requerimientos'
+  rq_aprobacion_service = application 'AprobacionService' {
+    description 'Servicio para gestión de aprobaciones de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
+
+  // ===== 🟨 RESOLVERS =====
+  rq_requerimiento_resolver = component 'RequerimientoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de requerimientos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_planilla_resolver = component 'PlanillaResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de planillas'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_aprobacion_resolver = component 'AprobacionResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de aprobaciones'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  rq_requerimiento_model = component 'Requerimiento Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para requerimientos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_planilla_model = component 'Planilla Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para planillas de requerimientos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_aprobacion_model = component 'Aprobacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para aprobaciones'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_estado_requerimiento_model = component 'EstadoRequerimiento Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para estados de requerimientos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  rq_requerimiento_completo_service = application 'RequerimientoCompletoService' {
+    description 'Servicio para gestión completa de requerimientos con flujo completo'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rq_planilla_completo_service = application 'PlanillaCompletoService' {
+    description 'Servicio completo para gestión de planillas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE RECURSOS =====
+  rq_requerimiento_recurso_service = application 'RequerimientoRecursoService' {
+    description 'Servicio para recursos asociados a requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rq_requerimiento_recurso_partida_service = application 'RequerimientoRecursoPartidaService' {
+    description 'Servicio para recursos por partida en requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE APROBACIONES =====
+  rq_aprobacion_requerimiento_service = application 'AprobacionRequerimientoService' {
+    description 'Servicio especializado para aprobaciones de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rq_requerimiento_estado_historial_service = application 'RequerimientoEstadoHistorialService' {
+    description 'Servicio para historial de estados de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE REPORTES =====
+  rq_reporte_requerimiento_service = application 'ReporteRequerimientoService' {
+    description 'Servicio para reportes de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE VALIDACIÓN =====
+  rq_validacion_requerimiento_service = application 'ValidacionRequerimientoService' {
+    description 'Servicio para validación de requerimientos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  rq_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  rq_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  rq_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  rq_graphql_api -> rq_requerimiento_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_planilla_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_aprobacion_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  rq_requerimiento_resolver -> rq_requerimiento_service 'Delega operaciones'
+  rq_planilla_resolver -> rq_planilla_service 'Delega operaciones'
+  rq_aprobacion_resolver -> rq_aprobacion_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  rq_requerimiento_service -> rq_requerimiento_model 'Persiste datos'
+  rq_planilla_service -> rq_planilla_model 'Persiste datos'
+  rq_aprobacion_service -> rq_aprobacion_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  rq_requerimiento_completo_service -> rq_requerimiento_model 'Gestión integral'
+  rq_planilla_completo_service -> rq_planilla_model 'Planilla completa'
+  rq_requerimiento_estado_historial_service -> rq_estado_requerimiento_model 'Historial estados'
+
+  // Servicios de Recursos → Modelos
+  rq_requerimiento_recurso_service -> rq_requerimiento_model 'Asociación recursos'
+  rq_requerimiento_recurso_partida_service -> rq_requerimiento_model 'Recursos por partida'
+
+  // Servicios de Aprobaciones → Modelos
+  rq_aprobacion_requerimiento_service -> rq_aprobacion_model 'Aprobaciones especializadas'
+
+  // Servicios de Validación → Modelos
+  rq_validacion_requerimiento_service -> rq_requerimiento_model 'Validaciones'
+
+  // Servicios colaboran entre sí (Flujo de Requerimientos)
+  rq_requerimiento_service -> rq_requerimiento_completo_service 'Gestión completa'
+  rq_planilla_service -> rq_planilla_completo_service 'Planilla completa'
+
+  rq_requerimiento_service -> rq_planilla_service 'Genera planillas'
+  rq_requerimiento_service -> rq_requerimiento_recurso_service 'Asocia recursos'
+  rq_requerimiento_service -> rq_requerimiento_recurso_partida_service 'Detalla por partida'
+
+  rq_requerimiento_service -> rq_aprobacion_service 'Inicia aprobaciones'
+  rq_aprobacion_service -> rq_aprobacion_requerimiento_service 'Aprobaciones especializadas'
+  rq_aprobacion_service -> rq_requerimiento_estado_historial_service 'Registra historial'
+
+  rq_requerimiento_service -> rq_validacion_requerimiento_service 'Validaciones'
+  rq_requerimiento_service -> rq_reporte_requerimiento_service 'Genera reportes'
+
+  // Servicios → Infraestructura
+  rq_requerimiento_service -> rq_mongodb 'Accede a base de datos'
+  rq_planilla_service -> rq_mongodb 'Accede a base de datos'
+  rq_aprobacion_service -> rq_mongodb 'Accede a base de datos'
+
+  rq_requerimiento_service -> rq_redis 'Usa cache'
+  rq_planilla_service -> rq_redis 'Usa cache'
+  rq_aprobacion_service -> rq_redis 'Usa cache'
+
+  // Servicios de Reportes → Queue
+  rq_reporte_requerimiento_service -> rq_queue_service 'Genera reportes async'
 }

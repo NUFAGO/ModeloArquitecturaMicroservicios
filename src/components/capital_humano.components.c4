@@ -1,91 +1,402 @@
-// components/capital_humano.components.c4 - Componentes del módulo Capital Humano (REAL)
+// components/capital_humano.components.c4 - Microservicio de Capital Humano (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo ch_ para Capital Humano
+  // ===== 🟦 API GRAPHQL =====
+  ch_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de capital humano'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  ch_empleado_resolver = component 'Empleado Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para operaciones de empleados'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  ch_cargo_resolver = component 'Cargo Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para gestión de cargos'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  ch_empleado_service = application 'EmpleadoService' {
+    description 'Servicio principal para gestión de empleados completa'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ch_contrato_resolver = component 'Contrato Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para contratos laborales'
-  }
-
-  ch_departamento_resolver = component 'Departamento Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para departamentos y áreas'
-  }
-
-  // ===== SERVICIOS DE NEGOCIO =====
-  ch_empleado_service = component 'Empleado Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal para gestión de empleados'
-  }
-
-  ch_cargo_service = component 'Cargo Service' {
-    technology 'Node.js + TypeScript'
+  ch_cargo_service = application 'CargoService' {
     description 'Servicio para gestión de cargos y posiciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ch_contrato_service = component 'Contrato Service' {
-    technology 'Node.js + TypeScript'
+  ch_contrato_service = application 'ContratoService' {
     description 'Servicio para gestión de contratos laborales'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ch_departamento_service = component 'Departamento Service' {
-    technology 'Node.js + TypeScript'
+  ch_departamento_service = application 'DepartamentoService' {
     description 'Servicio para gestión de departamentos y áreas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ch_capacitacion_service = component 'Capacitación Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio para gestión de capacitaciones'
+  // ===== 🟨 RESOLVERS =====
+  ch_empleado_resolver = component 'EmpleadoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de empleados'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ch_empleado_ch_service = component 'Empleado CH Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio especializado para empleados'
+  ch_cargo_resolver = component 'CargoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de cargos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== MODELOS/ENTIDADES =====
+  ch_contrato_resolver = component 'ContratoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de contratos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  ch_departamento_resolver = component 'DepartamentoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de departamentos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  ch_empleado_ch_resolver = component 'EmpleadoCHResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver especializado para empleados CH'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
   ch_empleado_model = component 'Empleado Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para empleados'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ch_cargo_model = component 'Cargo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para cargos y posiciones'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ch_contrato_model = component 'Contrato Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para contratos laborales'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ch_departamento_model = component 'Departamento Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para departamentos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== RELACIONES =====
-  // Resolvers → Servicios
+  ch_usuario_model = component 'Usuario Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para usuarios del sistema'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  ch_grupo_acceso_model = component 'GrupoAcceso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para grupos de acceso'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  ch_rol_model = component 'Rol Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para roles del sistema'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  ch_empleado_ch_service = application 'EmpleadoCHService' {
+    description 'Servicio especializado para gestión de empleados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_capacitacion_service = application 'CapacitacionService' {
+    description 'Servicio para gestión de capacitaciones'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_capacitacion_empleado_service = application 'CapacitacionEmpleadoService' {
+    description 'Servicio para relación empleado-capacitación'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_asistencia_service = application 'AsistenciaService' {
+    description 'Servicio para control de asistencia'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE GESTIÓN HUMANA =====
+  ch_permiso_service = application 'PermisoService' {
+    description 'Servicio para gestión de permisos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_permiso_licencia_service = application 'PermisoLicenciaService' {
+    description 'Servicio para licencias y permisos especiales'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_examen_medico_service = application 'ExamenMedicoService' {
+    description 'Servicio para gestión de exámenes médicos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE DOCUMENTOS =====
+  ch_documento_empleado_service = application 'DocumentoEmpleadoService' {
+    description 'Servicio para documentos de empleados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_tipo_documento_empleado_service = application 'TipoDocumentoEmpleadoService' {
+    description 'Servicio para tipos de documentos de empleados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE ACCESO =====
+  ch_v_empleado_service = application 'VEmpleadoService' {
+    description 'Servicio de vistas para empleados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_firma_empleado_service = application 'VFirmaEmpleadoService' {
+    description 'Servicio para firmas digitales de empleados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_grupo_acceso_service = application 'VGrupoAccesoService' {
+    description 'Servicio para gestión de grupos de acceso'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_login_service = application 'VLoginService' {
+    description 'Servicio para autenticación y login'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_permiso_service = application 'VPermisoService' {
+    description 'Servicio de vistas para permisos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_rol_service = application 'VRolService' {
+    description 'Servicio para gestión de roles'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ch_v_rol_usuario_service = application 'VRolUsuarioService' {
+    description 'Servicio para relación rol-usuario'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  ch_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  ch_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  ch_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  ch_graphql_api -> ch_empleado_resolver 'Procesa queries/mutations'
+  ch_graphql_api -> ch_cargo_resolver 'Procesa queries/mutations'
+  ch_graphql_api -> ch_contrato_resolver 'Procesa queries/mutations'
+  ch_graphql_api -> ch_departamento_resolver 'Procesa queries/mutations'
+  ch_graphql_api -> ch_empleado_ch_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
   ch_empleado_resolver -> ch_empleado_service 'Delega operaciones'
   ch_cargo_resolver -> ch_cargo_service 'Delega operaciones'
   ch_contrato_resolver -> ch_contrato_service 'Delega operaciones'
   ch_departamento_resolver -> ch_departamento_service 'Delega operaciones'
+  ch_empleado_ch_resolver -> ch_empleado_ch_service 'Delega operaciones'
 
-  // Servicios → Modelos
+  // Servicios Principales → Modelos
   ch_empleado_service -> ch_empleado_model 'Persiste datos'
   ch_cargo_service -> ch_cargo_model 'Gestiona cargos'
   ch_contrato_service -> ch_contrato_model 'Gestiona contratos'
   ch_departamento_service -> ch_departamento_model 'Gestiona departamentos'
+
+  // Servicios Especializados → Modelos
+  ch_empleado_ch_service -> ch_empleado_model 'Gestiona empleados especializados'
+  ch_capacitacion_service -> ch_empleado_model 'Relaciona capacitaciones'
+  ch_capacitacion_empleado_service -> ch_empleado_model 'Gestiona capacitación-empleado'
+  ch_asistencia_service -> ch_empleado_model 'Registra asistencia'
+
+  // Servicios de Gestión Humana → Modelos
+  ch_permiso_service -> ch_empleado_model 'Gestiona permisos'
+  ch_permiso_licencia_service -> ch_empleado_model 'Gestiona licencias'
+  ch_examen_medico_service -> ch_empleado_model 'Gestiona exámenes médicos'
+
+  // Servicios de Documentos → Modelos
+  ch_documento_empleado_service -> ch_empleado_model 'Gestiona documentos'
+  ch_tipo_documento_empleado_service -> ch_empleado_model 'Define tipos documento'
+
+  // Servicios de Acceso → Modelos
+  ch_v_empleado_service -> ch_empleado_model 'Vista empleados'
+  ch_v_firma_empleado_service -> ch_empleado_model 'Firmas digitales'
+  ch_v_grupo_acceso_service -> ch_grupo_acceso_model 'Gestiona grupos'
+  ch_v_login_service -> ch_usuario_model 'Autenticación'
+  ch_v_permiso_service -> ch_empleado_model 'Vista permisos'
+  ch_v_rol_service -> ch_rol_model 'Gestiona roles'
+  ch_v_rol_usuario_service -> ch_usuario_model 'Relación rol-usuario'
+
+  // Servicios colaboran entre sí (Flujo de Capital Humano)
+  ch_empleado_service -> ch_cargo_service 'Asigna cargos'
+  ch_empleado_service -> ch_contrato_service 'Gestiona contratos'
+  ch_empleado_service -> ch_departamento_service 'Asigna departamentos'
+  ch_empleado_service -> ch_capacitacion_service 'Programa capacitaciones'
+  ch_empleado_service -> ch_asistencia_service 'Controla asistencia'
+  ch_empleado_service -> ch_permiso_service 'Gestiona permisos'
+  ch_empleado_service -> ch_examen_medico_service 'Programa exámenes'
+  ch_empleado_service -> ch_documento_empleado_service 'Gestiona documentos'
+
+  ch_capacitacion_service -> ch_capacitacion_empleado_service 'Relaciona empleados'
+  ch_permiso_service -> ch_permiso_licencia_service 'Gestiona licencias'
+
+  // Servicios de Acceso colaboran
+  ch_v_login_service -> ch_v_rol_usuario_service 'Valida roles'
+  ch_v_login_service -> ch_v_grupo_acceso_service 'Valida accesos'
+  ch_v_rol_service -> ch_v_rol_usuario_service 'Asigna roles'
+  ch_v_permiso_service -> ch_v_rol_service 'Define permisos'
+
+  // Servicios → Infraestructura
+  ch_empleado_service -> ch_mongodb 'Accede a base de datos'
+  ch_cargo_service -> ch_mongodb 'Accede a base de datos'
+  ch_contrato_service -> ch_mongodb 'Accede a base de datos'
+  ch_departamento_service -> ch_mongodb 'Accede a base de datos'
+
+  ch_empleado_service -> ch_redis 'Usa cache'
+  ch_cargo_service -> ch_redis 'Usa cache'
+  ch_contrato_service -> ch_redis 'Usa cache'
+  ch_departamento_service -> ch_redis 'Usa cache'
+
+  // Servicios de Notificaciones → Queue (si existieran)
+  // ch_notificacion_service -> ch_queue_service 'Envía notificaciones async'
 }

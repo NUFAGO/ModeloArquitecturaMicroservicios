@@ -131,6 +131,13 @@ model {
   compras_container -> queues_system 'Colas async'
   pagos_container -> queues_system 'Colas async'
 
+  // Interacciones entre contenedores (Flujo de Compras)
+  compras_container -> pagos_container 'Pagos de compras'
+  compras_container -> recursos_container 'Recursos en compras'
+  compras_container -> requerimientos_container 'Solicitudes de compra'
+  compras_container -> comprobantes_container 'Comprobantes OC'
+  compras_container -> almacen_container 'Recepción/Ingreso'
+
   // APIs externas
   administracion_container -> external_apis 'RENIEC, SUNAT'
   compras_container -> external_apis 'WhatsApp, Email'

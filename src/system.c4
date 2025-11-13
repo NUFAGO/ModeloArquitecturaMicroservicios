@@ -18,25 +18,48 @@ specification {
 
 model {
   // ===== ACTORES PRINCIPALES =====
-  empleado = actor 'Empleado/Usuario del Sistema'
-  admin = actor 'Administrador del Sistema'
-  proveedor = actor 'Proveedor Externo'
-  cliente = actor 'Cliente Externo'
+  empleado = actor 'Empleado/Usuario del Sistema' {
+    description 'Usuarios internos que operan el sistema ERP'
+  }
+
+  admin = actor 'Administrador del Sistema' {
+    description 'Administradores con permisos avanzados para configuración del sistema'
+  }
+
+  proveedor = actor 'Proveedor Externo' {
+    description 'Proveedores que interactúan con el sistema para pedidos y entregas'
+  }
+
+  cliente = actor 'Cliente Externo' {
+    description 'Clientes finales que consultan información del sistema'
+  }
 
   // ===== SISTEMA RAÍZ =====
   inacons = system 'Inacons ERP' {
     description 'Sistema ERP integral para gestión empresarial: presupuestos, compras, pagos, recursos, almacén, capital humano y más'
+
+    link https://github.com/NUFAGO/inacons-backend 'Backend Repository'
+    link https://github.com/NUFAGO/inacons-frontend 'Frontend Repository'
 
     // ===== CONTENEDORES PRINCIPALES =====
 
     // Frontend
     web_frontend = application 'Frontend Web (React/TypeScript)' {
       description 'Interfaz web principal del sistema ERP'
+      technology 'React + TypeScript + Vite + Tailwind CSS'
+      icon tech:react
+
+      style {
+        shape browser
+      }
     }
 
     // Backend GraphQL API
     graphql_api = application 'GraphQL API (Apollo Server/Node.js/Express)' {
       description 'API GraphQL con Apollo Server que expone todas las funcionalidades del sistema con resolvers y schemas'
+      technology 'Node.js + Express + Apollo Server + TypeScript'
+      icon tech:nodejs
+      link https://github.com/NUFAGO/inacons-backend 'Implementation'
     }
 
     // ===== MICROSERVICIOS POR DOMINIO =====
@@ -44,61 +67,85 @@ model {
     // Capital Humano
     capital_humano_ms = application 'Capital Humano' {
       description 'Gestión completa de capital humano: empleados, nómina, contratos, capacitación, evaluaciones, asistencia'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Administración
     administracion_ms = application 'Administración' {
       description 'Gestión administrativa: empresas, bancos, obras, roles, usuarios, configuración'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Combustibles
     combustibles_ms = application 'Combustibles' {
       description 'Gestión de combustibles: recepciones, salidas, reportes, dashboard'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Recursos
     recursos_ms = application 'Recursos' {
       description 'Gestión de recursos: trazabilidad, tipos, unidades, clasificación, costos'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Activos Fijos
     activos_fijos_ms = application 'Activos Fijos' {
       description 'Gestión de activos fijos: recursos, almacén, marcado'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Compras
     compras_ms = application 'Compras' {
       description 'Gestión de compras: solicitudes, cotizaciones, proveedores, órdenes de compra/servicio'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Pagos
     pagos_ms = application 'Pagos' {
       description 'Gestión de pagos: generación, agrupación, órdenes de pago, cuentas'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Almacén
     almacen_ms = application 'Almacén' {
       description 'Gestión de almacén: bodegas, transferencias, inventarios, salidas'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Requerimientos
     requerimientos_ms = application 'Requerimientos' {
       description 'Gestión de requerimientos: requerimientos, planillas, reportes de modificación'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Presupuestos
     presupuestos_ms = application 'Presupuestos' {
       description 'Gestión de presupuestos: datos generales, APU, costos'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Formularios
     formularios_ms = application 'Formularios' {
       description 'Gestión de formularios: creación, edición, visualización'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // Comprobantes
     comprobantes_ms = application 'Comprobantes' {
       description 'Gestión de comprobantes: contabilidad, documentos, SIRE'
+      technology 'Node.js + MongoDB + TypeScript'
+      icon tech:nodejs
     }
 
     // ===== INFRAESTRUCTURA COMPARTIDA =====
@@ -106,11 +153,23 @@ model {
     // Base de datos principal
     mongodb_db = database 'MongoDB Database' {
       description 'Base de datos NoSQL principal del sistema ERP con Mongoose ODM'
+      technology 'MongoDB Atlas'
+      icon tech:mongodb
+
+      style {
+        shape cylinder
+      }
     }
 
     // Cache/Redis
     redis_cache = database 'Redis Cache & Queues' {
       description 'Cache distribuido para sesiones, datos temporales y sistema de colas Bull'
+      technology 'Redis Cloud'
+      icon tech:redis
+
+      style {
+        shape cylinder
+      }
     }
 
     // Sistema de colas

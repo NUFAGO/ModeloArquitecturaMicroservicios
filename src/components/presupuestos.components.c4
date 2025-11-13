@@ -1,242 +1,502 @@
-// components/presupuestos.components.c4 - Componentes del módulo Presupuestos (REAL)
+// components/presupuestos.components.c4 - Microservicio de Presupuestos (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo ps_ para Presupuestos
+  // ===== 🟦 API GRAPHQL =====
+  ps_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de presupuestos'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  ps_presupuesto_resolver = component 'Presupuesto Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para presupuestos - PresupuestoResolver.ts'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  ps_proyecto_resolver = component 'Proyecto Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para proyectos - ProyectoResolver.ts'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  ps_presupuesto_service = application 'PresupuestoService' {
+    description 'Servicio principal para gestión completa de presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_titulo_resolver = component 'Título Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para títulos/partidas - TituloResolver.ts'
+  ps_proyecto_service = application 'ProyectoService' {
+    description 'Servicio para gestión de proyectos y obras'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_recurso_resolver = component 'Recurso Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para recursos - RecursoResolver.ts'
+  ps_titulo_service = application 'TituloService' {
+    description 'Servicio para gestión de títulos y jerarquía de presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_apu_resolver = component 'APU Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para APU - ApuResolver.ts'
+  ps_recurso_service = application 'RecursoService' {
+    description 'Servicio principal para gestión de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_centro_costo_resolver = component 'Centro Costo Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL para centros de costo - CentroCostoResolver.ts'
+  ps_apu_service = application 'ApuService' {
+    description 'Servicio para análisis de precios unitarios (APU)'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS CORE =====
-  ps_presupuesto_service = component 'Presupuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal de presupuestos - PresupuestoService.ts'
+  ps_centro_costo_service = application 'CentroCostoService' {
+    description 'Servicio para gestión de centros de costo'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_presupuesto_completo_service = component 'Presupuesto Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión completa de presupuestos con jerarquía - PresupuestoCompletoService.ts'
+  // ===== 🟨 RESOLVERS =====
+  ps_presupuesto_resolver = component 'PresupuestoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones CRUD de presupuestos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ps_proyecto_service = component 'Proyecto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de proyectos y obras - ProyectoService.ts'
+  ps_proyecto_resolver = component 'ProyectoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de proyectos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ps_proyecto_completo_service = component 'Proyecto Completo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio completo de proyectos - ProyectoCompletoService.ts'
+  ps_titulo_resolver = component 'TituloResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de títulos/partidas'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ps_titulo_service = component 'Título Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de títulos y jerarquía de presupuestos - TituloService.ts'
+  ps_recurso_resolver = component 'RecursoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de recursos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== SERVICIOS DE APU (ANÁLISIS DE PRECIOS UNITARIOS) =====
-  ps_apu_service = component 'APU Service' {
-    technology 'Node.js + TypeScript'
-    description 'Análisis de Precios Unitarios - ComposicionApuService.ts'
+  ps_apu_resolver = component 'ApuResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de APU'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  ps_composicion_apu_service = component 'Composición APU Service' {
-    technology 'Node.js + TypeScript'
-    description 'Composiciones de APU detalladas - ComposicionApuService.ts'
+  ps_centro_costo_resolver = component 'CentroCostoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de centros de costo'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== SERVICIOS DE RECURSOS =====
-  ps_recurso_service = component 'Recurso Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal de recursos - RecursoService.ts'
+  // ===== ⬜ MODELOS/ENTIDADES =====
+  ps_presupuesto_model = component 'Presupuesto Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para presupuestos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ps_recurso_presupuesto_service = component 'Recurso Presupuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Recursos asociados a presupuestos - RecursoPresupuestoService.ts'
+  ps_proyecto_model = component 'Proyecto Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para proyectos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ps_recurso_composicion_apu_service = component 'Recurso Composición APU Service' {
-    technology 'Node.js + TypeScript'
-    description 'Recursos en composiciones APU - RecursoComposicionApuService.ts'
+  ps_titulo_model = component 'Titulo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para títulos/partidas'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ps_recurso_seguimiento_total_service = component 'Recurso Seguimiento Total Service' {
-    technology 'Node.js + TypeScript'
-    description 'Seguimiento completo de recursos - RecursoSeguimientoTotalService.ts'
+  ps_recurso_model = component 'Recurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== SERVICIOS DE COSTOS =====
-  ps_centro_costo_service = component 'Centro Costo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Gestión de centros de costo - CentroCostoService.ts'
+  ps_apu_model = component 'APU Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para análisis de precios unitarios'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  ps_almacen_centro_costo_service = component 'Almacén Centro Costo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Relación almacén-centro de costo - AlmacenCentroCostoService.ts'
+  ps_centro_costo_model = component 'CentroCosto Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para centros de costo'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== SERVICIOS DE PRECIOS =====
-  ps_precio_recurso_proyecto_service = component 'Precio Recurso Proyecto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Precios de recursos por proyecto - PrecioRecursoProyectoService.ts'
+  ps_detalle_partida_model = component 'DetallePartida Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para detalles de partida'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== SERVICIOS DE TRAZABILIDAD =====
-  ps_trazar_recursos_service = component 'Trazar Recursos Service' {
-    technology 'Node.js + TypeScript'
-    description 'Sistema de trazabilidad de recursos - TrazarRecursosService.ts'
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  ps_presupuesto_completo_service = application 'PresupuestoCompletoService' {
+    description 'Servicio para gestión completa de presupuestos con jerarquía'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_sincronizar_recursos_service = component 'Sincronizar Recursos Service' {
-    technology 'Node.js + TypeScript'
-    description 'Sincronización de recursos - SincronizarRecursosService.ts'
+  ps_proyecto_completo_service = application 'ProyectoCompletoService' {
+    description 'Servicio para gestión completa de proyectos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE DETALLES =====
-  ps_detalle_partida_service = component 'Detalle Partida Service' {
-    technology 'Node.js + TypeScript'
-    description 'Detalles específicos de partidas - DetallePartidaService.ts'
+  // ===== 🔄 SERVICIOS DE APU =====
+  ps_composicion_apu_service = application 'ComposicionApuService' {
+    description 'Servicio para composiciones detalladas de APU'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE EVIDENCIAS =====
-  ps_evidencia_partida_service = component 'Evidencia Partida Service' {
-    technology 'Node.js + TypeScript'
-    description 'Evidencias asociadas a partidas - EvidenciaPartidaService.ts'
+  // ===== 🔄 SERVICIOS DE RECURSOS =====
+  ps_recurso_presupuesto_service = application 'RecursoPresupuestoService' {
+    description 'Servicio para recursos asociados a presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ps_recurso_composicion_apu_service = application 'RecursoComposicionApuService' {
+    description 'Servicio para recursos en composiciones APU'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ps_recurso_seguimiento_total_service = application 'RecursoSeguimientoTotalService' {
+    description 'Servicio para seguimiento completo de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE COSTOS =====
+  ps_almacen_centro_costo_service = application 'AlmacenCentroCostoService' {
+    description 'Servicio para relación almacén-centro de costo'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PRECIOS =====
+  ps_precio_recurso_proyecto_service = application 'PrecioRecursoProyectoService' {
+    description 'Servicio para precios de recursos por proyecto'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE TRAZABILIDAD =====
+  ps_trazar_recursos_service = application 'TrazarRecursosService' {
+    description 'Sistema de trazabilidad de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ps_sincronizar_recursos_service = application 'SincronizarRecursosService' {
+    description 'Servicio para sincronización de recursos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE DETALLES =====
+  ps_detalle_partida_service = application 'DetallePartidaService' {
+    description 'Servicio para detalles específicos de partidas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE EVIDENCIAS =====
+  ps_evidencia_partida_service = application 'EvidenciaPartidaService' {
+    description 'Servicio para evidencias asociadas a partidas'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PROCESAMIENTO =====
+  ps_validacion_presupuesto_service = application 'ValidacionPresupuestoService' {
+    description 'Servicio para validación de estructuras de presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  ps_calculo_totales_service = application 'CalculoTotalesService' {
+    description 'Servicio para cálculos de totales y subtotales'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
   // ===== SERVICIOS DE REPORTES =====
-  ps_reporte_presupuesto_service = component 'Reporte Presupuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Generación de reportes de presupuestos - ReportePresupuestoService.ts'
+  ps_reporte_presupuesto_service = application 'ReportePresupuestoService' {
+    description 'Servicio para generación de reportes de presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_dashboard_presupuesto_service = component 'Dashboard Presupuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Dashboard y métricas de presupuestos - DashboardPresupuestoService.ts'
+  ps_dashboard_presupuesto_service = application 'DashboardPresupuestoService' {
+    description 'Servicio para dashboard y métricas de presupuestos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  ps_reporte_apu_service = component 'Reporte APU Service' {
-    technology 'Node.js + TypeScript'
-    description 'Reportes de análisis de precios unitarios - ReporteApuService.ts'
-  }
+  ps_reporte_apu_service = application 'ReporteApuService' {
+    description 'Servicio para reportes de análisis de precios unitarios'
+    technology 'TypeScript + Node.js'
 
-  // ===== SERVICIOS DE VALIDACIÓN =====
-  ps_validacion_presupuesto_service = component 'Validación Presupuesto Service' {
-    technology 'Node.js + TypeScript'
-    description 'Validación de estructuras de presupuestos - ValidacionPresupuestoService.ts'
-  }
-
-  ps_calculo_totales_service = component 'Cálculo Totales Service' {
-    technology 'Node.js + TypeScript'
-    description 'Cálculos de totales y subtotales - CalculoTotalesService.ts'
+    style {
+      color green  // Verde para servicios
+    }
   }
 
   // ===== REPOSITORIES =====
   ps_presupuesto_repo = component 'Presupuesto Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para presupuestos - PresupuestoRepository.ts'
+    description 'Acceso a datos para presupuestos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_proyecto_repo = component 'Proyecto Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para proyectos - ProyectoRepository.ts'
+    description 'Acceso a datos para proyectos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_titulo_repo = component 'Título Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para títulos/partidas - TituloRepository.ts'
+    description 'Acceso a datos para títulos/partidas'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_recurso_repo = component 'Recurso Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para recursos - RecursoRepository.ts'
+    description 'Acceso a datos para recursos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_apu_repo = component 'APU Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para APU - ApuRepository.ts'
+    description 'Acceso a datos para APU'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_centro_costo_repo = component 'Centro Costo Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para centros de costo - CentroCostoRepository.ts'
+    description 'Acceso a datos para centros de costo'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   ps_detalle_partida_repo = component 'Detalle Partida Repository' {
     technology 'Mongoose ODM'
-    description 'Acceso a datos para detalles de partida - DetallePartidaRepository.ts'
+    description 'Acceso a datos para detalles de partida'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== RELACIONES INTERNAS =====
+  // ===== ⚫ INFRAESTRUCTURA =====
+  ps_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
 
-  // Resolvers delegan a servicios
-  ps_presupuesto_resolver -> ps_presupuesto_service 'Queries/Mutations'
-  ps_proyecto_resolver -> ps_proyecto_service 'Queries/Mutations'
-  ps_titulo_resolver -> ps_titulo_service 'Queries/Mutations'
-  ps_recurso_resolver -> ps_recurso_service 'Queries/Mutations'
-  ps_apu_resolver -> ps_apu_service 'Queries/Mutations'
-  ps_centro_costo_resolver -> ps_centro_costo_service 'Queries/Mutations'
+  ps_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
 
-  // Servicios completos/complejos
+  ps_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  ps_graphql_api -> ps_presupuesto_resolver 'Procesa queries/mutations'
+  ps_graphql_api -> ps_proyecto_resolver 'Procesa queries/mutations'
+  ps_graphql_api -> ps_titulo_resolver 'Procesa queries/mutations'
+  ps_graphql_api -> ps_recurso_resolver 'Procesa queries/mutations'
+  ps_graphql_api -> ps_apu_resolver 'Procesa queries/mutations'
+  ps_graphql_api -> ps_centro_costo_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  ps_presupuesto_resolver -> ps_presupuesto_service 'Delega operaciones'
+  ps_proyecto_resolver -> ps_proyecto_service 'Delega operaciones'
+  ps_titulo_resolver -> ps_titulo_service 'Delega operaciones'
+  ps_recurso_resolver -> ps_recurso_service 'Delega operaciones'
+  ps_apu_resolver -> ps_apu_service 'Delega operaciones'
+  ps_centro_costo_resolver -> ps_centro_costo_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  ps_presupuesto_service -> ps_presupuesto_model 'Persiste datos'
+  ps_proyecto_service -> ps_proyecto_model 'Persiste datos'
+  ps_titulo_service -> ps_titulo_model 'Persiste datos'
+  ps_recurso_service -> ps_recurso_model 'Persiste datos'
+  ps_apu_service -> ps_apu_model 'Persiste datos'
+  ps_centro_costo_service -> ps_centro_costo_model 'Persiste datos'
+
+  // Servicios Especializados → Modelos
+  ps_presupuesto_completo_service -> ps_presupuesto_model 'Gestión completa'
+  ps_proyecto_completo_service -> ps_proyecto_model 'Proyecto completo'
+  ps_detalle_partida_service -> ps_detalle_partida_model 'Detalles de partida'
+  ps_evidencia_partida_service -> ps_detalle_partida_model 'Evidencias'
+
+  // Servicios de APU → Modelos
+  ps_composicion_apu_service -> ps_apu_model 'Composiciones detalladas'
+
+  // Servicios de Recursos → Modelos
+  ps_recurso_presupuesto_service -> ps_recurso_model 'Asociación presupuestos'
+  ps_recurso_composicion_apu_service -> ps_recurso_model 'Recursos APU'
+  ps_recurso_seguimiento_total_service -> ps_recurso_model 'Seguimiento completo'
+
+  // Servicios de Costos → Modelos
+  ps_almacen_centro_costo_service -> ps_centro_costo_model 'Relación almacén'
+
+  // Servicios de Precios → Modelos
+  ps_precio_recurso_proyecto_service -> ps_recurso_model 'Precios por proyecto'
+
+  // Servicios colaboran entre sí (Flujo de Presupuestos)
   ps_presupuesto_service -> ps_presupuesto_completo_service 'Gestión completa'
   ps_proyecto_service -> ps_proyecto_completo_service 'Proyecto completo'
-
-  // Jerarquía de presupuestos
   ps_presupuesto_service -> ps_titulo_service 'Jerarquía de títulos'
   ps_titulo_service -> ps_detalle_partida_service 'Detalles de partida'
   ps_detalle_partida_service -> ps_evidencia_partida_service 'Evidencias'
 
-  // APU y composiciones
   ps_presupuesto_service -> ps_apu_service 'Análisis precios unitarios'
   ps_apu_service -> ps_composicion_apu_service 'Composiciones detalladas'
   ps_composicion_apu_service -> ps_recurso_composicion_apu_service 'Recursos APU'
 
-  // Recursos en presupuestos
   ps_recurso_service -> ps_recurso_presupuesto_service 'Asociación presupuestos'
   ps_recurso_service -> ps_precio_recurso_proyecto_service 'Precios por proyecto'
   ps_recurso_service -> ps_recurso_seguimiento_total_service 'Seguimiento completo'
 
-  // Centros de costo
   ps_presupuesto_service -> ps_centro_costo_service 'Asignación costos'
   ps_centro_costo_service -> ps_almacen_centro_costo_service 'Relación almacén'
 
-  // Trazabilidad
   ps_recurso_service -> ps_trazar_recursos_service 'Trazabilidad'
   ps_recurso_service -> ps_sincronizar_recursos_service 'Sincronización'
 
-  // Validación y cálculos
   ps_presupuesto_service -> ps_validacion_presupuesto_service 'Validación estructura'
   ps_presupuesto_service -> ps_calculo_totales_service 'Cálculos totales'
 
-  // Reportes y dashboards
   ps_presupuesto_service -> ps_reporte_presupuesto_service 'Reportes generales'
   ps_presupuesto_service -> ps_dashboard_presupuesto_service 'Dashboards'
   ps_apu_service -> ps_reporte_apu_service 'Reportes APU'
@@ -249,4 +509,20 @@ model {
   ps_apu_service -> ps_apu_repo 'Repository'
   ps_centro_costo_service -> ps_centro_costo_repo 'Repository'
   ps_detalle_partida_service -> ps_detalle_partida_repo 'Repository'
+
+  // Servicios → Infraestructura
+  ps_presupuesto_service -> ps_mongodb 'Accede a base de datos'
+  ps_proyecto_service -> ps_mongodb 'Accede a base de datos'
+  ps_titulo_service -> ps_mongodb 'Accede a base de datos'
+  ps_recurso_service -> ps_mongodb 'Accede a base de datos'
+  ps_apu_service -> ps_mongodb 'Accede a base de datos'
+  ps_centro_costo_service -> ps_mongodb 'Accede a base de datos'
+
+  ps_presupuesto_service -> ps_redis 'Usa cache'
+  ps_proyecto_service -> ps_redis 'Usa cache'
+  ps_titulo_service -> ps_redis 'Usa cache'
+  ps_recurso_service -> ps_redis 'Usa cache'
+
+  // Servicios de Reportes → Queue (si existieran)
+  // ps_reporte_presupuesto_service -> ps_queue_service 'Genera reportes async'
 }

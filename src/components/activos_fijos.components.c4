@@ -1,81 +1,302 @@
-// components/activos_fijos.components.c4 - Componentes del módulo Activos Fijos (REAL)
+// components/activos_fijos.components.c4 - Microservicio de Activos Fijos (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
-  // prefijo af_ para Activos Fijos
+  // ===== 🟦 API GRAPHQL =====
+  af_graphql_api = application 'GraphQL API' {
+    description 'API GraphQL principal del backend para módulo de activos fijos'
+    technology 'Apollo Server + Express.js'
 
-  // ===== API GRAPHQL - RESOLVERS =====
-  af_activo_fijo_resolver = component 'ActivoFijo Resolver' {
-    technology 'GraphQL + Node.js'
-    description 'Resolver GraphQL principal para todas las operaciones de activos fijos'
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  // ===== SERVICIOS DE GESTIÓN DE CREACIÓN =====
-  af_activo_fijo_service = component 'ActivoFijo Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio principal para gestión completa de activos fijos - ActivoFijoService.ts'
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
+  af_activo_fijo_service = application 'ActivoFijoService' {
+    description 'Servicio principal para gestión completa de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  af_procesamiento_activos_service = component 'Procesamiento Activos Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio especializado para procesamiento completo de creación de activos fijos'
+  af_creacion_activo_fijo_service = application 'CreacionActivoFijoService' {
+    description 'Servicio principal para creación de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  // ===== SERVICIOS DE GESTIÓN DE MARCADO =====
-  af_marcado_service = component 'Marcado Service' {
-    technology 'Node.js + TypeScript'
-    description 'Sistema de marcado y etiquetado de activos fijos'
+  af_recurso_activo_fijo_service = application 'RecursoActivoFijoService' {
+    description 'Servicio principal para recursos de activos fijos creados'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  af_sincronizacion_service = component 'Sincronización Service' {
-    technology 'Node.js + TypeScript'
-    description 'Servicio de sincronización de nombres de activos fijos'
+  // ===== 🟨 RESOLVERS =====
+  af_activo_fijo_resolver = component 'ActivoFijoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver principal para todas las operaciones de activos fijos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
-  // ===== MODELOS/ENTIDADES =====
+  af_creacion_activo_fijo_resolver = component 'CreacionActivoFijoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de creación de activos fijos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  af_recurso_activo_fijo_resolver = component 'RecursoActivoFijoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de recursos activos fijos'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  // ===== ⬜ MODELOS/ENTIDADES =====
   af_creacion_activo_fijo_model = component 'CreacionActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para creaciones de activos fijos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   af_recurso_activo_fijo_model = component 'RecursoActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos activos fijos creados'
-  }
 
-  af_data_adicional_model = component 'DataAdicionalActivoFijo Model' {
-    technology 'Mongoose Schema'
-    description 'Modelo de datos para datos adicionales de activos fijos'
-  }
-
-  af_data_adicional_texto_model = component 'DataAdicionalTextoActivoFijo Model' {
-    technology 'Mongoose Schema'
-    description 'Modelo de datos para textos adicionales de activos fijos'
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   af_recurso_creacion_model = component 'RecursoCreacionActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos usados en creación de activos fijos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   af_servicio_creacion_model = component 'ServicioCreacionActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para servicios usados en creación de activos fijos'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  // ===== RELACIONES =====
-  // Resolver delega operaciones a servicios
-  af_activo_fijo_resolver -> af_activo_fijo_service 'Queries/Mutations'
-  af_activo_fijo_resolver -> af_procesamiento_activos_service 'Procesamiento complejo'
+  af_data_adicional_model = component 'DataAdicionalActivoFijo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para datos adicionales de activos fijos'
 
-  // Servicios colaboran entre sí
-  af_activo_fijo_service -> af_marcado_service 'Marcado y etiquetado'
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  af_data_adicional_texto_model = component 'DataAdicionalTextoActivoFijo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para textos adicionales de activos fijos'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  af_activo_fijo_completo_service = application 'ActivoFijoCompletoService' {
+    description 'Servicio para gestión completa e integral de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE CREACIÓN =====
+  af_recurso_creacion_service = application 'RecursoCreacionService' {
+    description 'Servicio para gestión de recursos en creación de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  af_servicio_creacion_service = application 'ServicioCreacionService' {
+    description 'Servicio para gestión de servicios en creación de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE DATOS ADICIONALES =====
+  af_data_adicional_service = application 'DataAdicionalService' {
+    description 'Servicio para gestión de datos adicionales de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  af_data_adicional_texto_service = application 'DataAdicionalTextoService' {
+    description 'Servicio para gestión de textos adicionales de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE GESTIÓN =====
+  af_sincronizacion_service = application 'SincronizacionService' {
+    description 'Servicio de sincronización de nombres de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  af_marcado_service = application 'MarcadoService' {
+    description 'Sistema de marcado y etiquetado de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE VALIDACIÓN =====
+  af_validacion_activo_fijo_service = application 'ValidacionActivoFijoService' {
+    description 'Servicio para validación de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE REPORTES =====
+  af_reporte_activo_fijo_service = application 'ReporteActivoFijoService' {
+    description 'Servicio para reportes de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  af_dashboard_activo_fijo_service = application 'DashboardActivoFijoService' {
+    description 'Servicio para dashboard y métricas de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PROCESAMIENTO =====
+  af_procesamiento_activos_service = application 'ProcesamientoActivosService' {
+    description 'Servicio especializado para procesamiento completo de creación de activos fijos'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== ⚫ INFRAESTRUCTURA =====
+  af_mongodb = database 'MongoDB' {
+    description 'Base de datos principal MongoDB'
+    icon tech:mongodb
+  }
+
+  af_redis = database 'Redis' {
+    description 'Sistema de cache Redis'
+    icon tech:redis
+  }
+
+  af_queue_service = queue 'Queue Service' {
+    description 'Sistema de colas para procesamiento asíncrono'
+  }
+
+  // ===== 🔄 RELACIONES REALES =====
+
+  // API → Resolvers
+  af_graphql_api -> af_activo_fijo_resolver 'Procesa queries/mutations'
+  af_graphql_api -> af_creacion_activo_fijo_resolver 'Procesa queries/mutations'
+  af_graphql_api -> af_recurso_activo_fijo_resolver 'Procesa queries/mutations'
+
+  // Resolvers → Servicios Principales
+  af_activo_fijo_resolver -> af_activo_fijo_service 'Delega operaciones'
+  af_creacion_activo_fijo_resolver -> af_creacion_activo_fijo_service 'Delega operaciones'
+  af_recurso_activo_fijo_resolver -> af_recurso_activo_fijo_service 'Delega operaciones'
+
+  // Servicios Principales → Modelos
+  af_activo_fijo_service -> af_creacion_activo_fijo_model 'Persiste datos'
+  af_creacion_activo_fijo_service -> af_creacion_activo_fijo_model 'Persiste datos'
+  af_recurso_activo_fijo_service -> af_recurso_activo_fijo_model 'Persiste datos'
+
+  // Servicios de Creación → Modelos
+  af_recurso_creacion_service -> af_recurso_creacion_model 'Recursos de creación'
+  af_servicio_creacion_service -> af_servicio_creacion_model 'Servicios de creación'
+
+  // Servicios de Datos Adicionales → Modelos
+  af_data_adicional_service -> af_data_adicional_model 'Datos adicionales'
+  af_data_adicional_texto_service -> af_data_adicional_texto_model 'Textos adicionales'
+
+  // Servicios Especializados → Modelos
+  af_activo_fijo_completo_service -> af_creacion_activo_fijo_model 'Gestión integral'
+
+  // Servicios colaboran entre sí (Flujo de Activos Fijos)
+  af_activo_fijo_service -> af_activo_fijo_completo_service 'Gestión completa'
+  af_activo_fijo_service -> af_procesamiento_activos_service 'Procesamiento complejo'
+
+  af_activo_fijo_service -> af_creacion_activo_fijo_service 'Inicia creación'
+  af_creacion_activo_fijo_service -> af_recurso_creacion_service 'Asocia recursos'
+  af_creacion_activo_fijo_service -> af_servicio_creacion_service 'Asocia servicios'
+
+  af_activo_fijo_service -> af_data_adicional_service 'Gestiona datos adicionales'
+  af_data_adicional_service -> af_data_adicional_texto_service 'Textos adicionales'
+
   af_activo_fijo_service -> af_sincronizacion_service 'Sincronización de datos'
+  af_activo_fijo_service -> af_marcado_service 'Marcado y etiquetado'
 
-  // Servicios acceden a modelos
-  af_activo_fijo_service -> af_creacion_activo_fijo_model 'Gestiona creaciones'
-  af_activo_fijo_service -> af_recurso_activo_fijo_model 'Gestiona recursos activos'
-  af_activo_fijo_service -> af_data_adicional_model 'Datos adicionales'
-  af_activo_fijo_service -> af_data_adicional_texto_model 'Textos adicionales'
-  af_activo_fijo_service -> af_recurso_creacion_model 'Recursos de creación'
-  af_activo_fijo_service -> af_servicio_creacion_model 'Servicios de creación'
+  af_activo_fijo_service -> af_validacion_activo_fijo_service 'Validaciones'
+  af_activo_fijo_service -> af_reporte_activo_fijo_service 'Genera reportes'
+  af_activo_fijo_service -> af_dashboard_activo_fijo_service 'Muestra métricas'
+
+  // Servicios → Infraestructura
+  af_activo_fijo_service -> af_mongodb 'Accede a base de datos'
+  af_creacion_activo_fijo_service -> af_mongodb 'Accede a base de datos'
+  af_recurso_activo_fijo_service -> af_mongodb 'Accede a base de datos'
+
+  af_activo_fijo_service -> af_redis 'Usa cache'
+  af_creacion_activo_fijo_service -> af_redis 'Usa cache'
+
+  // Servicios de Reportes → Queue
+  af_reporte_activo_fijo_service -> af_queue_service 'Genera reportes async'
 }

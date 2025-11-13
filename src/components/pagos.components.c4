@@ -1,62 +1,276 @@
-// components/pagos.components.c4 - Microservicio de Pagos (ESTRUCTURA REAL)
+// components/pagos.components.c4 - Microservicio de Pagos (KAPO PRINCIPAL - ESTRUCTURA REAL)
 
 model {
   // ===== 🟦 API GRAPHQL =====
   pg_graphql_api = application 'GraphQL API' {
-    description 'API GraphQL principal del backend monolitico'
+    description 'API GraphQL principal del backend para módulo de pagos'
     technology 'Apollo Server + Express.js'
+
+    style {
+      color blue  // Azul para APIs
+    }
   }
 
-  // ===== 🟩 SERVICIOS =====
+  // ===== 🟩 SERVICIOS PRINCIPALES =====
   pg_orden_pago_service = application 'OrdenPagoService' {
-    description 'Servicio principal para gestión de órdenes de pago'
+    description 'Servicio principal para gestión de órdenes de pago completas'
     technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
-  pg_email_service = application 'EmailService' {
-    description 'Servicio de envío de correos electrónicos'
-    technology 'NodeMailer + Gmail API'
+  pg_aprobacion_orden_pago_service = application 'AprobacionOrdenPagoService' {
+    description 'Servicio para gestión de aprobaciones de órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_pago_orden_pago_service = application 'PagoOrdenPagoService' {
+    description 'Servicio para procesamiento de pagos de órdenes'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
   // ===== 🟨 RESOLVERS =====
   pg_orden_pago_resolver = component 'OrdenPagoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de órdenes de pago'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  pg_aprobacion_orden_pago_resolver = component 'AprobacionOrdenPagoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de aprobaciones de órdenes de pago'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  pg_pago_orden_pago_resolver = component 'PagoOrdenPagoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de pagos de órdenes'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  pg_estado_pago_resolver = component 'EstadoPagoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de estados de pago'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  pg_transferencia_detalle_resolver = component 'TransferenciaDetalleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de detalles de transferencia'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
   }
 
   // ===== ⬜ MODELOS/ENTIDADES =====
   pg_orden_pago_model = component 'OrdenPago Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para órdenes de pago'
-  }
 
-  pg_usuario_model = component 'Usuario Model' {
-    technology 'Mongoose Schema'
-    description 'Modelo de datos para usuarios'
-  }
-
-  pg_comprobante_model = component 'Comprobante Model' {
-    technology 'Mongoose Schema'
-    description 'Modelo de datos para comprobantes'
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
   pg_estado_pago_model = component 'EstadoPago Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para estados de pago'
+
+    style {
+      color slate  // Gris para modelos
+    }
   }
 
-  pg_transferencia_model = component 'TransferenciaDetalle Model' {
+  pg_transferencia_detalle_model = component 'TransferenciaDetalle Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para detalles de transferencia'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  pg_usuario_model = component 'Usuario Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para usuarios'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  pg_comprobante_model = component 'Comprobante Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para comprobantes'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
+  pg_caja_chica_orden_pago_service = application 'CajaChicaOrdenPagoService' {
+    description 'Servicio para gestión de caja chica en órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_orden_pago_descuento_service = application 'OrdenPagoDescuentoService' {
+    description 'Servicio para gestión de descuentos en órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_orden_pago_grupo_service = application 'OrdenPagoGrupoService' {
+    description 'Servicio para gestión de grupos de órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_extorno_orden_pago_service = application 'ExtornoOrdenPagoService' {
+    description 'Servicio para gestión de extornos de órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE ARCHIVOS =====
+  pg_archivo_pago_service = application 'ArchivoPagoService' {
+    description 'Servicio para gestión de archivos de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_verificacion_archivo_pago_service = application 'VerificacionArchivoPagoService' {
+    description 'Servicio para verificación de archivos de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE COMPROBANTES =====
+  pg_comprobante_pago_service = application 'ComprobantePagoService' {
+    description 'Servicio para gestión de comprobantes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_reporte_comprobante_pago_service = application 'ReporteComprobantePagoService' {
+    description 'Servicio para reportes de comprobantes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE PROCESAMIENTO =====
+  pg_email_service = application 'EmailService' {
+    description 'Servicio de envío de correos electrónicos para pagos'
+    technology 'NodeMailer + Gmail API'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_notificacion_orden_pago_service = application 'NotificacionOrdenPagoService' {
+    description 'Servicio de notificaciones para órdenes de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== SERVICIOS DE CONFIGURACIÓN =====
+  pg_concepto_pago_service = application 'ConceptoPagoService' {
+    description 'Servicio para gestión de conceptos de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_tipo_pago_service = application 'TipoPagoService' {
+    description 'Servicio para gestión de tipos de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_modo_pago_service = application 'ModoPagoService' {
+    description 'Servicio para gestión de modos de pago'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  pg_transferencia_detalle_service = application 'TransferenciaDetalleService' {
+    description 'Servicio para gestión de detalles de transferencia'
+    technology 'TypeScript + Node.js'
+
+    style {
+      color green  // Verde para servicios
+    }
   }
 
   // ===== ⚫ INFRAESTRUCTURA =====
   pg_mongodb = database 'MongoDB' {
     description 'Base de datos principal MongoDB'
+    icon tech:mongodb
   }
 
   pg_redis = database 'Redis' {
     description 'Sistema de cache Redis'
+    icon tech:redis
   }
 
   pg_queue_service = queue 'Queue Service' {
@@ -67,23 +281,71 @@ model {
 
   // API → Resolvers
   pg_graphql_api -> pg_orden_pago_resolver 'Procesa queries/mutations'
+  pg_graphql_api -> pg_aprobacion_orden_pago_resolver 'Procesa queries/mutations'
+  pg_graphql_api -> pg_pago_orden_pago_resolver 'Procesa queries/mutations'
+  pg_graphql_api -> pg_estado_pago_resolver 'Procesa queries/mutations'
+  pg_graphql_api -> pg_transferencia_detalle_resolver 'Procesa queries/mutations'
 
-  // Resolvers → Servicios
+  // Resolvers → Servicios Principales
   pg_orden_pago_resolver -> pg_orden_pago_service 'Delega operaciones'
-  pg_orden_pago_resolver -> pg_email_service 'Envía notificaciones'
+  pg_aprobacion_orden_pago_resolver -> pg_aprobacion_orden_pago_service 'Delega operaciones'
+  pg_pago_orden_pago_resolver -> pg_pago_orden_pago_service 'Delega operaciones'
+  pg_estado_pago_resolver -> pg_orden_pago_service 'Delega operaciones'
+  pg_transferencia_detalle_resolver -> pg_orden_pago_service 'Delega operaciones'
 
-  // Servicios → Modelos
+  // Servicios Principales → Modelos
   pg_orden_pago_service -> pg_orden_pago_model 'Persiste datos'
+  pg_orden_pago_service -> pg_estado_pago_model 'Actualiza estados'
+  pg_orden_pago_service -> pg_transferencia_detalle_model 'Registra transferencias'
   pg_orden_pago_service -> pg_usuario_model 'Consulta usuarios'
   pg_orden_pago_service -> pg_comprobante_model 'Gestiona comprobantes'
-  pg_orden_pago_service -> pg_estado_pago_model 'Actualiza estados'
-  pg_orden_pago_service -> pg_transferencia_model 'Registra transferencias'
+
+  // Servicios Especializados → Modelos
+  pg_aprobacion_orden_pago_service -> pg_orden_pago_model 'Actualiza aprobaciones'
+  pg_pago_orden_pago_service -> pg_orden_pago_model 'Procesa pagos'
+  pg_caja_chica_orden_pago_service -> pg_orden_pago_model 'Gestiona caja chica'
+  pg_orden_pago_descuento_service -> pg_orden_pago_model 'Aplica descuentos'
+  pg_orden_pago_grupo_service -> pg_orden_pago_model 'Agrupa órdenes'
+  pg_extorno_orden_pago_service -> pg_orden_pago_model 'Procesa extornos'
+
+  // Servicios de Archivos → Modelos
+  pg_archivo_pago_service -> pg_orden_pago_model 'Asocia archivos'
+  pg_verificacion_archivo_pago_service -> pg_orden_pago_model 'Verifica archivos'
+
+  // Servicios de Comprobantes → Modelos
+  pg_comprobante_pago_service -> pg_comprobante_model 'Gestiona comprobantes'
+  pg_reporte_comprobante_pago_service -> pg_comprobante_model 'Genera reportes'
+
+  // Servicios de Configuración → Modelos
+  pg_concepto_pago_service -> pg_orden_pago_model 'Relaciona conceptos'
+  pg_tipo_pago_service -> pg_orden_pago_model 'Define tipos'
+  pg_modo_pago_service -> pg_orden_pago_model 'Define modos'
+
+  // Servicios colaboran entre sí (Flujo de Pagos)
+  pg_orden_pago_service -> pg_aprobacion_orden_pago_service 'Inicia aprobación'
+  pg_orden_pago_service -> pg_pago_orden_pago_service 'Procesa pago'
+  pg_orden_pago_service -> pg_caja_chica_orden_pago_service 'Gestiona caja chica'
+  pg_orden_pago_service -> pg_orden_pago_descuento_service 'Aplica descuentos'
+  pg_orden_pago_service -> pg_orden_pago_grupo_service 'Agrupa órdenes'
+
+  pg_aprobacion_orden_pago_service -> pg_notificacion_orden_pago_service 'Envía notificaciones'
+  pg_pago_orden_pago_service -> pg_comprobante_pago_service 'Genera comprobantes'
+  pg_pago_orden_pago_service -> pg_transferencia_detalle_service 'Registra transferencias'
+  pg_pago_orden_pago_service -> pg_archivo_pago_service 'Gestiona archivos'
+
+  // Servicios de Notificaciones → Email
+  pg_notificacion_orden_pago_service -> pg_email_service 'Envía correos'
+  pg_email_service -> pg_queue_service 'Procesa emails async'
 
   // Servicios → Infraestructura
   pg_orden_pago_service -> pg_mongodb 'Accede a base de datos'
-  pg_orden_pago_service -> pg_redis 'Usa cache'
-  pg_orden_pago_service -> pg_queue_service 'Procesa tareas async'
+  pg_aprobacion_orden_pago_service -> pg_mongodb 'Accede a base de datos'
+  pg_pago_orden_pago_service -> pg_mongodb 'Accede a base de datos'
 
-  // Email Service → Infraestructura
-  pg_email_service -> pg_queue_service 'Envía emails async'
+  pg_orden_pago_service -> pg_redis 'Usa cache'
+  pg_aprobacion_orden_pago_service -> pg_redis 'Usa cache'
+  pg_pago_orden_pago_service -> pg_redis 'Usa cache'
+
+  // Servicios de Notificaciones → Queue
+  pg_notificacion_orden_pago_service -> pg_queue_service 'Envía notificaciones async'
 }
