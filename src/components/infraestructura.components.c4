@@ -24,6 +24,8 @@ model {
   infra_email_api = component 'Email Service API' {
     technology 'Node.js + SendGrid/Mailgun'
     description 'Servicio de envío de correos electrónicos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmailService.ts 'Ver código fuente'
   }
 
   infra_whatsapp_api = component 'WhatsApp Business API' {
@@ -34,11 +36,15 @@ model {
   infra_sunat_api = component 'SUNAT API' {
     technology 'REST API'
     description 'Integración con SUNAT para validación RUC y facturación'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SunatService.ts 'Ver código fuente'
   }
 
   infra_reniec_api = component 'RENIEC API' {
     technology 'REST API'
     description 'Integración con RENIEC para validación de DNI'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DniService.ts 'Ver código fuente'
   }
 
   // ===== WORKERS PARA PROCESAMIENTO ASÍNCRONO =====
@@ -71,16 +77,22 @@ model {
   infra_global_search = component 'Global Search Service' {
     technology 'Node.js + Elasticsearch/MongoDB'
     description 'Servicio de búsqueda global en toda la aplicación'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/GlobalSearchService.ts 'Ver código fuente'
   }
 
   infra_file_upload = component 'File Upload Service' {
     technology 'Node.js + Google Cloud Storage'
     description 'Servicio de subida y gestión de archivos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoDigitalService.ts 'Ver código fuente'
   }
 
   infra_encryption = component 'Encryption Service' {
     technology 'Node.js + AES/Crypto'
     description 'Servicio de encriptación para datos sensibles'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoValidacionService.ts 'Ver código fuente'
   }
 
   // ===== REPOSITORIES =====
@@ -97,11 +109,15 @@ model {
   infra_sunat_repo = component 'SUNAT Repository' {
     technology 'Mongoose ODM'
     description 'Repositorio para datos de SUNAT y validaciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RucModel.ts 'Ver código fuente'
   }
 
   infra_reniec_repo = component 'RENIEC Repository' {
     technology 'Mongoose ODM'
     description 'Repositorio para datos de RENIEC y validaciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DniModel.ts 'Ver código fuente'
   }
 
   infra_workers_repo = component 'Workers Repository' {
@@ -117,11 +133,15 @@ model {
   infra_file_upload_repo = component 'File Upload Repository' {
     technology 'Mongoose ODM'
     description 'Repositorio para metadatos de archivos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DocumentoDigital.ts 'Ver código fuente'
   }
 
   infra_encryption_repo = component 'Encryption Repository' {
     technology 'Mongoose ODM'
     description 'Repositorio para claves y configuraciones de encriptación'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DocumentoValidacion.ts 'Ver código fuente'
   }
 
   // ===== RELACIONES =====

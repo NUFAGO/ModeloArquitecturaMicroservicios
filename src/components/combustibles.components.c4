@@ -13,8 +13,10 @@ model {
 
   // ===== 🟩 SERVICIOS PRINCIPALES =====
   cm_combustible_service = application 'CombustibleService' {
-    description 'Servicio principal para gestión de combustibles'
+    description 'Servicio principal para gestión completa de combustibles'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CombustibleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -24,6 +26,41 @@ model {
   cm_almacen_combustible_service = application 'AlmacenCombustibleService' {
     description 'Servicio principal para gestión de almacenes de combustible'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AlmacenCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_ingreso_combustible_service = application 'IngresoCombustibleService' {
+    description 'Servicio principal para gestión de ingresos de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/IngresoCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_salida_combustible_service = application 'SalidaCombustibleService' {
+    description 'Servicio principal para gestión de salidas de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SalidaCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_reporte_combustible_service = application 'ReporteCombustibleService' {
+    description 'Servicio principal para generación de reportes de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteCombustibleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -35,6 +72,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de combustibles'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CombustibleResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -43,6 +82,41 @@ model {
   cm_almacen_combustible_resolver = component 'AlmacenCombustibleResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AlmacenCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_almacen_combustible_aprobacion_resolver = component 'AlmacenCombustibleAprobacionResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para aprobaciones de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AlmacenCombustibleAprobacionResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_almacen_combustible_archivo_resolver = component 'AlmacenCombustibleArchivoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para archivos de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AlmacenCombustibleArchivoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_almacen_combustible_imagen_resolver = component 'AlmacenCombustibleImagenResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para imágenes de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AlmacenCombustibleImagenResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -53,6 +127,41 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de ingresos de combustible'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/IngresoCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_ingreso_combustible_orden_compra_resolver = component 'IngresoCombustibleOrdenCompraResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para ingresos de combustible desde órdenes de compra'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/IngresoCombustibleOrdenCompraResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_imagenes_ingreso_combustible_resolver = component 'ImagenesIngresoCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para imágenes de ingresos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ImagenesIngresoCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_documento_ingreso_combustible_resolver = component 'DocumentoIngresoCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para documentos de ingresos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/DocumentoIngresoCombustibleResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -62,6 +171,52 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de salidas de combustible'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SalidaCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_salida_combustible_aprobacion_resolver = component 'SalidaCombustibleAprobacionResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para aprobaciones de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SalidaCombustibleAprobacionResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_salida_combustible_archivo_resolver = component 'SalidaCombustibleArchivoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para archivos de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SalidaCombustibleArchivoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_equipo_salida_combustible_resolver = component 'EquipoSalidaCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para equipos en salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EquipoSalidaCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_imagenes_salida_combustible_resolver = component 'ImagenesSalidaCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para imágenes de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ImagenesSalidaCombustibleResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -70,6 +225,96 @@ model {
   cm_reporte_combustible_resolver = component 'ReporteCombustibleResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de reportes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ReporteCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_estado_reporte_combustible_resolver = component 'EstadoReporteCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para estados de reportes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EstadoReporteCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_historial_combustible_resolver = component 'HistorialCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para historial de combustibles'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/HistorialCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_gasolina_resolver = component 'GasolinaResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de gasolina'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/GasolinaResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_petroleo_resolver = component 'PetroleoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de petróleo'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/PetroleoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_tanqueo_combustible_resolver = component 'TanqueoCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para operaciones de tanqueo de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/TanqueoCombustibleResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_combustible_movimiento_resolver = component 'CombustibleMovimientoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para movimientos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CombustibleMovimientoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_combustible_almacen_resolver = component 'CombustibleAlmacenResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para relación combustible-almacén'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CombustibleAlmacenResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  cm_v_tipo_combustible_resolver = component 'VTipoCombustibleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para tipos de combustible (vista)'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/VTipoCombustibleResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -81,6 +326,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para combustibles'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Combustible.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -89,6 +336,41 @@ model {
   cm_almacen_combustible_model = component 'AlmacenCombustible Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/AlmacenCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_almacen_combustible_aprobacion_model = component 'AlmacenCombustibleAprobacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para aprobaciones de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/AlmacenCombustibleAprobacion.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_almacen_combustible_archivo_model = component 'AlmacenCombustibleArchivo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para archivos de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/AlmacenCombustibleArchivo.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_almacen_combustible_imagen_model = component 'AlmacenCombustibleImagen Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para imágenes de almacenes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/AlmacenCombustibleImagen.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -99,6 +381,52 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para ingresos de combustible'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/IngresoCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_ingreso_combustible_orden_compra_model = component 'IngresoCombustibleOrdenCompra Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para ingresos de combustible desde órdenes de compra'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/IngresoCombustibleOrdenCompra.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_movimiento_ingreso_combustible_model = component 'MovimientoIngresoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para movimientos de ingresos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/MovimientoIngresoCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_imagenes_ingreso_combustible_model = component 'ImagenesIngresoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para imágenes de ingresos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ImagenesIngresoCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_documento_ingreso_combustible_model = component 'DocumentoIngresoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para documentos de ingresos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DocumentoIngresoCombustible.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -107,6 +435,52 @@ model {
   cm_salida_combustible_model = component 'SalidaCombustible Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SalidaCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_salida_combustible_aprobacion_model = component 'SalidaCombustibleAprobacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para aprobaciones de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SalidaCombustibleAprobacion.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_salida_combustible_archivo_model = component 'SalidaCombustibleArchivo Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para archivos de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SalidaCombustibleArchivo.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_equipo_salida_combustible_model = component 'EquipoSalidaCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para equipos en salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/EquipoSalidaCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_imagenes_salida_combustible_model = component 'ImagenesSalidaCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para imágenes de salidas de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ImagenesSalidaCombustible.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -117,25 +491,97 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para reportes de combustible'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ReporteCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_estado_reporte_combustible_model = component 'EstadoReporteCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para estados de reportes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/EstadoReporteCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_historial_reporte_combustible_model = component 'HistorialReporteCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para historial de reportes de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/HistorialReporteCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_combustible_almacen_model = component 'CombustibleAlmacen Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para relación combustible-almacén'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/CombustibleAlmacen.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_combustible_movimiento_model = component 'CombustibleMovimiento Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para movimientos de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/CombustibleMovimiento.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_tanqueo_combustible_model = component 'TanqueoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para operaciones de tanqueo de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/TanqueoCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_solicitud_equipo_combustible_model = component 'SolicitudEquipoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para solicitudes de equipo de combustible'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SolicitudEquipoCombustible.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  cm_v_tipo_combustible_model = component 'VTipoCombustible Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para tipos de combustible (vista)'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/VTipoCombustible.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
   }
 
   // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
-  cm_combustible_completo_service = application 'CombustibleCompletoService' {
-    description 'Servicio para gestión completa e integral de combustibles'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
   // ===== 🔄 SERVICIOS DE ALMACENAMIENTO =====
   cm_almacen_combustible_aprobacion_service = application 'AlmacenCombustibleAprobacionService' {
     description 'Servicio para aprobaciones de almacenes de combustible'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AlmacenCombustibleAprobacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -146,6 +592,8 @@ model {
     description 'Servicio para gestión de archivos de almacenes de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AlmacenCombustibleArchivoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -155,24 +603,19 @@ model {
     description 'Servicio para gestión de imágenes de almacenes de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AlmacenCombustibleImagenService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
   }
 
   // ===== 🔄 SERVICIOS DE INGRESOS =====
-  cm_ingreso_combustible_service = application 'IngresoCombustibleService' {
-    description 'Servicio para gestión de ingresos de combustible'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
   cm_ingreso_combustible_orden_compra_service = application 'IngresoCombustibleOrdenCompraService' {
     description 'Servicio para ingresos de combustible desde órdenes de compra'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/IngresoCombustibleOrdenCompraService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -183,6 +626,8 @@ model {
     description 'Servicio para vinculación de ingresos de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/IngresoCombustibleVinculacionService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -192,24 +637,41 @@ model {
     description 'Servicio para movimientos de ingresos de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/MovimientoIngresoCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_imagenes_ingreso_combustible_service = application 'ImagenesIngresoCombustibleService' {
+    description 'Servicio para imágenes de ingresos de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ImagenesIngresoCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_documento_ingreso_combustible_service = application 'DocumentoIngresoCombustibleService' {
+    description 'Servicio para documentos de ingresos de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoIngresoCombustibleService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
   }
 
   // ===== 🔄 SERVICIOS DE SALIDAS =====
-  cm_salida_combustible_service = application 'SalidaCombustibleService' {
-    description 'Servicio para gestión de salidas de combustible'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
   cm_salida_combustible_aprobacion_service = application 'SalidaCombustibleAprobacionService' {
     description 'Servicio para aprobaciones de salidas de combustible'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SalidaCombustibleAprobacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -220,6 +682,8 @@ model {
     description 'Servicio para archivos de salidas de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SalidaCombustibleArchivoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -229,43 +693,7 @@ model {
     description 'Servicio para equipos en salidas de combustible'
     technology 'TypeScript + Node.js'
 
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  // ===== 🔄 SERVICIOS DE REPORTES =====
-  cm_reporte_combustible_service = application 'ReporteCombustibleService' {
-    description 'Servicio para generación de reportes de combustible'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  cm_historial_reporte_combustible_service = application 'HistorialReporteCombustibleService' {
-    description 'Servicio para historial de reportes de combustible'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  cm_estado_reporte_combustible_service = application 'EstadoReporteCombustibleService' {
-    description 'Servicio para estados de reportes de combustible'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  // ===== 🔄 SERVICIOS DE IMÁGENES =====
-  cm_imagenes_ingreso_combustible_service = application 'ImagenesIngresoCombustibleService' {
-    description 'Servicio para imágenes de ingresos de combustible'
-    technology 'TypeScript + Node.js'
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EquipoSalidaCombustibleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -276,15 +704,30 @@ model {
     description 'Servicio para imágenes de salidas de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ImagenesSalidaCombustibleService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
   }
 
-  // ===== 🔄 SERVICIOS DE DOCUMENTOS =====
-  cm_documento_ingreso_combustible_service = application 'DocumentoIngresoCombustibleService' {
-    description 'Servicio para documentos de ingresos de combustible'
+  // ===== 🔄 SERVICIOS DE REPORTES =====
+  cm_historial_reporte_combustible_service = application 'HistorialReporteCombustibleService' {
+    description 'Servicio para historial de reportes de combustible'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/HistorialReporteCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_estado_reporte_combustible_service = application 'EstadoReporteCombustibleService' {
+    description 'Servicio para estados de reportes de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EstadoReporteCombustibleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -296,6 +739,8 @@ model {
     description 'Servicio específico para gestión de gasolina'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/GasolinaService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -304,6 +749,8 @@ model {
   cm_petroleo_service = application 'PetroleoService' {
     description 'Servicio específico para gestión de petróleo'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PetroleoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -314,6 +761,8 @@ model {
     description 'Servicio para operaciones de tanqueo de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TanqueoCombustibleService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -323,6 +772,8 @@ model {
     description 'Servicio para movimientos de combustible'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CombustibleMovimientoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -331,6 +782,30 @@ model {
   cm_combustible_almacen_service = application 'CombustibleAlmacenService' {
     description 'Servicio para relación combustible-almacén'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CombustibleAlmacenService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_solicitud_equipo_combustible_service = application 'SolicitudEquipoCombustibleService' {
+    description 'Servicio para solicitudes de equipo de combustible'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SolicitudEquipoCombustibleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  cm_v_tipo_combustible_service = application 'VTipoCombustibleService' {
+    description 'Servicio para tipos de combustible (vista)'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VTipoCombustibleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -357,9 +832,27 @@ model {
   // API → Resolvers
   cm_graphql_api -> cm_combustible_resolver 'Procesa queries/mutations'
   cm_graphql_api -> cm_almacen_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_almacen_combustible_aprobacion_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_almacen_combustible_archivo_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_almacen_combustible_imagen_resolver 'Procesa queries/mutations'
   cm_graphql_api -> cm_ingreso_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_ingreso_combustible_orden_compra_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_imagenes_ingreso_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_documento_ingreso_combustible_resolver 'Procesa queries/mutations'
   cm_graphql_api -> cm_salida_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_salida_combustible_aprobacion_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_salida_combustible_archivo_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_equipo_salida_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_imagenes_salida_combustible_resolver 'Procesa queries/mutations'
   cm_graphql_api -> cm_reporte_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_estado_reporte_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_historial_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_gasolina_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_petroleo_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_tanqueo_combustible_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_combustible_movimiento_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_combustible_almacen_resolver 'Procesa queries/mutations'
+  cm_graphql_api -> cm_v_tipo_combustible_resolver 'Procesa queries/mutations'
 
   // Resolvers → Servicios Principales
   cm_combustible_resolver -> cm_combustible_service 'Delega operaciones'
@@ -367,6 +860,26 @@ model {
   cm_ingreso_combustible_resolver -> cm_ingreso_combustible_service 'Delega operaciones'
   cm_salida_combustible_resolver -> cm_salida_combustible_service 'Delega operaciones'
   cm_reporte_combustible_resolver -> cm_reporte_combustible_service 'Delega operaciones'
+
+  // Resolvers → Servicios Especializados
+  cm_almacen_combustible_aprobacion_resolver -> cm_almacen_combustible_aprobacion_service 'Delega operaciones'
+  cm_almacen_combustible_archivo_resolver -> cm_almacen_combustible_archivo_service 'Delega operaciones'
+  cm_almacen_combustible_imagen_resolver -> cm_almacen_combustible_imagen_service 'Delega operaciones'
+  cm_ingreso_combustible_orden_compra_resolver -> cm_ingreso_combustible_orden_compra_service 'Delega operaciones'
+  cm_imagenes_ingreso_combustible_resolver -> cm_imagenes_ingreso_combustible_service 'Delega operaciones'
+  cm_documento_ingreso_combustible_resolver -> cm_documento_ingreso_combustible_service 'Delega operaciones'
+  cm_salida_combustible_aprobacion_resolver -> cm_salida_combustible_aprobacion_service 'Delega operaciones'
+  cm_salida_combustible_archivo_resolver -> cm_salida_combustible_archivo_service 'Delega operaciones'
+  cm_equipo_salida_combustible_resolver -> cm_equipo_salida_combustible_service 'Delega operaciones'
+  cm_imagenes_salida_combustible_resolver -> cm_imagenes_salida_combustible_service 'Delega operaciones'
+  cm_estado_reporte_combustible_resolver -> cm_estado_reporte_combustible_service 'Delega operaciones'
+  cm_historial_combustible_resolver -> cm_historial_reporte_combustible_service 'Delega operaciones'
+  cm_gasolina_resolver -> cm_gasolina_service 'Delega operaciones'
+  cm_petroleo_resolver -> cm_petroleo_service 'Delega operaciones'
+  cm_tanqueo_combustible_resolver -> cm_tanqueo_combustible_service 'Delega operaciones'
+  cm_combustible_movimiento_resolver -> cm_combustible_movimiento_service 'Delega operaciones'
+  cm_combustible_almacen_resolver -> cm_combustible_almacen_service 'Delega operaciones'
+  cm_v_tipo_combustible_resolver -> cm_v_tipo_combustible_service 'Delega operaciones'
 
   // Servicios Principales → Modelos
   cm_combustible_service -> cm_combustible_model 'Persiste datos'
@@ -376,44 +889,26 @@ model {
   cm_reporte_combustible_service -> cm_reporte_combustible_model 'Persiste datos'
 
   // Servicios Especializados → Modelos
-  cm_combustible_completo_service -> cm_combustible_model 'Gestión integral'
-
-  // Servicios de Almacenamiento → Modelos
-  cm_almacen_combustible_aprobacion_service -> cm_almacen_combustible_model 'Aprobaciones'
-  cm_almacen_combustible_archivo_service -> cm_almacen_combustible_model 'Archivos'
-  cm_almacen_combustible_imagen_service -> cm_almacen_combustible_model 'Imágenes'
-
-  // Servicios de Ingresos → Modelos
-  cm_ingreso_combustible_orden_compra_service -> cm_ingreso_combustible_model 'Ingresos desde OC'
-  cm_ingreso_combustible_vinculacion_service -> cm_ingreso_combustible_model 'Vinculaciones'
-  cm_movimiento_ingreso_combustible_service -> cm_ingreso_combustible_model 'Movimientos'
-
-  // Servicios de Salidas → Modelos
-  cm_salida_combustible_aprobacion_service -> cm_salida_combustible_model 'Aprobaciones'
-  cm_salida_combustible_archivo_service -> cm_salida_combustible_model 'Archivos'
-  cm_equipo_salida_combustible_service -> cm_salida_combustible_model 'Equipos'
-
-  // Servicios de Reportes → Modelos
-  cm_historial_reporte_combustible_service -> cm_reporte_combustible_model 'Historial'
-  cm_estado_reporte_combustible_service -> cm_reporte_combustible_model 'Estados'
-
-  // Servicios de Imágenes → Modelos
-  cm_imagenes_ingreso_combustible_service -> cm_ingreso_combustible_model 'Imágenes ingresos'
-  cm_imagenes_salida_combustible_service -> cm_salida_combustible_model 'Imágenes salidas'
-
-  // Servicios de Documentos → Modelos
-  cm_documento_ingreso_combustible_service -> cm_ingreso_combustible_model 'Documentos'
-
-  // Servicios Específicos → Modelos
-  cm_gasolina_service -> cm_combustible_model 'Gasolina específica'
-  cm_petroleo_service -> cm_combustible_model 'Petróleo específico'
-  cm_tanqueo_combustible_service -> cm_combustible_model 'Tanqueo operaciones'
-  cm_combustible_movimiento_service -> cm_combustible_model 'Movimientos'
-  cm_combustible_almacen_service -> cm_almacen_combustible_model 'Relación almacén'
+  cm_almacen_combustible_aprobacion_service -> cm_almacen_combustible_aprobacion_model 'Persiste datos'
+  cm_almacen_combustible_archivo_service -> cm_almacen_combustible_archivo_model 'Persiste datos'
+  cm_almacen_combustible_imagen_service -> cm_almacen_combustible_imagen_model 'Persiste datos'
+  cm_ingreso_combustible_orden_compra_service -> cm_ingreso_combustible_orden_compra_model 'Persiste datos'
+  cm_movimiento_ingreso_combustible_service -> cm_movimiento_ingreso_combustible_model 'Persiste datos'
+  cm_imagenes_ingreso_combustible_service -> cm_imagenes_ingreso_combustible_model 'Persiste datos'
+  cm_documento_ingreso_combustible_service -> cm_documento_ingreso_combustible_model 'Persiste datos'
+  cm_salida_combustible_aprobacion_service -> cm_salida_combustible_aprobacion_model 'Persiste datos'
+  cm_salida_combustible_archivo_service -> cm_salida_combustible_archivo_model 'Persiste datos'
+  cm_equipo_salida_combustible_service -> cm_equipo_salida_combustible_model 'Persiste datos'
+  cm_imagenes_salida_combustible_service -> cm_imagenes_salida_combustible_model 'Persiste datos'
+  cm_historial_reporte_combustible_service -> cm_historial_reporte_combustible_model 'Persiste datos'
+  cm_estado_reporte_combustible_service -> cm_estado_reporte_combustible_model 'Persiste datos'
+  cm_combustible_almacen_service -> cm_combustible_almacen_model 'Persiste datos'
+  cm_combustible_movimiento_service -> cm_combustible_movimiento_model 'Persiste datos'
+  cm_tanqueo_combustible_service -> cm_tanqueo_combustible_model 'Persiste datos'
+  cm_solicitud_equipo_combustible_service -> cm_solicitud_equipo_combustible_model 'Persiste datos'
+  cm_v_tipo_combustible_service -> cm_v_tipo_combustible_model 'Persiste datos'
 
   // Servicios colaboran entre sí (Flujo de Combustibles)
-  cm_combustible_service -> cm_combustible_completo_service 'Gestión completa'
-
   cm_almacen_combustible_service -> cm_almacen_combustible_aprobacion_service 'Aprobaciones'
   cm_almacen_combustible_service -> cm_almacen_combustible_archivo_service 'Archivos'
   cm_almacen_combustible_service -> cm_almacen_combustible_imagen_service 'Imágenes'
@@ -437,6 +932,8 @@ model {
   cm_combustible_service -> cm_tanqueo_combustible_service 'Operaciones tanqueo'
   cm_combustible_service -> cm_combustible_movimiento_service 'Movimientos'
   cm_combustible_service -> cm_combustible_almacen_service 'Relación almacén'
+  cm_combustible_service -> cm_solicitud_equipo_combustible_service 'Solicitudes equipo'
+  cm_combustible_service -> cm_v_tipo_combustible_service 'Tipos de combustible'
 
   // Servicios → Infraestructura
   cm_combustible_service -> cm_mongodb 'Accede a base de datos'

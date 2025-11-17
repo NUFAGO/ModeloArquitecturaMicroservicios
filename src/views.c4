@@ -499,7 +499,6 @@ views {
       include rq_planilla_service
       include rq_aprobacion_service
       include rq_requerimiento_recurso_service
-      include rq_reporte_requerimiento_service
     }
 
     // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
@@ -518,7 +517,6 @@ views {
       include rq_requerimiento_model
       include rq_planilla_model
       include rq_aprobacion_model
-      include rq_estado_requerimiento_model
     }
 
     // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
@@ -819,26 +817,34 @@ views {
   // Activos Fijos
   view components_activos_fijos of inacons.activos_fijos_ms {
     title "Componentes - Activos Fijos (Nivel 3)"
-    description "Gestión completa de creación, marcado y sincronización de activos fijos"
+    description "Microservicio de Activos Fijos - Estructura Real Basada en inacons-backend"
 
-    // ===== RESOLVERS =====
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
     group "API GraphQL" {
       color primary
 
       include af_graphql_api
     }
 
-    // ===== SERVICIOS =====
-    group "Servicios" {
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS PRINCIPALES
+    group "Servicios Principales" {
       color green
 
       include af_activo_fijo_service
       include af_creacion_activo_fijo_service
       include af_recurso_activo_fijo_service
-      include af_activo_fijo_completo_service
     }
 
-    // ===== MODELOS =====
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include af_activo_fijo_resolver
+      include af_creacion_activo_fijo_resolver
+      include af_recurso_activo_fijo_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
     group "Modelos/Entidades" {
       color muted
 
@@ -849,38 +855,149 @@ views {
       include af_data_adicional_model
       include af_data_adicional_texto_model
     }
+
+    // 🔄 SERVICIOS ESPECIALIZADOS
+    group "Servicios Especializados" {
+      color indigo
+
+      include af_activo_fijo_completo_service
+      include af_recurso_creacion_service
+      include af_servicio_creacion_service
+      include af_data_adicional_service
+      include af_data_adicional_texto_service
+      include af_sincronizacion_service
+      include af_marcado_service
+      include af_validacion_activo_fijo_service
+      include af_reporte_activo_fijo_service
+      include af_dashboard_activo_fijo_service
+      include af_procesamiento_activos_service
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include af_mongodb
+      include af_redis
+      include af_queue_service
+    }
   }
 
   // Combustibles
   view components_combustibles of inacons.combustibles_ms {
     title "Componentes - Combustibles (Nivel 3)"
-    description "Gestión completa de combustibles, tanques, surtidores y ventas"
+    description "Microservicio de Combustibles - Estructura Real Basada en inacons-backend"
 
-    // ===== RESOLVERS =====
+    // 🟦 RECTÁNGULO AZUL - API GRAPHQL
     group "API GraphQL" {
       color primary
 
       include cm_graphql_api
     }
 
-    // ===== SERVICIOS =====
-    group "Servicios" {
+    // 🟩 RECTÁNGULO VERDE - SERVICIOS PRINCIPALES
+    group "Servicios Principales" {
       color green
 
       include cm_combustible_service
       include cm_almacen_combustible_service
-      include cm_combustible_completo_service
+      include cm_ingreso_combustible_service
+      include cm_salida_combustible_service
+      include cm_reporte_combustible_service
     }
 
-    // ===== REPOSITORIES =====
-    group "Repositories" {
+    // 🟨 RECTÁNGULO ÁMBAR - RESOLVERS
+    group "Resolvers" {
+      color amber
+
+      include cm_combustible_resolver
+      include cm_almacen_combustible_resolver
+      include cm_almacen_combustible_aprobacion_resolver
+      include cm_almacen_combustible_archivo_resolver
+      include cm_almacen_combustible_imagen_resolver
+      include cm_ingreso_combustible_resolver
+      include cm_ingreso_combustible_orden_compra_resolver
+      include cm_imagenes_ingreso_combustible_resolver
+      include cm_documento_ingreso_combustible_resolver
+      include cm_salida_combustible_resolver
+      include cm_salida_combustible_aprobacion_resolver
+      include cm_salida_combustible_archivo_resolver
+      include cm_equipo_salida_combustible_resolver
+      include cm_imagenes_salida_combustible_resolver
+      include cm_reporte_combustible_resolver
+      include cm_estado_reporte_combustible_resolver
+      include cm_historial_combustible_resolver
+      include cm_gasolina_resolver
+      include cm_petroleo_resolver
+      include cm_tanqueo_combustible_resolver
+      include cm_combustible_movimiento_resolver
+      include cm_combustible_almacen_resolver
+      include cm_v_tipo_combustible_resolver
+    }
+
+    // ⬜ RECTÁNGULO GRIS CLARO - MODELOS
+    group "Modelos/Entidades" {
       color muted
 
       include cm_combustible_model
       include cm_almacen_combustible_model
+      include cm_almacen_combustible_aprobacion_model
+      include cm_almacen_combustible_archivo_model
+      include cm_almacen_combustible_imagen_model
       include cm_ingreso_combustible_model
+      include cm_ingreso_combustible_orden_compra_model
+      include cm_movimiento_ingreso_combustible_model
+      include cm_imagenes_ingreso_combustible_model
+      include cm_documento_ingreso_combustible_model
       include cm_salida_combustible_model
+      include cm_salida_combustible_aprobacion_model
+      include cm_salida_combustible_archivo_model
+      include cm_equipo_salida_combustible_model
+      include cm_imagenes_salida_combustible_model
       include cm_reporte_combustible_model
+      include cm_estado_reporte_combustible_model
+      include cm_historial_reporte_combustible_model
+      include cm_combustible_almacen_model
+      include cm_combustible_movimiento_model
+      include cm_tanqueo_combustible_model
+      include cm_solicitud_equipo_combustible_model
+      include cm_v_tipo_combustible_model
+    }
+
+    // 🔄 SERVICIOS ESPECIALIZADOS
+    group "Servicios Especializados" {
+      color indigo
+
+      include cm_almacen_combustible_aprobacion_service
+      include cm_almacen_combustible_archivo_service
+      include cm_almacen_combustible_imagen_service
+      include cm_ingreso_combustible_orden_compra_service
+      include cm_ingreso_combustible_vinculacion_service
+      include cm_movimiento_ingreso_combustible_service
+      include cm_imagenes_ingreso_combustible_service
+      include cm_documento_ingreso_combustible_service
+      include cm_salida_combustible_aprobacion_service
+      include cm_salida_combustible_archivo_service
+      include cm_equipo_salida_combustible_service
+      include cm_imagenes_salida_combustible_service
+      include cm_historial_reporte_combustible_service
+      include cm_estado_reporte_combustible_service
+      include cm_gasolina_service
+      include cm_petroleo_service
+      include cm_tanqueo_combustible_service
+      include cm_combustible_movimiento_service
+      include cm_combustible_almacen_service
+      include cm_solicitud_equipo_combustible_service
+      include cm_v_tipo_combustible_service
+    }
+
+    // ⚫ RECTÁNGULO GRIS OSCURO - INFRAESTRUCTURA
+    group "Infraestructura" {
+      color slate
+
+      include cm_mongodb
+      include cm_redis
+      include cm_queue_service
     }
   }
 

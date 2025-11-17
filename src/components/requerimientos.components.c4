@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión completa de requerimientos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RequerimientoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio para gestión de planillas de requerimientos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PlanillaService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   rq_aprobacion_service = application 'AprobacionService' {
     description 'Servicio para gestión de aprobaciones de requerimientos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AprobacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de requerimientos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RequerimientoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -53,6 +61,19 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de planillas'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/PlanillaResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_planilla_detalle_resolver = component 'PlanillaDetalleResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para detalles de planillas'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/PlanillaDetalleResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +82,74 @@ model {
   rq_aprobacion_resolver = component 'AprobacionResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de aprobaciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AprobacionResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_requerimiento_recurso_resolver = component 'RequerimientoRecursoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para recursos asociados a requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RequerimientoRecursoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_requerimiento_recurso_partida_resolver = component 'RequerimientoRecursoPartidaResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para recursos por partida en requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RequerimientoRecursoPartidaResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_requerimiento_aprobacion_resolver = component 'RequerimientoAprobacionResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para aprobaciones de requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RequerimientoAprobacionResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_requerimiento_estado_historial_resolver = component 'RequerimientoEstadoHistorialResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para historial de estados de requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RequerimientoEstadoHistorialResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_solicitud_cambio_partida_requerimiento_recurso_resolver = component 'SolicitudCambioPartidaRequerimientoRecursoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para solicitudes de cambio de partida en requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SolicitudCambioPartidaRequerimientoRecursoResolver.ts 'Ver código fuente'
+
+    style {
+      color amber  // Amarillo para resolvers
+    }
+  }
+
+  rq_velimaq_requerimiento_resolver = component 'VelimaqRequerimientoResolver' {
+    technology 'GraphQL Resolver'
+    description 'Resolver para requerimientos de Velimaq'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/VelimaqRequerimientoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -72,6 +161,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para requerimientos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Requerimiento.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -80,6 +171,19 @@ model {
   rq_planilla_model = component 'Planilla Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para planillas de requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Planilla.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_planilla_detalle_model = component 'PlanillaDetalle Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para detalles de planillas'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/PlanillaDetalle.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -90,14 +194,73 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para aprobaciones'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Aprobacion.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
   }
 
-  rq_estado_requerimiento_model = component 'EstadoRequerimiento Model' {
+  rq_requerimiento_recurso_model = component 'RequerimientoRecurso Model' {
     technology 'Mongoose Schema'
-    description 'Modelo de datos para estados de requerimientos'
+    description 'Modelo de datos para recursos asociados a requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RequerimientoRecurso.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_requerimiento_recurso_partida_model = component 'RequerimientoRecursoPartida Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para recursos por partida en requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RequerimientoRecursoPartida.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_requerimiento_aprobacion_model = component 'RequerimientoAprobacion Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para aprobaciones de requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RequerimientoAprobacion.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_requerimiento_estado_historial_model = component 'RequerimientoEstadoHistorial Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para historial de estados de requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RequerimientoEstadoHistorial.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_solicitud_cambio_partida_requerimiento_recurso_model = component 'SolicitudCambioPartidaRequerimientoRecurso Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para solicitudes de cambio de partida en requerimientos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SolicitudCambioPartidaRequerimientoRecurso.ts 'Ver código fuente'
+
+    style {
+      color slate  // Gris para modelos
+    }
+  }
+
+  rq_velimaq_requerimiento_model = component 'VelimaqRequerimiento Model' {
+    technology 'Mongoose Schema'
+    description 'Modelo de datos para requerimientos de Velimaq'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/VelimaqRequerimiento.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -105,28 +268,12 @@ model {
   }
 
   // ===== ⚫ SERVICIOS ESPECIALIZADOS =====
-  rq_requerimiento_completo_service = application 'RequerimientoCompletoService' {
-    description 'Servicio para gestión completa de requerimientos con flujo completo'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  rq_planilla_completo_service = application 'PlanillaCompletoService' {
-    description 'Servicio completo para gestión de planillas'
-    technology 'TypeScript + Node.js'
-
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
   // ===== 🔄 SERVICIOS DE RECURSOS =====
   rq_requerimiento_recurso_service = application 'RequerimientoRecursoService' {
     description 'Servicio para recursos asociados a requerimientos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RequerimientoRecursoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -137,15 +284,30 @@ model {
     description 'Servicio para recursos por partida en requerimientos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RequerimientoRecursoPartidaService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  rq_solicitud_cambio_partida_requerimiento_recurso_service = application 'SolicitudCambioPartidaRequerimientoRecursoService' {
+    description 'Servicio para solicitudes de cambio de partida en requerimientos'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SolicitudCambioPartidaRequerimientoRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
   }
 
   // ===== 🔄 SERVICIOS DE APROBACIONES =====
-  rq_aprobacion_requerimiento_service = application 'AprobacionRequerimientoService' {
+  rq_requerimiento_aprobacion_service = application 'RequerimientoAprobacionService' {
     description 'Servicio especializado para aprobaciones de requerimientos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RequerimientoAprobacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -156,25 +318,31 @@ model {
     description 'Servicio para historial de estados de requerimientos'
     technology 'TypeScript + Node.js'
 
-    style {
-      color green  // Verde para servicios
-    }
-  }
-
-  // ===== 🔄 SERVICIOS DE REPORTES =====
-  rq_reporte_requerimiento_service = application 'ReporteRequerimientoService' {
-    description 'Servicio para reportes de requerimientos'
-    technology 'TypeScript + Node.js'
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RequerimientoEstadoHistorialService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
     }
   }
 
-  // ===== 🔄 SERVICIOS DE VALIDACIÓN =====
-  rq_validacion_requerimiento_service = application 'ValidacionRequerimientoService' {
-    description 'Servicio para validación de requerimientos'
+  // ===== 🔄 SERVICIOS DE PLANILLAS =====
+  rq_planilla_detalle_service = application 'PlanillaDetalleService' {
+    description 'Servicio para detalles de planillas'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PlanillaDetalleService.ts 'Ver código fuente'
+
+    style {
+      color green  // Verde para servicios
+    }
+  }
+
+  // ===== 🔄 SERVICIOS DE INTEGRACIÓN =====
+  rq_velimaq_requerimiento_service = application 'VelimaqRequerimientoService' {
+    description 'Servicio para requerimientos de Velimaq'
+    technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VelimaqRequerimientoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -201,57 +369,69 @@ model {
   // API → Resolvers
   rq_graphql_api -> rq_requerimiento_resolver 'Procesa queries/mutations'
   rq_graphql_api -> rq_planilla_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_planilla_detalle_resolver 'Procesa queries/mutations'
   rq_graphql_api -> rq_aprobacion_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_requerimiento_recurso_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_requerimiento_recurso_partida_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_requerimiento_aprobacion_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_requerimiento_estado_historial_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_solicitud_cambio_partida_requerimiento_recurso_resolver 'Procesa queries/mutations'
+  rq_graphql_api -> rq_velimaq_requerimiento_resolver 'Procesa queries/mutations'
 
   // Resolvers → Servicios Principales
   rq_requerimiento_resolver -> rq_requerimiento_service 'Delega operaciones'
   rq_planilla_resolver -> rq_planilla_service 'Delega operaciones'
+  rq_planilla_detalle_resolver -> rq_planilla_detalle_service 'Delega operaciones'
   rq_aprobacion_resolver -> rq_aprobacion_service 'Delega operaciones'
+
+  // Resolvers → Servicios Especializados
+  rq_requerimiento_recurso_resolver -> rq_requerimiento_recurso_service 'Delega operaciones'
+  rq_requerimiento_recurso_partida_resolver -> rq_requerimiento_recurso_partida_service 'Delega operaciones'
+  rq_requerimiento_aprobacion_resolver -> rq_requerimiento_aprobacion_service 'Delega operaciones'
+  rq_requerimiento_estado_historial_resolver -> rq_requerimiento_estado_historial_service 'Delega operaciones'
+  rq_solicitud_cambio_partida_requerimiento_recurso_resolver -> rq_solicitud_cambio_partida_requerimiento_recurso_service 'Delega operaciones'
+  rq_velimaq_requerimiento_resolver -> rq_velimaq_requerimiento_service 'Delega operaciones'
 
   // Servicios Principales → Modelos
   rq_requerimiento_service -> rq_requerimiento_model 'Persiste datos'
   rq_planilla_service -> rq_planilla_model 'Persiste datos'
+  rq_planilla_detalle_service -> rq_planilla_detalle_model 'Persiste datos'
   rq_aprobacion_service -> rq_aprobacion_model 'Persiste datos'
 
   // Servicios Especializados → Modelos
-  rq_requerimiento_completo_service -> rq_requerimiento_model 'Gestión integral'
-  rq_planilla_completo_service -> rq_planilla_model 'Planilla completa'
-  rq_requerimiento_estado_historial_service -> rq_estado_requerimiento_model 'Historial estados'
-
-  // Servicios de Recursos → Modelos
-  rq_requerimiento_recurso_service -> rq_requerimiento_model 'Asociación recursos'
-  rq_requerimiento_recurso_partida_service -> rq_requerimiento_model 'Recursos por partida'
-
-  // Servicios de Aprobaciones → Modelos
-  rq_aprobacion_requerimiento_service -> rq_aprobacion_model 'Aprobaciones especializadas'
-
-  // Servicios de Validación → Modelos
-  rq_validacion_requerimiento_service -> rq_requerimiento_model 'Validaciones'
+  rq_requerimiento_recurso_service -> rq_requerimiento_recurso_model 'Persiste datos'
+  rq_requerimiento_recurso_partida_service -> rq_requerimiento_recurso_partida_model 'Persiste datos'
+  rq_requerimiento_aprobacion_service -> rq_requerimiento_aprobacion_model 'Persiste datos'
+  rq_requerimiento_estado_historial_service -> rq_requerimiento_estado_historial_model 'Persiste datos'
+  rq_solicitud_cambio_partida_requerimiento_recurso_service -> rq_solicitud_cambio_partida_requerimiento_recurso_model 'Persiste datos'
+  rq_velimaq_requerimiento_service -> rq_velimaq_requerimiento_model 'Persiste datos'
 
   // Servicios colaboran entre sí (Flujo de Requerimientos)
-  rq_requerimiento_service -> rq_requerimiento_completo_service 'Gestión completa'
-  rq_planilla_service -> rq_planilla_completo_service 'Planilla completa'
-
   rq_requerimiento_service -> rq_planilla_service 'Genera planillas'
+  rq_planilla_service -> rq_planilla_detalle_service 'Gestiona detalles'
   rq_requerimiento_service -> rq_requerimiento_recurso_service 'Asocia recursos'
   rq_requerimiento_service -> rq_requerimiento_recurso_partida_service 'Detalla por partida'
+  rq_requerimiento_service -> rq_solicitud_cambio_partida_requerimiento_recurso_service 'Gestiona cambios de partida'
 
   rq_requerimiento_service -> rq_aprobacion_service 'Inicia aprobaciones'
-  rq_aprobacion_service -> rq_aprobacion_requerimiento_service 'Aprobaciones especializadas'
+  rq_aprobacion_service -> rq_requerimiento_aprobacion_service 'Aprobaciones especializadas'
   rq_aprobacion_service -> rq_requerimiento_estado_historial_service 'Registra historial'
 
-  rq_requerimiento_service -> rq_validacion_requerimiento_service 'Validaciones'
-  rq_requerimiento_service -> rq_reporte_requerimiento_service 'Genera reportes'
+  rq_requerimiento_service -> rq_velimaq_requerimiento_service 'Integración Velimaq'
 
   // Servicios → Infraestructura
   rq_requerimiento_service -> rq_mongodb 'Accede a base de datos'
   rq_planilla_service -> rq_mongodb 'Accede a base de datos'
+  rq_planilla_detalle_service -> rq_mongodb 'Accede a base de datos'
   rq_aprobacion_service -> rq_mongodb 'Accede a base de datos'
+  rq_requerimiento_recurso_service -> rq_mongodb 'Accede a base de datos'
+  rq_requerimiento_recurso_partida_service -> rq_mongodb 'Accede a base de datos'
+  rq_requerimiento_aprobacion_service -> rq_mongodb 'Accede a base de datos'
+  rq_requerimiento_estado_historial_service -> rq_mongodb 'Accede a base de datos'
+  rq_solicitud_cambio_partida_requerimiento_recurso_service -> rq_mongodb 'Accede a base de datos'
+  rq_velimaq_requerimiento_service -> rq_mongodb 'Accede a base de datos'
 
   rq_requerimiento_service -> rq_redis 'Usa cache'
   rq_planilla_service -> rq_redis 'Usa cache'
   rq_aprobacion_service -> rq_redis 'Usa cache'
-
-  // Servicios de Reportes → Queue
-  rq_reporte_requerimiento_service -> rq_queue_service 'Genera reportes async'
 }

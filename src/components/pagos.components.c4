@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión de órdenes de pago completas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/OrdenPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio para gestión de aprobaciones de órdenes de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AprobacionOrdenPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   pg_pago_orden_pago_service = application 'PagoOrdenPagoService' {
     description 'Servicio para procesamiento de pagos de órdenes'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PagoOrdenPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de órdenes de pago'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/OrdenPagoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -52,6 +60,8 @@ model {
   pg_aprobacion_orden_pago_resolver = component 'AprobacionOrdenPagoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de aprobaciones de órdenes de pago'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/AprobacionOrdenPagoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -62,6 +72,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de pagos de órdenes'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/PagoOrdenPagoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -71,6 +83,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de estados de pago'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EstadoPagoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -79,6 +93,8 @@ model {
   pg_transferencia_detalle_resolver = component 'TransferenciaDetalleResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de detalles de transferencia'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/TransferenciaDetalleResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -90,6 +106,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para órdenes de pago'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/OrdenPago.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -98,6 +116,8 @@ model {
   pg_estado_pago_model = component 'EstadoPago Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para estados de pago'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/EstadoPago.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -108,6 +128,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para detalles de transferencia'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/TransferenciaDetalle.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -117,6 +139,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para usuarios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Usuario.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -125,6 +149,8 @@ model {
   pg_comprobante_model = component 'Comprobante Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para comprobantes'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Comprobante.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -136,6 +162,8 @@ model {
     description 'Servicio para gestión de caja chica en órdenes de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CajaChicaOrdenPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -144,6 +172,8 @@ model {
   pg_orden_pago_descuento_service = application 'OrdenPagoDescuentoService' {
     description 'Servicio para gestión de descuentos en órdenes de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/OrdenPagoDescuentoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -154,6 +184,8 @@ model {
     description 'Servicio para gestión de grupos de órdenes de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/OrdenPagoGrupoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -162,6 +194,8 @@ model {
   pg_extorno_orden_pago_service = application 'ExtornoOrdenPagoService' {
     description 'Servicio para gestión de extornos de órdenes de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ExtornoOrdenPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -173,6 +207,8 @@ model {
     description 'Servicio para gestión de archivos de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ArchivoPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -181,6 +217,8 @@ model {
   pg_verificacion_archivo_pago_service = application 'VerificacionArchivoPagoService' {
     description 'Servicio para verificación de archivos de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VerificacionArchivoPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -192,6 +230,8 @@ model {
     description 'Servicio para gestión de comprobantes de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ComprobantePagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -200,6 +240,8 @@ model {
   pg_reporte_comprobante_pago_service = application 'ReporteComprobantePagoService' {
     description 'Servicio para reportes de comprobantes de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteComprobantePagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -211,6 +253,8 @@ model {
     description 'Servicio de envío de correos electrónicos para pagos'
     technology 'NodeMailer + Gmail API'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmailService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -219,6 +263,8 @@ model {
   pg_notificacion_orden_pago_service = application 'NotificacionOrdenPagoService' {
     description 'Servicio de notificaciones para órdenes de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/NotificacionOrdenPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -230,6 +276,8 @@ model {
     description 'Servicio para gestión de conceptos de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ConceptoPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -238,6 +286,8 @@ model {
   pg_tipo_pago_service = application 'TipoPagoService' {
     description 'Servicio para gestión de tipos de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TipoPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -248,6 +298,8 @@ model {
     description 'Servicio para gestión de modos de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ModoPagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -256,6 +308,8 @@ model {
   pg_transferencia_detalle_service = application 'TransferenciaDetalleService' {
     description 'Servicio para gestión de detalles de transferencia'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TransferenciaDetalleService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

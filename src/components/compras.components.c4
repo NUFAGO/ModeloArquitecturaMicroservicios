@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión de compras completas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CompraService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -24,6 +26,8 @@ model {
   cp_cotizacion_service = application 'CotizacionService' {
     description 'Servicio para gestión de cotizaciones con proveedores'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CotizacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -34,6 +38,8 @@ model {
     description 'Servicio principal para gestión de órdenes de compra'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/OrdenCompraService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -43,6 +49,8 @@ model {
     description 'Servicio para homologación y gestión de proveedores'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ProveedorService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -51,6 +59,8 @@ model {
   cp_procesador_compra_completa_service = application 'ProcesadorCompraCompletaService' {
     description 'Servicio para procesamiento completo del flujo de compras'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ProcesadorCompraCompletaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -62,6 +72,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de compras'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CompraResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -70,6 +82,8 @@ model {
   cp_cotizacion_resolver = component 'CotizacionResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de cotizaciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CotizacionResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -80,6 +94,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de órdenes de compra'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/OrdenCompraResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -89,6 +105,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de proveedores'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ProveedorResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -97,6 +115,8 @@ model {
   cp_solicitud_compra_resolver = component 'SolicitudCompraResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de solicitudes de compra'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SolicitudCompraResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -108,6 +128,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para compras'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Compra.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -116,6 +138,8 @@ model {
   cp_cotizacion_model = component 'Cotizacion Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para cotizaciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Cotizacion.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -126,6 +150,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para órdenes de compra'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/OrdenCompra.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -134,6 +160,8 @@ model {
   cp_proveedor_model = component 'Proveedor Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para proveedores'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Proveedor.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -144,6 +172,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para solicitudes de compra'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/SolicitudCompra.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -153,6 +183,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para comprobantes de órdenes de compra'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ComprobanteOrdenCompra.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -161,6 +193,8 @@ model {
   cp_guia_remision_model = component 'GuiaRemision Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para guías de remisión'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/GuiaRemision.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -172,6 +206,8 @@ model {
     description 'Gestión de solicitudes de compra'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SolicitudCompraService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -180,6 +216,8 @@ model {
   cp_comprobante_orden_compra_service = application 'ComprobanteOrdenCompraService' {
     description 'Servicio para gestión de comprobantes de órdenes de compra'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ComprobanteOrdenCompraService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -190,6 +228,8 @@ model {
     description 'Servicio para gestión de guías de remisión'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/GuiaRemisionService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -198,6 +238,8 @@ model {
   cp_aprobacion_cierre_orden_compra_service = application 'AprobacionCierreOrdencompraService' {
     description 'Servicio para aprobaciones de cierre de órdenes'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AprobacionCierreOrdencompraService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -208,6 +250,8 @@ model {
     description 'Servicio para gestión de incumplimientos en órdenes'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/IncumplimientoOrdenCompraRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -216,6 +260,8 @@ model {
   cp_pago_compra_comprobante_service = application 'PagoCompraComprobanteService' {
     description 'Servicio para gestión de pagos de compras'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PagoCompraComprobanteService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -227,6 +273,8 @@ model {
     description 'Gestión de recursos en compras'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CompraRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -235,6 +283,8 @@ model {
   cp_orden_compra_recurso_service = application 'OrdenCompraRecursoService' {
     description 'Recursos asociados a órdenes de compra'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/OrdenCompraRecursoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -245,6 +295,8 @@ model {
     description 'Recursos en cotizaciones'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CotizacionRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -253,6 +305,8 @@ model {
   cp_solicitud_compra_recurso_service = application 'SolicitudCompraRecursoService' {
     description 'Recursos en solicitudes de compra'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SolicitudCompraRecursoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -263,6 +317,8 @@ model {
     description 'Seguimiento de recursos en cotizaciones'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SeguimientoCotizacionRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -272,11 +328,15 @@ model {
   cp_email_service = application 'EmailService' {
     description 'Servicio de envío de correos electrónicos para compras'
     technology 'NodeMailer + Gmail API'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmailService.ts 'Ver código fuente'
   }
 
   cp_notificacion_cotizacion_service = application 'NotificacionCotizacionService' {
     description 'Servicio de notificaciones para cotizaciones'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/NotificacionCotizacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -287,6 +347,8 @@ model {
     description 'Servicio de notificaciones para órdenes de compra'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/NotificacionOrdenCompraService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -296,6 +358,8 @@ model {
   cp_documento_cotizacion_service = application 'DocumentoCotizacionService' {
     description 'Gestión documental de cotizaciones'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoCotizacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

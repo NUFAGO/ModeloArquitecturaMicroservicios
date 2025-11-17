@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión completa de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio para gestión de tipos de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TipoRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   rc_unidad_service = application 'UnidadService' {
     description 'Servicio para gestión de unidades de medida'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/UnidadService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de recursos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RecursoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de tipos de recursos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/TipoRecursoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   rc_unidad_resolver = component 'UnidadResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de unidades'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/UnidadResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -72,6 +84,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Recurso.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -80,6 +94,8 @@ model {
   rc_tipo_recurso_model = component 'TipoRecurso Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para tipos de recursos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/TipoRecurso.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -90,6 +106,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para unidades de medida'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Unidad.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -99,6 +117,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para clasificaciones de recursos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ClasificacionRecurso.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -107,6 +127,8 @@ model {
   rc_tipo_costo_recurso_model = component 'TipoCostoRecurso Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para tipos de costo de recursos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/TipoCostoRecurso.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -118,6 +140,8 @@ model {
     description 'Servicio para recursos asociados a presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoPresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -127,6 +151,8 @@ model {
     description 'Servicio para recursos asociados a obras'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoObraService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -135,6 +161,8 @@ model {
   rc_recurso_seguimiento_total_service = application 'RecursoSeguimientoTotalService' {
     description 'Servicio para seguimiento completo de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoSeguimientoTotalService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -146,6 +174,8 @@ model {
     description 'Servicio para clasificación de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ClasificacionRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -154,6 +184,8 @@ model {
   rc_tipo_costo_recurso_service = application 'TipoCostoRecursoService' {
     description 'Servicio para tipos de costo de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TipoCostoRecursoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -165,6 +197,8 @@ model {
     description 'Sistema de trazabilidad de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TrazarRecursosService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -173,6 +207,8 @@ model {
   rc_sincronizar_recursos_service = application 'SincronizarRecursosService' {
     description 'Servicio para sincronización de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SincronizarRecursosService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -184,6 +220,8 @@ model {
     description 'Servicio para recursos en composiciones APU'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoComposicionApuService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -193,6 +231,8 @@ model {
   rc_precio_recurso_proyecto_service = application 'PrecioRecursoProyectoService' {
     description 'Servicio para precios de recursos por proyecto'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PrecioRecursoProyectoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -204,6 +244,8 @@ model {
     description 'Servicio para consumo de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ConsumoRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -212,6 +254,8 @@ model {
   rc_consumo_service = application 'ConsumoService' {
     description 'Servicio principal para gestión de consumos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ConsumoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -223,6 +267,8 @@ model {
     description 'Servicio para préstamos de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PrestamoRecursoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -231,6 +277,8 @@ model {
   rc_prestamo_service = application 'PrestamoService' {
     description 'Servicio principal para gestión de préstamos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PrestamoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

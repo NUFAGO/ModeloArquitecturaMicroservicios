@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión de comprobantes contables'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ComprobanteService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio para gestión de tipos de comprobantes'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TipoComprobanteService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   cb_sunat_service = application 'SunatService' {
     description 'Servicio para integración con SUNAT'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SunatService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de comprobantes'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ComprobanteResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de tipos de comprobantes'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/TipoComprobanteResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   cb_sunat_resolver = component 'SunatResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de integración SUNAT'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/SunatResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -72,6 +84,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para comprobantes contables'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Comprobante.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -81,6 +95,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para tipos de comprobantes'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/TipoComprobante.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -89,6 +105,8 @@ model {
   cb_constancia_comprobante_model = component 'ConstanciaComprobante Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para constancias de comprobantes'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ConstanciaComprobante.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -100,6 +118,8 @@ model {
     description 'Servicio para gestión de archivos de comprobantes'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ComprobanteArchivosService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -109,6 +129,8 @@ model {
     description 'Servicio para registro de comprobantes'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RegistroComprobanteService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -117,6 +139,8 @@ model {
   cb_registro_constancia_pago_service = application 'RegistroConstanciaPagoService' {
     description 'Servicio para registro de constancias de pago'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RegistroConstanciaPagoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -128,6 +152,8 @@ model {
     description 'Servicio para aprobaciones de comprobantes'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AprobacionComprobanteService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -136,6 +162,8 @@ model {
   cb_aprobacion_constancias_comprobante_service = application 'AprobacionConstanciasComprobanteService' {
     description 'Servicio para aprobaciones de constancias'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AprobacionConstanciasComprobanteService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -147,6 +175,8 @@ model {
     description 'Servicio para reportes de comprobantes de pago'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteComprobantePagoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -156,6 +186,8 @@ model {
   cb_documento_validacion_service = application 'DocumentoValidacionService' {
     description 'Servicio para validación de documentos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoValidacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión de empresas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmpresaService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -24,6 +26,8 @@ model {
   ad_usuario_service = application 'UsuarioService' {
     description 'Servicio principal para gestión de usuarios del sistema'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/UsuarioService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -34,6 +38,8 @@ model {
     description 'Servicio para gestión de roles y permisos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RoleService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -42,6 +48,8 @@ model {
   ad_menu_service = application 'MenuService' {
     description 'Servicio para gestión de menús del sistema'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/MenuService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de empresas'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EmpresaResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   ad_usuario_resolver = component 'UsuarioResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de usuarios'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/UsuarioResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -71,6 +83,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de roles'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RoleResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -79,6 +93,8 @@ model {
   ad_menu_resolver = component 'MenuResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de menús'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/MenuResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -90,6 +106,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para empresas'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Empresa.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -98,6 +116,8 @@ model {
   ad_usuario_model = component 'Usuario Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para usuarios'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Usuario.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -108,6 +128,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para roles del sistema'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Rol.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -116,6 +138,8 @@ model {
   ad_menu_model = component 'Menu Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para menús del sistema'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Menu.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -127,6 +151,8 @@ model {
     description 'Servicio para gestión de bancos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/BancoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -136,6 +162,8 @@ model {
     description 'Servicio para gestión de grupos de acceso'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/GrupoAccesoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -144,6 +172,8 @@ model {
   ad_sistema_service = application 'SistemaService' {
     description 'Servicio para configuración del sistema'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SistemaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -155,6 +185,8 @@ model {
     description 'Servicio para configuraciones generales del sistema'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ConfiguracionService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -163,6 +195,8 @@ model {
   ad_auditoria_service = application 'AuditoriaService' {
     description 'Servicio para auditoría y logs del sistema'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AuditoriaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

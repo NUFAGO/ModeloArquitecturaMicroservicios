@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión de empleados completa'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmpleadoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -24,6 +26,8 @@ model {
   ch_cargo_service = application 'CargoService' {
     description 'Servicio para gestión de cargos y posiciones'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CargoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -34,6 +38,8 @@ model {
     description 'Servicio para gestión de contratos laborales'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ContratoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -42,6 +48,8 @@ model {
   ch_departamento_service = application 'DepartamentoService' {
     description 'Servicio para gestión de departamentos y áreas'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DepartamentoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de empleados'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EmpleadoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   ch_cargo_resolver = component 'CargoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de cargos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CargoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -71,6 +83,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de contratos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ContratoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -80,6 +94,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de departamentos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/DepartamentoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -88,6 +104,8 @@ model {
   ch_empleado_ch_resolver = component 'EmpleadoCHResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver especializado para empleados CH'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/EmpleadoCHResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -99,6 +117,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para empleados'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Empleado.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -107,6 +127,8 @@ model {
   ch_cargo_model = component 'Cargo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para cargos y posiciones'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Cargo.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -117,6 +139,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para contratos laborales'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Contrato.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -125,6 +149,8 @@ model {
   ch_departamento_model = component 'Departamento Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para departamentos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Departamento.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -135,6 +161,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para usuarios del sistema'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Usuario.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -144,6 +172,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para grupos de acceso'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/GrupoAcceso.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -152,6 +182,8 @@ model {
   ch_rol_model = component 'Rol Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para roles del sistema'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Rol.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -163,6 +195,8 @@ model {
     description 'Servicio especializado para gestión de empleados'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EmpleadoCHService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -171,6 +205,8 @@ model {
   ch_capacitacion_service = application 'CapacitacionService' {
     description 'Servicio para gestión de capacitaciones'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CapacitacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -181,6 +217,8 @@ model {
     description 'Servicio para relación empleado-capacitación'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CapacitacionEmpleadoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -189,6 +227,8 @@ model {
   ch_asistencia_service = application 'AsistenciaService' {
     description 'Servicio para control de asistencia'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AsistenciaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -200,6 +240,8 @@ model {
     description 'Servicio para gestión de permisos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PermisoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -209,6 +251,8 @@ model {
     description 'Servicio para licencias y permisos especiales'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PermisoLicenciaService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -217,6 +261,8 @@ model {
   ch_examen_medico_service = application 'ExamenMedicoService' {
     description 'Servicio para gestión de exámenes médicos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ExamenMedicoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -228,6 +274,8 @@ model {
     description 'Servicio para documentos de empleados'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DocumentoEmpleadoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -236,6 +284,8 @@ model {
   ch_tipo_documento_empleado_service = application 'TipoDocumentoEmpleadoService' {
     description 'Servicio para tipos de documentos de empleados'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TipoDocumentoEmpleadoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -247,6 +297,8 @@ model {
     description 'Servicio de vistas para empleados'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VEmpleadoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -255,6 +307,8 @@ model {
   ch_v_firma_empleado_service = application 'VFirmaEmpleadoService' {
     description 'Servicio para firmas digitales de empleados'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VFirmaEmpleadoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -265,6 +319,8 @@ model {
     description 'Servicio para gestión de grupos de acceso'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VGrupoAccesoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -273,6 +329,8 @@ model {
   ch_v_login_service = application 'VLoginService' {
     description 'Servicio para autenticación y login'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VLoginService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -283,6 +341,8 @@ model {
     description 'Servicio de vistas para permisos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VPermisoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -292,6 +352,8 @@ model {
     description 'Servicio para gestión de roles'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VRolService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -300,6 +362,8 @@ model {
   ch_v_rol_usuario_service = application 'VRolUsuarioService' {
     description 'Servicio para relación rol-usuario'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/VRolUsuarioService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

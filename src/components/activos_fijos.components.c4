@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión completa de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ActivoFijoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio principal para creación de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CreacionActivoFijoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   af_recurso_activo_fijo_service = application 'RecursoActivoFijoService' {
     description 'Servicio principal para recursos de activos fijos creados'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoActivoFijoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver principal para todas las operaciones de activos fijos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ActivoFijoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de creación de activos fijos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CreacionActivoFijoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   af_recurso_activo_fijo_resolver = component 'RecursoActivoFijoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de recursos activos fijos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RecursoActivoFijoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -72,6 +84,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para creaciones de activos fijos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ActivoFijo.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -80,6 +94,8 @@ model {
   af_recurso_activo_fijo_model = component 'RecursoActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos activos fijos creados'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RecursoActivoFijo.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -90,6 +106,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos usados en creación de activos fijos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/RecursoCreacionActivoFijo.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -98,6 +116,8 @@ model {
   af_servicio_creacion_model = component 'ServicioCreacionActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para servicios usados en creación de activos fijos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ServicioCreacionActivoFijo.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -108,6 +128,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para datos adicionales de activos fijos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DataAdicionalActivoFijo.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -116,6 +138,8 @@ model {
   af_data_adicional_texto_model = component 'DataAdicionalTextoActivoFijo Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para textos adicionales de activos fijos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DataAdicionalTextoActivoFijo.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -127,6 +151,8 @@ model {
     description 'Servicio para gestión completa e integral de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ActivoFijoCompletoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -137,6 +163,8 @@ model {
     description 'Servicio para gestión de recursos en creación de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoCreacionService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -145,6 +173,8 @@ model {
   af_servicio_creacion_service = application 'ServicioCreacionService' {
     description 'Servicio para gestión de servicios en creación de activos fijos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ServicioCreacionService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -156,6 +186,8 @@ model {
     description 'Servicio para gestión de datos adicionales de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DataAdicionalService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -164,6 +196,8 @@ model {
   af_data_adicional_texto_service = application 'DataAdicionalTextoService' {
     description 'Servicio para gestión de textos adicionales de activos fijos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DataAdicionalTextoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -175,6 +209,8 @@ model {
     description 'Servicio de sincronización de nombres de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SincronizacionService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -183,6 +219,8 @@ model {
   af_marcado_service = application 'MarcadoService' {
     description 'Sistema de marcado y etiquetado de activos fijos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/MarcadoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -194,6 +232,8 @@ model {
     description 'Servicio para validación de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ValidacionActivoFijoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -204,6 +244,8 @@ model {
     description 'Servicio para reportes de activos fijos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteActivoFijoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -212,6 +254,8 @@ model {
   af_dashboard_activo_fijo_service = application 'DashboardActivoFijoService' {
     description 'Servicio para dashboard y métricas de activos fijos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DashboardActivoFijoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -222,6 +266,8 @@ model {
   af_procesamiento_activos_service = application 'ProcesamientoActivosService' {
     description 'Servicio especializado para procesamiento completo de creación de activos fijos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ProcesamientoActivosService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

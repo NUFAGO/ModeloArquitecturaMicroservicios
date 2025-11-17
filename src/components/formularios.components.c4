@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión completa de formularios'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/FormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -25,6 +27,8 @@ model {
     description 'Servicio para gestión de plantillas de formularios'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/FormularioTemplateService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -33,6 +37,8 @@ model {
   fm_formulario_respuesta_service = application 'FormularioRespuestaService' {
     description 'Servicio para gestión de respuestas de formularios'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/FormularioRespuestaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -44,6 +50,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de formularios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/FormularioResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -53,6 +61,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de plantillas de formularios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/FormularioTemplateResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -61,6 +71,8 @@ model {
   fm_formulario_respuesta_resolver = component 'FormularioRespuestaResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de respuestas de formularios'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/FormularioRespuestaResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -72,6 +84,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para formularios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Formulario.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -80,6 +94,8 @@ model {
   fm_formulario_template_model = component 'FormularioTemplate Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para plantillas de formularios'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/FormularioTemplate.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -90,6 +106,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para respuestas de formularios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/FormularioRespuesta.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -98,6 +116,8 @@ model {
   fm_formulario_validacion_model = component 'FormularioValidacion Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para validaciones de formularios'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/FormularioValidacion.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -109,6 +129,8 @@ model {
     description 'Servicio para gestión completa e integral de formularios'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/FormularioCompletoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -117,6 +139,8 @@ model {
   fm_formulario_template_completo_service = application 'FormularioTemplateCompletoService' {
     description 'Servicio completo para gestión de plantillas'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/FormularioTemplateCompletoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -128,6 +152,8 @@ model {
     description 'Servicio para creación y gestión de plantillas de formularios'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PlantillaFormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -136,6 +162,8 @@ model {
   fm_plantilla_personalizada_service = application 'PlantillaPersonalizadaService' {
     description 'Servicio para plantillas personalizadas por usuario'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PlantillaPersonalizadaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -147,6 +175,8 @@ model {
     description 'Servicio especializado para gestión de respuestas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RespuestaFormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -155,6 +185,8 @@ model {
   fm_respuesta_automatica_service = application 'RespuestaAutomaticaService' {
     description 'Servicio para respuestas automáticas y validaciones'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RespuestaAutomaticaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -166,6 +198,8 @@ model {
     description 'Servicio para validación de formularios y respuestas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ValidacionFormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -174,6 +208,8 @@ model {
   fm_validacion_campo_service = application 'ValidacionCampoService' {
     description 'Servicio para validación de campos individuales'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ValidacionCampoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -185,6 +221,8 @@ model {
     description 'Servicio para reportes de formularios y respuestas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteFormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -193,6 +231,8 @@ model {
   fm_dashboard_formulario_service = application 'DashboardFormularioService' {
     description 'Servicio para dashboard y métricas de formularios'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DashboardFormularioService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -204,6 +244,8 @@ model {
     description 'Servicio para exportación de datos de formularios'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ExportacionFormularioService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -212,6 +254,8 @@ model {
   fm_exportacion_respuestas_service = application 'ExportacionRespuestasService' {
     description 'Servicio para exportación de respuestas de formularios'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ExportacionRespuestasService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios

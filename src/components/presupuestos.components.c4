@@ -16,6 +16,8 @@ model {
     description 'Servicio principal para gestión completa de presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -24,6 +26,8 @@ model {
   ps_proyecto_service = application 'ProyectoService' {
     description 'Servicio para gestión de proyectos y obras'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ProyectoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -34,6 +38,8 @@ model {
     description 'Servicio para gestión de títulos y jerarquía de presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TituloService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -42,6 +48,8 @@ model {
   ps_recurso_service = application 'RecursoService' {
     description 'Servicio principal para gestión de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -52,6 +60,8 @@ model {
     description 'Servicio para análisis de precios unitarios (APU)'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ApuService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -60,6 +70,8 @@ model {
   ps_centro_costo_service = application 'CentroCostoService' {
     description 'Servicio para gestión de centros de costo'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CentroCostoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -71,6 +83,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones CRUD de presupuestos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/PresupuestoResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -79,6 +93,8 @@ model {
   ps_proyecto_resolver = component 'ProyectoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de proyectos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ProyectoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -89,6 +105,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de títulos/partidas'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/TituloResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -97,6 +115,8 @@ model {
   ps_recurso_resolver = component 'RecursoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de recursos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/RecursoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -107,6 +127,8 @@ model {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de APU'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/ApuResolver.ts 'Ver código fuente'
+
     style {
       color amber  // Amarillo para resolvers
     }
@@ -115,6 +137,8 @@ model {
   ps_centro_costo_resolver = component 'CentroCostoResolver' {
     technology 'GraphQL Resolver'
     description 'Resolver para operaciones de centros de costo'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/resolvers/CentroCostoResolver.ts 'Ver código fuente'
 
     style {
       color amber  // Amarillo para resolvers
@@ -126,6 +150,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para presupuestos'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Presupuesto.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -134,6 +160,8 @@ model {
   ps_proyecto_model = component 'Proyecto Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para proyectos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Proyecto.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -144,6 +172,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para títulos/partidas'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Titulo.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -152,6 +182,8 @@ model {
   ps_recurso_model = component 'Recurso Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para recursos'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/Recurso.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -162,6 +194,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para análisis de precios unitarios'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/ComposicionApu.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -171,6 +205,8 @@ model {
     technology 'Mongoose Schema'
     description 'Modelo de datos para centros de costo'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/CentroCosto.ts 'Ver código fuente'
+
     style {
       color slate  // Gris para modelos
     }
@@ -179,6 +215,8 @@ model {
   ps_detalle_partida_model = component 'DetallePartida Model' {
     technology 'Mongoose Schema'
     description 'Modelo de datos para detalles de partida'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/models/DetallePartida.ts 'Ver código fuente'
 
     style {
       color slate  // Gris para modelos
@@ -190,6 +228,8 @@ model {
     description 'Servicio para gestión completa de presupuestos con jerarquía'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PresupuestoCompletoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -198,6 +238,8 @@ model {
   ps_proyecto_completo_service = application 'ProyectoCompletoService' {
     description 'Servicio para gestión completa de proyectos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ProyectoCompletoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -209,6 +251,8 @@ model {
     description 'Servicio para composiciones detalladas de APU'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ComposicionApuService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -219,6 +263,8 @@ model {
     description 'Servicio para recursos asociados a presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoPresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -228,6 +274,8 @@ model {
     description 'Servicio para recursos en composiciones APU'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoComposicionApuService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -236,6 +284,8 @@ model {
   ps_recurso_seguimiento_total_service = application 'RecursoSeguimientoTotalService' {
     description 'Servicio para seguimiento completo de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/RecursoSeguimientoTotalService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -247,6 +297,8 @@ model {
     description 'Servicio para relación almacén-centro de costo'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/AlmacenCentroCostoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -256,6 +308,8 @@ model {
   ps_precio_recurso_proyecto_service = application 'PrecioRecursoProyectoService' {
     description 'Servicio para precios de recursos por proyecto'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/PrecioRecursoProyectoService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -267,6 +321,8 @@ model {
     description 'Sistema de trazabilidad de recursos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/TrazarRecursosService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -275,6 +331,8 @@ model {
   ps_sincronizar_recursos_service = application 'SincronizarRecursosService' {
     description 'Servicio para sincronización de recursos'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/SincronizarRecursosService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -286,6 +344,8 @@ model {
     description 'Servicio para detalles específicos de partidas'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DetallePartidaService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -295,6 +355,8 @@ model {
   ps_evidencia_partida_service = application 'EvidenciaPartidaService' {
     description 'Servicio para evidencias asociadas a partidas'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/EvidenciaPartidaService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -306,6 +368,8 @@ model {
     description 'Servicio para validación de estructuras de presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ValidacionPresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -314,6 +378,8 @@ model {
   ps_calculo_totales_service = application 'CalculoTotalesService' {
     description 'Servicio para cálculos de totales y subtotales'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/CalculoTotalesService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
@@ -325,6 +391,8 @@ model {
     description 'Servicio para generación de reportes de presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReportePresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -334,6 +402,8 @@ model {
     description 'Servicio para dashboard y métricas de presupuestos'
     technology 'TypeScript + Node.js'
 
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/DashboardPresupuestoService.ts 'Ver código fuente'
+
     style {
       color green  // Verde para servicios
     }
@@ -342,6 +412,8 @@ model {
   ps_reporte_apu_service = application 'ReporteApuService' {
     description 'Servicio para reportes de análisis de precios unitarios'
     technology 'TypeScript + Node.js'
+
+    link https://github.com/NUFAGO/inacons-backend/blob/main/src/Graphql/services/ReporteApuService.ts 'Ver código fuente'
 
     style {
       color green  // Verde para servicios
